@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itinerary Labuan Bajo 4H3M · {BRAND}</title>
+<meta name="description" content="Itinerary hari per hari trip Labuan Bajo 4 hari 3 malam: Padar, Pink Beach, Komodo, Manta Point.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wadah nav__isi">
+    <a class="logo" href="index.html">
+      <span class="logo__mark"><svg class="ikon"><use href="#ic-ombak"></use></svg></span>
+      <span class="logo__teks">
+        <span class="logo__nama" data-brand="nama">Ombak Lepas</span>
+        <span class="logo__sub" data-brand="tagline">Open Trip &amp; Private Trip</span>
+      </span>
+    </a>
+    <button class="nav__burger" aria-expanded="false" aria-label="Buka menu"><svg class="ikon"><use href="#ic-menu"></use></svg></button>
+    <ul class="nav__tautan">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="jadwal.html">Jadwal Trip</a></li>
+      <li><a href="itinerary.html" aria-current="page">Itinerary</a></li>
+      <li><a href="tentang.html">Tentang</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a class="btn btn--wa btn--kecil nav__wa" href="#" data-wa="Halo, saya mau tanya jadwal open trip terdekat.">
+      <svg class="ikon"><use href="#ic-wa"></use></svg> WhatsApp
+    </a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero hero--halaman">
+  <div class="hero__bg" style="background-image:url('https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?auto=format&amp;fit=crop&amp;w=1600&amp;q=80')"></div>
+  <div class="wadah hero__isi">
+    <span class="eyebrow">Trip unggulan</span>
+    <h1 id="itin-judul">Labuan Bajo 4 Hari 3 Malam</h1>
+    <p class="hero__lead" id="itin-subjudul">Sailing Komodo · Padar · Pink Beach · Manta Point</p>
+    <div class="hero__aksi">
+      <a class="btn btn--wa" href="#" id="itin-wa" data-wa="Halo, saya tertarik trip Labuan Bajo 4H3M. Boleh minta detail dan sisa kuotanya?">
+        <svg class="ikon"><use href="#ic-wa"></use></svg> Booking trip ini via WhatsApp
+      </a>
+      <a class="btn btn--garis-terang" href="jadwal.html">Lihat tanggal keberangkatan</a>
+    </div>
+  </div>
+</section>
+
+<!-- ringkasan trip -->
+<section class="seksi seksi--rapat">
+  <div class="wadah">
+    <div class="trust" id="itin-ringkas" style="margin-top:-70px"></div>
+  </div>
+</section>
+
+<section class="seksi" style="padding-top:0">
+  <div class="wadah dua-kolom" style="grid-template-columns:1.5fr 1fr;align-items:start;gap:40px">
+
+    <!-- timeline -->
+    <div>
+      <div class="seksi-kepala">
+        <span class="eyebrow">Rundown harian</span>
+        <h2>Empat hari, dari darat sampai balik lagi</h2>
+      </div>
+      <div class="itin" id="itin-hari"></div>
+
+      <div class="panel panel--senja" style="margin-top:30px">
+        <h3>Catatan penting</h3>
+        <p style="margin:0;color:var(--tinta-lembut);font-size:.95rem" id="itin-catatan"></p>
+      </div>
+    </div>
+
+    <!-- sidebar -->
+    <aside style="display:grid;gap:20px;position:sticky;top:calc(var(--nav-h) + 20px)">
+      <div class="panel">
+        <h3>Sudah termasuk</h3>
+        <ul class="cek-list" id="itin-include"></ul>
+      </div>
+
+      <div class="panel">
+        <h3>Belum termasuk</h3>
+        <ul class="cek-list" id="itin-exclude" style="--x:1"></ul>
+      </div>
+
+      <div class="panel">
+        <h3>Bawaan wajib</h3>
+        <ul class="tag-list" id="itin-bawa"></ul>
+      </div>
+
+      <figure class="foto"><img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Perahu tradisional di perairan tenang" loading="lazy"><figcaption>Kapal yang dipakai selama sailing</figcaption></figure>
+
+      <div class="panel" style="background:var(--laut-800);border-color:var(--laut-800)">
+        <h3 style="color:var(--pasir-100)">Siap ikut?</h3>
+        <p style="color:rgba(251,243,230,.75);font-size:.94rem">Sebutkan tanggal batch yang kamu mau, admin cek kuotanya langsung.</p>
+        <a class="btn btn--wa btn--blok" href="#" data-wa="Halo, saya mau ikut trip Labuan Bajo 4H3M. Untuk batch tanggal ... , apakah masih ada kursi?">
+          <svg class="ikon"><use href="#ic-wa"></use></svg> Booking via WhatsApp
+        </a>
+        <a class="btn btn--garis-terang btn--blok" href="jadwal.html" style="margin-top:10px">
+          <svg class="ikon"><use href="#ic-panah-kiri"></use></svg> Kembali ke jadwal trip
+        </a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- galeri -->
+<section class="seksi seksi--rapat laut terang">
+  <div class="wadah">
+    <div class="seksi-kepala">
+      <span class="eyebrow">Galeri rute ini</span>
+      <h2>Suasana di trip Labuan Bajo</h2>
+    </div>
+    <div class="galeri">
+      <figure class="foto"><img src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Pulau kecil berbukit di tengah laut" loading="lazy"><figcaption>Sunrise Pulau Padar</figcaption></figure>
+      <figure class="foto"><img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Teluk berpasir dengan air jernih" loading="lazy"><figcaption>Pink Beach</figcaption></figure>
+      <figure class="foto"><img src="https://images.unsplash.com/photo-1573790387438-4da905039392?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Pesisir berbatu dengan laut biru" loading="lazy"><figcaption>Trekking di Pulau Komodo</figcaption></figure>
+      <figure class="foto"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Penyelam di antara gerombolan ikan" loading="lazy"><figcaption>Snorkeling Manta Point</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wadah">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="index.html">
+          <span class="logo__mark"><svg class="ikon"><use href="#ic-ombak"></use></svg></span>
+          <span class="logo__teks">
+            <span class="logo__nama" data-brand="nama">Ombak Lepas</span>
+            <span class="logo__sub" data-brand="tagline">Open Trip &amp; Private Trip</span>
+          </span>
+        </a>
+        <p class="footer__teks">Open trip laut dan pulau dengan grup kecil. Dijalankan langsung oleh orangnya, berbasis di <span data-brand="kota">Malang, Jawa Timur</span>.</p>
+      </div>
+      <div>
+        <h4>Halaman</h4>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="jadwal.html">Jadwal Trip</a></li>
+          <li><a href="itinerary.html">Itinerary</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="#" data-wa="Halo, saya menemukan kontak ini dari website. Saya mau tanya open trip."><svg class="ikon"><use href="#ic-wa"></use></svg> <span data-brand="waTampil">+62 812-3456-789</span></a></li>
+          <li><a href="#" data-ig target="_blank" rel="noopener"><svg class="ikon"><use href="#ic-ig"></use></svg> <span data-brand="instagram">@ombaklepas.trip</span></a></li>
+          <li><span style="display:inline-flex;gap:8px;align-items:center;font-size:.92rem"><svg class="ikon"><use href="#ic-pin"></use></svg> <span data-brand="kota">Malang, Jawa Timur</span></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bawah">
+      <span>© 2026 <span data-brand="nama">Ombak Lepas</span>. Semua harga dalam Rupiah.</span>
+      <span>Website contoh — konten masih placeholder, foto sementara dari Unsplash.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-apung" href="#" data-wa="Halo, saya mau tanya open trip." aria-label="Chat WhatsApp"><svg class="ikon"><use href="#ic-wa"></use></svg></a>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+/* halaman ini dirender dari ITINERARY + trip terkait di data.js */
+document.addEventListener("DOMContentLoaded", () => {
+  const trip = TRIPS.find((t) => t.id === ITINERARY.tripId);
+  const ic = (id) => `<svg class="ikon" aria-hidden="true"><use href="#ic-${id}"></use></svg>`;
+
+  document.getElementById("itin-judul").textContent = ITINERARY.judul;
+  document.getElementById("itin-subjudul").textContent = ITINERARY.subjudul;
+  document.getElementById("itin-catatan").textContent = ITINERARY.catatan;
+
+  document.getElementById("itin-ringkas").innerHTML = `
+    <div class="trust__item"><span class="trust__angka">${trip.durasi}</span><span class="trust__label">Durasi trip</span></div>
+    <div class="trust__item"><span class="trust__angka">Rp${trip.harga.toLocaleString("id-ID")}</span><span class="trust__label">Per orang, ${trip.hargaCatatan}</span></div>
+    <div class="trust__item"><span class="trust__angka">Maks. ${trip.kuotaTotal}</span><span class="trust__label">Peserta per keberangkatan</span></div>
+    <div class="trust__item"><span class="trust__angka">${trip.tanggalPendek}</span><span class="trust__label">Batch terdekat · ${trip.kuotaSisa > 0 ? "sisa " + trip.kuotaSisa + " kursi" : "penuh"}</span></div>`;
+
+  document.getElementById("itin-hari").innerHTML = ITINERARY.hari.map((h) => `
+    <section class="itin__hari">
+      <span class="itin__titik"></span>
+      <span class="itin__label">${h.label}</span>
+      <h3 class="itin__tema">${h.tema}</h3>
+      <p class="itin__lokasi">${ic("pin")} ${h.lokasi}</p>
+      <ul class="itin__agenda">
+        ${h.agenda.map((a) => `<li><span class="itin__jam">${a.jam}</span><span>${a.isi}</span></li>`).join("")}
+      </ul>
+    </section>`).join("");
+
+  document.getElementById("itin-include").innerHTML =
+    trip.include.map((i) => `<li>${ic("cek")}<span>${i}</span></li>`).join("");
+  document.getElementById("itin-exclude").innerHTML =
+    trip.exclude.map((i) => `<li><span style="color:var(--pasir-400);margin-top:2px">✕</span><span>${i}</span></li>`).join("");
+  document.getElementById("itin-bawa").innerHTML =
+    ITINERARY.bawa.map((b) => `<li>${b}</li>`).join("");
+});
+</script>
+</body>
+</html>

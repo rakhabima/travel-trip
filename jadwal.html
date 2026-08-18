@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jadwal Trip · {BRAND}</title>
+<meta name="description" content="Jadwal open trip terbaru: tanggal, harga per orang, sisa kuota, dan fasilitas yang termasuk. Booking langsung lewat WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wadah nav__isi">
+    <a class="logo" href="index.html">
+      <span class="logo__mark"><svg class="ikon"><use href="#ic-ombak"></use></svg></span>
+      <span class="logo__teks">
+        <span class="logo__nama" data-brand="nama">Ombak Lepas</span>
+        <span class="logo__sub" data-brand="tagline">Open Trip &amp; Private Trip</span>
+      </span>
+    </a>
+    <button class="nav__burger" aria-expanded="false" aria-label="Buka menu"><svg class="ikon"><use href="#ic-menu"></use></svg></button>
+    <ul class="nav__tautan">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="jadwal.html" aria-current="page">Jadwal Trip</a></li>
+      <li><a href="itinerary.html">Itinerary</a></li>
+      <li><a href="tentang.html">Tentang</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a class="btn btn--wa btn--kecil nav__wa" href="#" data-wa="Halo, saya mau tanya jadwal open trip terdekat.">
+      <svg class="ikon"><use href="#ic-wa"></use></svg> WhatsApp
+    </a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero hero--halaman">
+  <div class="hero__bg" style="background-image:url('https://images.unsplash.com/photo-1531761535209-180857e963b9?auto=format&amp;fit=crop&amp;w=1600&amp;q=80')"></div>
+  <div class="wadah hero__isi">
+    <span class="eyebrow">Jadwal Trip</span>
+    <h1>Semua keberangkatan yang sedang dibuka</h1>
+    <p class="hero__lead">
+      Enam batch sampai akhir tahun. Kursi dikunci setelah DP masuk, dan kalau ada perubahan tanggal
+      karena cuaca, kamu selalu dikabari lebih dulu.
+    </p>
+  </div>
+</section>
+
+<section class="seksi">
+  <div class="wadah">
+    <div class="seksi-kepala">
+      <span class="eyebrow">Agustus – Desember 2026</span>
+      <h2>Pilih tanggalnya, sisanya dibantu lewat chat</h2>
+      <p>Harga di bawah berlaku per orang. Semua booking dan pembayaran dikoordinasikan lewat WhatsApp — tidak ada form atau pembayaran di website ini.</p>
+    </div>
+
+    <form class="filter" data-cari="jadwal">
+      <span class="filter__judul"><svg class="ikon"><use href="#ic-filter"></use></svg> Saring jadwal</span>
+      <label class="cari__medan">
+        <span>Destinasi</span>
+        <select name="destinasi"><option value="">Semua destinasi</option></select>
+      </label>
+      <label class="cari__medan">
+        <span>Bulan berangkat</span>
+        <select name="bulan"><option value="">Kapan saja</option></select>
+      </label>
+      <label class="cari__medan">
+        <span>Sisa kursi</span>
+        <select name="tersedia">
+          <option value="">Tampilkan semua batch</option>
+          <option value="1">Hanya yang masih ada kursi</option>
+        </select>
+      </label>
+      <button class="btn btn--garis btn--kecil" type="button" data-reset>Reset</button>
+    </form>
+
+    <p class="filter__hasil" data-hasil aria-live="polite"></p>
+
+    <div class="grid-trip" data-trip="semua"></div>
+
+    <div class="dua-kolom mt-l">
+      <div class="panel panel--senja">
+        <h3>Alur booking</h3>
+        <ol style="margin:0;padding-left:20px;color:var(--tinta-lembut);font-size:.95rem">
+          <li>Chat WhatsApp, sebutkan nama trip &amp; jumlah orang.</li>
+          <li>Admin cek sisa kuota dan kirim rincian.</li>
+          <li>DP Rp500.000/orang untuk mengunci kursi (maks. 2×24 jam).</li>
+          <li>Pelunasan paling lambat H-7.</li>
+          <li>Grup WhatsApp trip dibuka H-7, info titik kumpul H-3.</li>
+        </ol>
+      </div>
+      <div class="panel">
+        <h3>Mau tanggal sendiri?</h3>
+        <p style="color:var(--tinta-lembut);font-size:.95rem">
+          Semua rute di atas bisa dijalankan sebagai private trip mulai 6 orang — tanggal, itinerary,
+          dan tipe penginapan menyesuaikan permintaan. Cocok untuk rombongan kantor, keluarga, atau
+          angkatan kuliah.
+        </p>
+        <a class="btn btn--wa" href="#" data-wa="Halo, saya mau tanya private trip. Rencana ... orang, sekitar tanggal ... , tujuan ...">
+          <svg class="ikon"><use href="#ic-wa"></use></svg> Minta penawaran private trip
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seksi seksi--rapat">
+  <div class="wadah">
+    <div class="cta">
+      <div class="cta__teks">
+        <h2>Kuota berubah tiap hari</h2>
+        <p>Kalau angka sisa kursi di kartu sudah tipis, lebih aman konfirmasi dulu lewat chat sebelum atur cuti dan tiket pesawat.</p>
+      </div>
+      <div class="cta__aksi">
+        <a class="btn btn--wa" href="#" data-wa="Halo, saya mau cek sisa kuota trip yang masih tersedia untuk bulan ini.">
+          <svg class="ikon"><use href="#ic-wa"></use></svg> Cek sisa kuota
+        </a>
+        <a class="btn btn--garis-terang" href="itinerary.html">Lihat contoh itinerary</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wadah">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="index.html">
+          <span class="logo__mark"><svg class="ikon"><use href="#ic-ombak"></use></svg></span>
+          <span class="logo__teks">
+            <span class="logo__nama" data-brand="nama">Ombak Lepas</span>
+            <span class="logo__sub" data-brand="tagline">Open Trip &amp; Private Trip</span>
+          </span>
+        </a>
+        <p class="footer__teks">Open trip laut dan pulau dengan grup kecil. Dijalankan langsung oleh orangnya, berbasis di <span data-brand="kota">Malang, Jawa Timur</span>.</p>
+      </div>
+      <div>
+        <h4>Halaman</h4>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="jadwal.html">Jadwal Trip</a></li>
+          <li><a href="itinerary.html">Itinerary</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="#" data-wa="Halo, saya menemukan kontak ini dari website. Saya mau tanya open trip."><svg class="ikon"><use href="#ic-wa"></use></svg> <span data-brand="waTampil">+62 812-3456-789</span></a></li>
+          <li><a href="#" data-ig target="_blank" rel="noopener"><svg class="ikon"><use href="#ic-ig"></use></svg> <span data-brand="instagram">@ombaklepas.trip</span></a></li>
+          <li><span style="display:inline-flex;gap:8px;align-items:center;font-size:.92rem"><svg class="ikon"><use href="#ic-pin"></use></svg> <span data-brand="kota">Malang, Jawa Timur</span></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bawah">
+      <span>© 2026 <span data-brand="nama">Ombak Lepas</span>. Semua harga dalam Rupiah.</span>
+      <span>Website contoh — konten masih placeholder, foto sementara dari Unsplash.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-apung" href="#" data-wa="Halo, saya mau tanya open trip." aria-label="Chat WhatsApp"><svg class="ikon"><use href="#ic-wa"></use></svg></a>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{BRAND} · Open Trip Pulau & Laut Indonesia</title>
+<meta name="description" content="Open trip pantai, pulau, dan gunung dengan grup kecil. Jadwal terbuka, harga jelas, langsung tanya lewat WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============ NAV (identik di semua halaman) ============ -->
+<header class="nav">
+  <div class="wadah nav__isi">
+    <a class="logo" href="index.html">
+      <span class="logo__mark"><svg class="ikon"><use href="#ic-ombak"></use></svg></span>
+      <span class="logo__teks">
+        <span class="logo__nama" data-brand="nama">Ombak Lepas</span>
+        <span class="logo__sub" data-brand="tagline">Open Trip &amp; Private Trip</span>
+      </span>
+    </a>
+    <button class="nav__burger" aria-expanded="false" aria-label="Buka menu"><svg class="ikon"><use href="#ic-menu"></use></svg></button>
+    <ul class="nav__tautan">
+      <li><a href="index.html" aria-current="page">Beranda</a></li>
+      <li><a href="jadwal.html">Jadwal Trip</a></li>
+      <li><a href="itinerary.html">Itinerary</a></li>
+      <li><a href="tentang.html">Tentang</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a class="btn btn--wa btn--kecil nav__wa" href="#" data-wa="Halo, saya mau tanya jadwal open trip terdekat.">
+      <svg class="ikon"><use href="#ic-wa"></use></svg> WhatsApp
+    </a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero hero--utama">
+  <div class="wadah hero__grid">
+    <div class="hero__isi">
+      <span class="pill"><span class="pill__titik"></span> Kuota September &amp; Oktober sudah dibuka</span>
+      <h1>Laut, pulau, dan rombongan kecil yang <em>enak diajak jalan</em>.</h1>
+      <p class="hero__lead">
+        Open trip ke pantai dan pulau-pulau Indonesia dengan maksimal 16 peserta per keberangkatan.
+        Dijalankan langsung oleh orangnya, bukan agen besar — jadi kamu ngobrol dengan orang yang
+        benar-benar ikut jalan bareng kamu.
+      </p>
+      <div class="hero__aksi">
+        <a class="btn btn--wa" href="#" data-wa="Halo, saya lihat website-nya. Saya mau tanya jadwal open trip terdekat dan sisa kuotanya.">
+          <svg class="ikon"><use href="#ic-wa"></use></svg> Tanya jadwal via WhatsApp
+        </a>
+        <a class="btn btn--garis-terang" href="jadwal.html">Lihat semua jadwal</a>
+      </div>
+      <p class="hero__catatan">
+        <svg class="ikon"><use href="#ic-jam"></use></svg>
+        <span>Dibalas langsung oleh <span data-brand="adminNama">Bara</span>, biasanya di bawah 1 jam (08.00–21.00 WIB)</span>
+      </p>
+    </div>
+
+    <div class="hero__visual">
+      <img class="hero__foto" src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+           alt="Teluk berpasir putih dengan perbukitan hijau, suasana trip pulau" width="900" height="990">
+      <img class="hero__foto--kecil" src="https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+           alt="Peserta trip duduk menikmati pemandangan teluk" width="600" height="450">
+      <div class="hero__kartu">
+        <span class="hero__kartu-label">Trip terdekat</span>
+        <span class="hero__kartu-nilai">Labuan Bajo 4H3M</span>
+        <span class="hero__kartu-sub">12–15 Sep · sisa 5 kursi</span>
+      </div>
+    </div>
+
+    <!-- form pencarian: hanya meneruskan pilihan ke halaman Jadwal -->
+    <form class="cari" action="jadwal.html" method="get" data-cari="beranda">
+      <label class="cari__medan">
+        <span>Destinasi</span>
+        <select name="destinasi"><option value="">Semua destinasi</option></select>
+      </label>
+      <label class="cari__medan">
+        <span>Bulan berangkat</span>
+        <select name="bulan"><option value="">Kapan saja</option></select>
+      </label>
+      <label class="cari__medan">
+        <span>Sisa kursi</span>
+        <select name="tersedia">
+          <option value="1">Hanya yang masih ada kursi</option>
+          <option value="">Tampilkan semua batch</option>
+        </select>
+      </label>
+      <button class="btn btn--wa cari__tombol" type="submit">
+        <svg class="ikon"><use href="#ic-cari"></use></svg> Cari jadwal
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<section>
+  <div class="wadah">
+    <div class="trust">
+      <div class="trust__item">
+        <span class="trust__angka">2 orang</span>
+        <span class="trust__label">Dijalankan <span data-brand="adminNama">Bara</span> &amp; satu trip leader tetap</span>
+      </div>
+      <div class="trust__item">
+        <span class="trust__angka">Sejak <span data-brand="sejak">2019</span></span>
+        <span class="trust__label">Basis di <span data-brand="kota">Malang, Jawa Timur</span></span>
+      </div>
+      <div class="trust__item">
+        <span class="trust__angka" data-brand="statTrip">120+</span>
+        <span class="trust__label">Trip yang sudah berjalan</span>
+      </div>
+      <div class="trust__item">
+        <span class="trust__angka" data-brand="statPeserta">1.400+</span>
+        <span class="trust__label">Peserta diantar, rating <span data-brand="statRating">4,9/5</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREVIEW TRIP ============ -->
+<section class="seksi">
+  <div class="wadah">
+    <div class="seksi-kepala">
+      <span class="eyebrow">Trip terdekat</span>
+      <h2>Tiga keberangkatan yang paling dekat</h2>
+      <p>Kuota dihitung setelah DP masuk, jadi angka sisa kursi di bawah ini berubah cukup cepat.</p>
+    </div>
+
+    <div class="grid-trip" data-trip="preview"></div>
+
+    <div class="mt-l">
+      <a class="btn btn--garis" href="jadwal.html">
+        Lihat seluruh jadwal trip <svg class="ikon"><use href="#ic-panah"></use></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DESTINASI ============ -->
+<section class="seksi seksi--rapat">
+  <div class="wadah">
+    <div class="seksi-kepala">
+      <span class="eyebrow">Destinasi</span>
+      <h2>Mau ke arah mana dulu?</h2>
+      <p>Klik salah satu destinasi untuk langsung melihat batch yang tersedia di halaman jadwal.</p>
+    </div>
+    <div class="grid-dest" data-destinasi></div>
+  </div>
+</section>
+
+<!-- ============ ALASAN ============ -->
+<section class="seksi laut laut--pola terang">
+  <div class="wadah">
+    <div class="seksi-kepala">
+      <span class="eyebrow">Kenapa lewat kami</span>
+      <h2>Enam hal yang paling sering ditanyakan sebelum booking</h2>
+    </div>
+    <div class="grid-alasan" data-alasan></div>
+  </div>
+</section>
+
+<!-- ============ CARA KAMI JALAN ============ -->
+<section class="seksi">
+  <div class="wadah sisi-kiri-lebar">
+    <div>
+      <span class="eyebrow">Cara kami jalan</span>
+      <h2>Trip kecil, urusan beres, tanpa biaya kejutan</h2>
+      <ul class="cek-list" style="margin-top:22px">
+        <li><svg class="ikon"><use href="#ic-cek"></use></svg><span><b>Grup maksimal 16 orang.</b> Semua kebagian spot foto, semua kebagian perhatian trip leader.</span></li>
+        <li><svg class="ikon"><use href="#ic-cek"></use></svg><span><b>Harga yang tertulis itu harga akhir.</b> Rincian termasuk &amp; tidak termasuk ada di tiap kartu trip.</span></li>
+        <li><svg class="ikon"><use href="#ic-cek"></use></svg><span><b>Grup WhatsApp dibuka H-7.</b> Kenalan dulu sebelum ketemu, plus info titik kumpul dan cuaca.</span></li>
+        <li><svg class="ikon"><use href="#ic-cek"></use></svg><span><b>Aman untuk yang belum bisa berenang.</b> Pelampung wajib, selalu ada pendamping di air.</span></li>
+        <li><svg class="ikon"><use href="#ic-cek"></use></svg><span><b>Dokumentasi sudah termasuk.</b> Foto dibagikan maksimal 7 hari setelah trip selesai.</span></li>
+      </ul>
+    </div>
+    <div class="galeri" style="grid-template-columns:1fr 1fr">
+      <figure class="foto"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Peserta snorkeling di antara gerombolan ikan" loading="lazy"><figcaption>Snorkeling bareng trip leader</figcaption></figure>
+      <figure class="foto foto--tinggi"><img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Perahu kecil di laguna berair jernih" loading="lazy"><figcaption>Kapal &amp; laguna</figcaption></figure>
+      <figure class="foto foto--tinggi"><img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Terumbu karang berwarna-warni di perairan dangkal" loading="lazy"><figcaption>Terumbu karang</figcaption></figure>
+      <figure class="foto"><img src="https://images.unsplash.com/photo-1590523278191-995cbcda646b?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Pantai berpasir dengan pohon kelapa saat matahari terbenam" loading="lazy"><figcaption>Sunset di pantai</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ALUR BOOKING ============ -->
+<section class="seksi seksi--rapat">
+  <div class="wadah">
+    <div class="seksi-kepala">
+      <span class="eyebrow">Alur booking</span>
+      <h2>Dari lihat-lihat sampai berangkat, tiga langkah</h2>
+      <p>Tidak ada form panjang dan tidak ada pembayaran di website ini — semua dikoordinasikan lewat WhatsApp.</p>
+    </div>
+    <div class="grid-langkah" data-langkah></div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONI ============ -->
+<section class="seksi seksi--rapat">
+  <div class="wadah">
+    <div class="seksi-kepala">
+      <span class="eyebrow">Kata peserta</span>
+      <h2>Rating <span data-brand="statRating">4,9/5</span> dari peserta yang sudah jalan</h2>
+      <p>Dikumpulkan dari chat WhatsApp dan kolom ulasan Instagram setelah trip selesai.</p>
+    </div>
+    <div class="grid-testi" data-testimoni="beranda"></div>
+    <div class="mt-l">
+      <a class="btn btn--garis" href="tentang.html">
+        Baca cerita lengkapnya <svg class="ikon"><use href="#ic-panah"></use></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERI ============ -->
+<section class="seksi seksi--rapat">
+  <div class="wadah">
+    <div class="seksi-kepala">
+      <span class="eyebrow">Galeri</span>
+      <h2>Dokumentasi trip sebelumnya</h2>
+      <p>Foto asli menyusul — blok di bawah ini akan diganti dokumentasi keberangkatan terakhir.</p>
+    </div>
+    <div class="galeri">
+      <figure class="foto foto--lebar"><img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Pemandangan teluk dari puncak bukit" loading="lazy"><figcaption>Viewpoint Pulau Padar</figcaption></figure>
+      <figure class="foto"><img src="https://images.unsplash.com/photo-1570789210967-2cac24afeb00?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Gugusan pulau karst di Raja Ampat" loading="lazy"><figcaption>Gugusan pulau Raja Ampat</figcaption></figure>
+      <figure class="foto"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Pantai dengan perahu layar dan payung jerami" loading="lazy"><figcaption>Santai di pantai</figcaption></figure>
+      <figure class="foto"><img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Garis pantai berpasir putih dari udara" loading="lazy"><figcaption>Pantai pasir putih</figcaption></figure>
+      <figure class="foto foto--lebar"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Ombak kecil di pantai saat senja" loading="lazy"><figcaption>Senja dari tepi pantai</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="seksi seksi--rapat">
+  <div class="wadah">
+    <div class="cta">
+      <div class="cta__teks">
+        <h2>Masih bingung pilih trip yang mana?</h2>
+        <p>Chat saja, sebutkan tanggal kosongmu dan budget-nya. Nanti dibantu carikan batch yang paling pas.</p>
+      </div>
+      <div class="cta__aksi">
+        <a class="btn btn--wa" href="#" data-wa="Halo, saya masih bingung pilih trip. Tanggal kosong saya sekitar ... dan budget sekitar ... Bisa dibantu rekomendasi?">
+          <svg class="ikon"><use href="#ic-wa"></use></svg> Konsultasi via WhatsApp
+        </a>
+        <a class="btn btn--garis-terang" href="kontak.html">Baca FAQ dulu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER (identik di semua halaman) ============ -->
+<footer class="footer">
+  <div class="wadah">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="index.html">
+          <span class="logo__mark"><svg class="ikon"><use href="#ic-ombak"></use></svg></span>
+          <span class="logo__teks">
+            <span class="logo__nama" data-brand="nama">Ombak Lepas</span>
+            <span class="logo__sub" data-brand="tagline">Open Trip &amp; Private Trip</span>
+          </span>
+        </a>
+        <p class="footer__teks">Open trip laut dan pulau dengan grup kecil. Dijalankan langsung oleh orangnya, berbasis di <span data-brand="kota">Malang, Jawa Timur</span>.</p>
+      </div>
+      <div>
+        <h4>Halaman</h4>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="jadwal.html">Jadwal Trip</a></li>
+          <li><a href="itinerary.html">Itinerary</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="#" data-wa="Halo, saya menemukan kontak ini dari website. Saya mau tanya open trip."><svg class="ikon"><use href="#ic-wa"></use></svg> <span data-brand="waTampil">+62 812-3456-789</span></a></li>
+          <li><a href="#" data-ig target="_blank" rel="noopener"><svg class="ikon"><use href="#ic-ig"></use></svg> <span data-brand="instagram">@ombaklepas.trip</span></a></li>
+          <li><span style="display:inline-flex;gap:8px;align-items:center;font-size:.92rem"><svg class="ikon"><use href="#ic-pin"></use></svg> <span data-brand="kota">Malang, Jawa Timur</span></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bawah">
+      <span>© 2026 <span data-brand="nama">Ombak Lepas</span>. Semua harga dalam Rupiah.</span>
+      <span>Website contoh — konten masih placeholder, foto sementara dari Unsplash.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-apung" href="#" data-wa="Halo, saya mau tanya open trip." aria-label="Chat WhatsApp"><svg class="ikon"><use href="#ic-wa"></use></svg></a>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
