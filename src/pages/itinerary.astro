@@ -1,19 +1,38 @@
 ---
+import { getCollection } from "astro:content";
 import Dasar from "../layouts/Dasar.astro";
 import Ikon from "../components/Ikon.astro";
 import { semuaPaket, batchTerdekat, statusKuota } from "../lib/paket";
 import { rentangPendek } from "../lib/tanggal";
 import { rupiah, waLink, waPaket } from "../lib/wa";
 
-// Halaman ini menampilkan satu paket unggulan. Kalau tidak ada yang ditandai
-// unggulan, ambil paket pertama yang punya itinerary.
+// Tiga penyebab halaman ini bisa kosong, dan ketiganya butuh perbaikan yang
+// berbeda — jadi dibedakan pesannya, jangan digabung.
+const semua = await getCollection("paket");
+if (semua.length === 0) {
+  throw new Error(
+    "Koleksi paket kosong. Kalau berkas di src/content/paket/ ada isinya, kemungkinan besar cache konten basi: hentikan dev server, jalankan `rm -rf .astro`, lalu `npm run dev`."
+  );
+}
+
+// semuaPaket() membuang paket yang seluruh keberangkatannya sudah lewat.
 const paket = await semuaPaket();
+if (paket.length === 0) {
+  throw new Error(
+    "Semua keberangkatan sudah lewat. Tambah tanggal baru di src/content/paket/*.md, atau perbarui yang lama."
+  );
+}
+
+// Prioritaskan paket bertanda unggulan; kalau tidak ada, ambil paket pertama
+// yang punya itinerary.
 const trip =
   paket.find((p) => p.data.unggulan && p.data.itinerary.length > 0) ??
   paket.find((p) => p.data.itinerary.length > 0);
 
 if (!trip) {
-  throw new Error("Tidak ada paket yang punya itinerary. Isi field `itinerary` di salah satu src/content/paket/*.md");
+  throw new Error(
+    "Ada paket aktif, tapi tidak satu pun punya itinerary. Isi field `itinerary` di salah satu src/content/paket/*.md"
+  );
 }
 
 const d = trip.data;
