@@ -1,0 +1,124 @@
+---
+import Dasar from "../layouts/Dasar.astro";
+import Ikon from "../components/Ikon.astro";
+import { BRAND, FAQ } from "../data/konten";
+import { waLink } from "../lib/wa";
+---
+<Dasar
+  judul="Kontak & FAQ"
+  deskripsi="Pertanyaan yang sering ditanya soal DP, refund, titik kumpul, dan barang bawaan. Plus kontak WhatsApp dan Instagram."
+  gambar="https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=1200&q=80"
+>
+
+  <section class="hero hero--halaman">
+    <div class="hero__bg" style="background-image:url('https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=1600&q=80')"></div>
+    <div class="wadah hero__isi">
+      <span class="eyebrow">Kontak &amp; FAQ</span>
+      <h1>Semua jawaban yang biasanya ditanya duluan</h1>
+      <p class="hero__lead">
+        Kalau setelah baca ini masih ada yang mengganjal, langsung chat saja — tidak perlu isi form apa pun.
+      </p>
+    </div>
+  </section>
+
+  <section class="seksi">
+    <div class="wadah dua-kolom" style="grid-template-columns:1.4fr 1fr;gap:40px;align-items:start">
+      <div>
+        <div class="seksi-kepala" style="margin-bottom:26px">
+          <span class="eyebrow">FAQ</span>
+          <h2>Pertanyaan yang sering masuk</h2>
+        </div>
+        <div class="faq">
+          {FAQ.map((f, i) => (
+            <details open={i === 0}>
+              <summary>{f.t}</summary>
+              <p>{f.j}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+
+      <aside style="display:grid;gap:18px;position:sticky;top:calc(var(--nav-h) + 20px)">
+        <div class="panel panel--senja">
+          <h3>Jam operasional chat</h3>
+          <p style="color:var(--tinta-lembut);font-size:.94rem;margin-bottom:14px">
+            Setiap hari {BRAND.jamOperasional}. Di luar jam itu tetap masuk, dibalas paginya.
+            Saat sedang memandu trip, balasan bisa lebih lambat — mohon dimaklumi.
+          </p>
+          <a class="btn btn--wa btn--blok" href={waLink("Halo, saya ada pertanyaan yang belum terjawab di FAQ website.")} target="_blank" rel="noopener">
+            <Ikon nama="wa" /> Tanya langsung
+          </a>
+        </div>
+        <figure class="foto">
+          <img src="https://images.unsplash.com/photo-1531761535209-180857e963b9?auto=format&fit=crop&w=800&q=80" alt="Dermaga dan perahu di teluk" loading="lazy" />
+          <figcaption>Titik kumpul di dermaga</figcaption>
+        </figure>
+        <div class="panel">
+          <h3>Titik kumpul utama</h3>
+          <p style="color:var(--tinta-lembut);font-size:.94rem;margin:0">
+            Untuk trip Jawa Timur, meeting point default di {BRAND.kota}.
+            Titik pastinya (beserta share location) dikirim di grup WhatsApp H-3.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="seksi laut laut--pola terang">
+    <div class="wadah">
+      <div class="seksi-kepala">
+        <span class="eyebrow">Hubungi kami</span>
+        <h2>Semua booking lewat WhatsApp</h2>
+        <p>Tidak ada form pendaftaran dan tidak ada pembayaran di website ini. Semua dikonfirmasi langsung oleh admin.</p>
+      </div>
+
+      <div class="kontak-grid">
+        <div class="kontak-kartu">
+          <span class="kontak-kartu__ikon"><Ikon nama="wa" /></span>
+          <span class="kontak-kartu__label">WhatsApp</span>
+          <span class="kontak-kartu__nilai">{BRAND.waTampil}</span>
+          <p style="color:rgba(251,243,230,.7);font-size:.9rem;margin:4px 0 12px">
+            Dibalas oleh {BRAND.adminNama}, {BRAND.jamOperasional}
+          </p>
+          <a class="btn btn--wa" href={waLink("Halo, saya mau tanya open trip yang tersedia.")} target="_blank" rel="noopener">
+            <Ikon nama="wa" /> Buka chat
+          </a>
+        </div>
+
+        <div class="kontak-kartu">
+          <span class="kontak-kartu__ikon"><Ikon nama="ig" /></span>
+          <span class="kontak-kartu__label">Instagram</span>
+          <span class="kontak-kartu__nilai">{BRAND.instagram}</span>
+          <p style="color:rgba(251,243,230,.7);font-size:.9rem;margin:4px 0 12px">Dokumentasi trip &amp; info kuota terbaru</p>
+          <a href={BRAND.instagramUrl} target="_blank" rel="noopener">Lihat profil →</a>
+        </div>
+
+        <div class="kontak-kartu">
+          <span class="kontak-kartu__ikon"><Ikon nama="pin" /></span>
+          <span class="kontak-kartu__label">Basis</span>
+          <span class="kontak-kartu__nilai">{BRAND.kota}</span>
+          <p style="color:rgba(251,243,230,.7);font-size:.9rem;margin:4px 0 12px">Melayani keberangkatan dari berbagai kota</p>
+          <a href="/jadwal/">Lihat jadwal trip →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seksi seksi--rapat">
+    <div class="wadah">
+      <div class="cta">
+        <div class="cta__teks">
+          <h2>Sudah yakin dengan tanggalnya?</h2>
+          <p>Kirim nama trip dan jumlah orang, admin langsung cek kuota dan kirim rincian pembayaran.</p>
+        </div>
+        <div class="cta__aksi">
+          <a class="btn btn--wa" href={waLink("Halo, saya mau booking. Nama trip: ... , tanggal: ... , jumlah orang: ...")} target="_blank" rel="noopener">
+            <Ikon nama="wa" /> Booking sekarang
+          </a>
+          <a class="btn btn--garis-terang" href="/jadwal/">Cek jadwal lagi</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Dasar>
