@@ -1,0 +1,85 @@
+---
+import type { Jadwal } from "../lib/paket";
+import { statusKuota } from "../lib/paket";
+import { rupiah, waLink, waPaket, waWaitingList } from "../lib/wa";
+import Ikon from "./Ikon.astro";
+
+interface Props {
+  jadwal: Jadwal;
+  jumlahInclude?: number;
+}
+
+const { jadwal, jumlahInclude } = Astro.props;
+const { paket, batch, tanggal } = jadwal;
+const d = paket.data;
+
+const k = statusKuota(batch);
+const penuh = batch.kuotaSisa <= 0;
+
+const include = jumlahInclude ? d.include.slice(0, jumlahInclude) : d.include;
+const sisaInclude = d.include.length - include.length;
+
+const kumpul =
+  d.titikKumpul.length > 1
+    ? `${d.titikKumpul.length} titik jemput`
+    : `Kumpul di ${d.titikKumpul[0]?.nama}`;
+---
+<article
+  class:list={["kartu", penuh && "kartu--penuh"]}
+  data-baris
+  data-destinasi={d.destinasi}
+  data-bulan={jadwal.bulan}
+  data-sisa={batch.kuotaSisa}
+>
+  <div class="kartu__foto">
+    <span class:list={["kartu__badge", d.unggulan && "kartu__badge--senja"]}>
+      {d.unggulan ? "Trip unggulan" : d.tipe}
+    </span>
+    <span class="kartu__durasi"><Ikon nama="jam" /> {d.durasi}</span>
+    <img src={d.foto} alt={`Suasana trip ${d.nama} di ${d.lokasi}`} loading="lazy" width="900" height="560" />
+  </div>
+
+  <div class="kartu__isi">
+    <div class="kartu__atas">
+      <div class="kartu__lokasi"><Ikon nama="pin" /> {d.lokasi}</div>
+      <div class="kartu__rating">
+        <Ikon nama="bintang" /> <b>{String(d.rating).replace(".", ",")}</b> <span>({d.ulasan})</span>
+      </div>
+    </div>
+
+    <h3 class="kartu__judul">{d.nama}</h3>
+    <p class="kartu__ringkas">{d.ringkas}</p>
+
+    <div class="kartu__meta">
+      <div class="kartu__baris"><Ikon nama="kalender" /><span><b>{tanggal}</b></span></div>
+      <div class="kartu__baris"><Ikon nama="kompas" /><span>{kumpul} · level {d.level}</span></div>
+      <div class="kartu__baris"><Ikon nama="orang" /><span class={`kuota kuota--${k.kelas}`}>{k.teks}</span></div>
+    </div>
+
+    <div class="kartu__harga">
+      {batch.hargaCoret && <s>{rupiah(batch.hargaCoret)}</s>}
+      <strong>{rupiah(batch.harga)}</strong><span>/ orang</span>
+    </div>
+    {batch.hargaCatatan && <div class="kartu__harga-cat">{batch.hargaCatatan}</div>}
+
+    <ul class="termasuk">
+      {include.map((i) => <li><Ikon nama="cek" /><span>{i}</span></li>)}
+      {sisaInclude > 0 && <li><Ikon nama="cek" /><span>+{sisaInclude} fasilitas lain</span></li>}
+    </ul>
+
+    <div class="kartu__aksi">
+      {penuh ? (
+        <a class="btn btn--garis btn--blok" href={waLink(waWaitingList(d.nama, tanggal))} target="_blank" rel="noopener">
+          <Ikon nama="wa" /> Tanya waiting list
+        </a>
+      ) : (
+        <a class="btn btn--wa btn--blok" href={waLink(waPaket(d.nama, tanggal))} target="_blank" rel="noopener">
+          <Ikon nama="wa" /> Tanya &amp; booking via WA
+        </a>
+      )}
+      {d.itinerary.length > 0 && (
+        <a class="kartu__tautan" href="/itinerary/">Lihat itinerary harian →</a>
+      )}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,90 @@
+---
+import { DESTINASI } from "../data/konten";
+import { semuaJadwal } from "../lib/paket";
+import { namaBulan } from "../lib/tanggal";
+import Ikon from "./Ikon.astro";
+
+const jadwal = await semuaJadwal();
+const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
+---
+<form class="filter" data-filter>
+  <span class="filter__judul"><Ikon nama="filter" /> Saring jadwal</span>
+  <label class="cari__medan">
+    <span>Destinasi</span>
+    <select name="destinasi">
+      <option value="">Semua destinasi</option>
+      {DESTINASI.map((d) => <option value={d.slug}>{d.nama}</option>)}
+    </select>
+  </label>
+  <label class="cari__medan">
+    <span>Bulan berangkat</span>
+    <select name="bulan">
+      <option value="">Kapan saja</option>
+      {bulan.map((b) => <option value={b}>{namaBulan(b)}</option>)}
+    </select>
+  </label>
+  <label class="cari__medan">
+    <span>Sisa kursi</span>
+    <select name="tersedia">
+      <option value="">Tampilkan semua batch</option>
+      <option value="1">Hanya yang masih ada kursi</option>
+    </select>
+  </label>
+  <button class="btn btn--garis btn--kecil" type="button" data-reset>Reset</button>
+</form>
+
+<script>
+  // Kartu sudah dirender semua saat build. Skrip ini cuma menyembunyikan
+  // yang tidak cocok, tidak pernah membuat atau menghapus kartu — supaya
+  // tanpa JS halaman tetap menampilkan seluruh jadwal.
+  const form = document.querySelector<HTMLFormElement>("[data-filter]");
+  const grid = document.querySelector("[data-grid-jadwal]");
+  const info = document.querySelector("[data-hasil]");
+  const kosong = document.querySelector<HTMLElement>("[data-kosong]");
+
+  if (form && grid) {
+    const kartu = Array.from(grid.querySelectorAll<HTMLElement>("[data-baris]"));
+    const nilai = (nama: string) =>
+      form.querySelector<HTMLSelectElement>(`[name='${nama}']`)?.value ?? "";
+
+    const terapkan = () => {
+      const destinasi = nilai("destinasi");
+      const bulan = nilai("bulan");
+      const tersedia = nilai("tersedia");
+      let tampil = 0;
+
+      for (const el of kartu) {
+        const cocok =
+          (!destinasi || el.dataset.destinasi === destinasi) &&
+          (!bulan || el.dataset.bulan === bulan) &&
+          (!tersedia || Number(el.dataset.sisa) > 0);
+        el.hidden = !cocok;
+        if (cocok) tampil++;
+      }
+
+      if (kosong) kosong.hidden = tampil > 0;
+      if (info) {
+        info.textContent = `${tampil} keberangkatan ditampilkan dari total ${kartu.length}.`;
+      }
+    };
+
+    // Prefill dari tautan kartu destinasi di beranda.
+    const q = new URLSearchParams(location.search);
+    for (const nama of ["destinasi", "bulan", "tersedia"]) {
+      const el = form.querySelector<HTMLSelectElement>(`[name='${nama}']`);
+      if (el && q.has(nama)) el.value = q.get(nama) ?? "";
+    }
+
+    form.addEventListener("change", terapkan);
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      terapkan();
+    });
+    form.querySelector("[data-reset]")?.addEventListener("click", () => {
+      form.reset();
+      terapkan();
+    });
+
+    terapkan();
+  }
+</script>

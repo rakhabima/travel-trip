@@ -1,0 +1,25 @@
+---
+import { DESTINASI } from "../data/konten";
+import { semuaJadwal } from "../lib/paket";
+
+const jadwal = await semuaJadwal();
+
+// Yang dihitung keberangkatan yang masih ada kursinya, bukan jumlah paket.
+const jumlahPer = (slug: string) =>
+  jadwal.filter((j) => j.paket.data.destinasi === slug && j.batch.kuotaSisa > 0).length;
+---
+<div class="grid-dest">
+  {DESTINASI.map((d) => {
+    const jumlah = jumlahPer(d.slug);
+    return (
+      <a class="dest" href={`/jadwal/?destinasi=${d.slug}`}>
+        <img src={d.foto} alt={`Pemandangan ${d.nama}`} loading="lazy" width="700" height="500" />
+        <span class="dest__isi">
+          <span class="dest__nama">{d.nama}</span>
+          <span class="dest__sub">{d.sub}</span>
+        </span>
+        <span class="dest__jumlah">{jumlah ? `${jumlah} jadwal aktif` : "Segera dibuka"}</span>
+      </a>
+    );
+  })}
+</div>

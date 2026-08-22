@@ -1,0 +1,36 @@
+---
+import { DESTINASI } from "../data/konten";
+import { semuaJadwal } from "../lib/paket";
+import { namaBulan } from "../lib/tanggal";
+import Ikon from "./Ikon.astro";
+
+// Cuma meneruskan pilihan ke halaman jadwal lewat query string.
+const jadwal = await semuaJadwal();
+const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
+---
+<form class="cari" action="/jadwal/" method="get">
+  <label class="cari__medan">
+    <span>Destinasi</span>
+    <select name="destinasi">
+      <option value="">Semua destinasi</option>
+      {DESTINASI.map((d) => <option value={d.slug}>{d.nama}</option>)}
+    </select>
+  </label>
+  <label class="cari__medan">
+    <span>Bulan berangkat</span>
+    <select name="bulan">
+      <option value="">Kapan saja</option>
+      {bulan.map((b) => <option value={b}>{namaBulan(b)}</option>)}
+    </select>
+  </label>
+  <label class="cari__medan">
+    <span>Sisa kursi</span>
+    <select name="tersedia">
+      <option value="1">Hanya yang masih ada kursi</option>
+      <option value="">Tampilkan semua batch</option>
+    </select>
+  </label>
+  <button class="btn btn--wa cari__tombol" type="submit">
+    <Ikon nama="cari" /> Cari jadwal
+  </button>
+</form>

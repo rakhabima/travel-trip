@@ -1,0 +1,70 @@
+---
+import { BRAND } from "../data/konten";
+import { waLink, WA_UMUM } from "../lib/wa";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import Sprite from "../components/Sprite.astro";
+import Ikon from "../components/Ikon.astro";
+import "../styles/style.css";
+
+interface Props {
+  /** Nama brand ditambahkan otomatis di belakangnya. */
+  judul: string;
+  deskripsi: string;
+  /** Gambar pratinjau saat tautan dibagikan ke WhatsApp atau Instagram. */
+  gambar?: string;
+  /** Pakai ini kalau judulnya tidak mau diberi imbuhan nama brand. */
+  judulPenuh?: string;
+}
+
+const {
+  judul,
+  deskripsi,
+  gambar = "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80",
+  judulPenuh,
+} = Astro.props;
+
+const title = judulPenuh ?? `${judul} · ${BRAND.nama}`;
+const kanonik = new URL(Astro.url.pathname, Astro.site).href;
+const gambarAbsolut = gambar.startsWith("http") ? gambar : new URL(gambar, Astro.site).href;
+---
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={deskripsi} />
+<link rel="canonical" href={kanonik} />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={BRAND.nama} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={deskripsi} />
+<meta property="og:image" content={gambarAbsolut} />
+<meta property="og:url" content={kanonik} />
+<meta property="og:locale" content="id_ID" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<Sprite />
+<Nav />
+
+<main>
+  <slot />
+</main>
+
+<Footer />
+
+<a class="wa-apung" href={waLink(WA_UMUM)} target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+  <Ikon nama="wa" />
+</a>
+
+</body>
+</html>
