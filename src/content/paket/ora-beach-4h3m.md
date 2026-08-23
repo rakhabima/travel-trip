@@ -47,6 +47,65 @@ keberangkatan:
     kuotaTotal: 10
     kuotaSisa: 10
 
+catatanItinerary: >-
+  Perjalanan Ambon–Ora panjang dan melewati jalan pegunungan. Kalau hujan deras,
+  waktu tempuhnya bisa bertambah dua jam. Jadwal hari pertama memang dibuat longgar.
+
+itinerary:
+  - label: Hari 1
+    tema: Ambon ke Ora
+    lokasi: Ambon → Sawai → Ora
+    agenda:
+      - jam: "08.00"
+        isi: Penjemputan di Bandara Pattimura.
+      - jam: "09.30"
+        isi: Menyeberang ke Pulau Seram lewat Pelabuhan Hunimua.
+      - jam: "12.00"
+        isi: Makan siang di perjalanan.
+      - jam: "16.00"
+        isi: Sampai Sawai, lanjut kapal kecil ke Ora.
+      - jam: "17.00"
+        isi: Check in cottage. Sisa sore buat berenang di depan kamar.
+  - label: Hari 2
+    tema: Air terjun dan gua
+    lokasi: Sawai → Air Belanda
+    agenda:
+      - jam: "07.00"
+        isi: Sarapan di atas air.
+      - jam: "08.30"
+        isi: Kapal ke Air Belanda, mata air tawar yang bertemu laut.
+      - jam: "11.00"
+        isi: Snorkeling di tebing karang sekitar Ora.
+      - jam: "13.00"
+        isi: Makan siang di cottage.
+      - jam: "15.30"
+        isi: Ke desa Sawai, lihat rumah panggung di atas air.
+      - jam: "18.30"
+        isi: Makan malam. Listrik menyala sampai sekitar jam sebelas.
+  - label: Hari 3
+    tema: Tebing dan santai
+    lokasi: Ora Beach
+    agenda:
+      - jam: "07.00"
+        isi: Sarapan, snorkeling pagi langsung dari tangga kamar.
+      - jam: "10.00"
+        isi: Trekking ringan ke bukit belakang cottage.
+      - jam: "13.00"
+        isi: Makan siang, lalu waktu bebas. Sengaja dikosongkan.
+      - jam: "17.30"
+        isi: Sunset dari dek cottage.
+  - label: Hari 4
+    tema: Pulang
+    lokasi: Ora → Ambon
+    agenda:
+      - jam: "06.00"
+        isi: Sarapan pagi sekali, kapal ke Sawai.
+      - jam: "07.00"
+        isi: Perjalanan darat balik ke pelabuhan.
+      - jam: "11.00"
+        isi: Menyeberang ke Ambon.
+      - jam: "14.00"
+        isi: Drop off Bandara Pattimura. Trip selesai.
 bawa:
   - Sunscreen reef-safe
   - Baju ganti secukupnya

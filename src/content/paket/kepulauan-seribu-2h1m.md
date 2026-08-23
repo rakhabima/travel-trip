@@ -49,6 +49,41 @@ keberangkatan:
     kuotaTotal: 20
     kuotaSisa: 18
 
+catatanItinerary: >-
+  Kalau gelombang di atas satu setengah meter, syahbandar bisa menahan kapal.
+  Kalau itu terjadi, keberangkatan digeser dan kami kabari di grup H-1.
+
+itinerary:
+  - label: Hari 1
+    tema: Menyeberang dan hopping
+    lokasi: Ancol → Pulau Harapan → hopping
+    agenda:
+      - jam: "06.30"
+        isi: Kumpul di Dermaga Marina Ancol, absen, naik kapal.
+      - jam: "09.00"
+        isi: Sampai Pulau Harapan, taruh barang di homestay, istirahat sebentar.
+      - jam: "10.30"
+        isi: "Hopping: Pulau Bulat, Pulau Kelapa, dan spot snorkeling terdekat."
+      - jam: "12.30"
+        isi: Makan siang di kapal.
+      - jam: "15.30"
+        isi: Snorkeling terakhir, lalu balik ke homestay.
+      - jam: "18.30"
+        isi: BBQ ikan di depan homestay. Bebas ngobrol atau tidur cepat.
+  - label: Hari 2
+    tema: Sunrise dan pulang
+    lokasi: Pulau Harapan → Ancol
+    agenda:
+      - jam: "05.30"
+        isi: Sunrise di dermaga buat yang mau bangun pagi.
+      - jam: "07.00"
+        isi: Sarapan, beres-beres.
+      - jam: "09.00"
+        isi: Snorkeling pagi sekali lagi selagi airnya jernih.
+      - jam: "11.30"
+        isi: Kapal berangkat balik ke Ancol.
+      - jam: "14.00"
+        isi: Sampai Marina Ancol. Trip selesai.
 bawa:
   - Sunscreen & topi
   - Baju ganti

@@ -48,6 +48,51 @@ keberangkatan:
     kuotaTotal: 14
     kuotaSisa: 14
 
+catatanItinerary: >-
+  Kalau ombak sedang besar, kapal hopping bisa dibatalkan dan diganti keliling
+  darat. Keputusan ada di nakhoda, bukan di kami.
+
+itinerary:
+  - label: Hari 1
+    tema: Tiba dan pantai timur
+    lokasi: Bandara → Tanjung Tinggi
+    agenda:
+      - jam: "09.30"
+        isi: Penjemputan di bandara, langsung jalan.
+      - jam: "11.00"
+        isi: Pantai Tanjung Tinggi, batu granit raksasa yang jadi lokasi syuting.
+      - jam: "13.00"
+        isi: Makan siang mie Belitung.
+      - jam: "15.00"
+        isi: Danau Kaolin, bekas tambang yang airnya biru terang.
+      - jam: "17.00"
+        isi: Check in penginapan, istirahat.
+  - label: Hari 2
+    tema: Hopping island
+    lokasi: Lengkuas → Pasir Timbul → Batu Berlayar
+    agenda:
+      - jam: "08.00"
+        isi: Sarapan, ke Dermaga Tanjung Kelayang.
+      - jam: "09.00"
+        isi: Kapal ke Pulau Lengkuas. Naik mercusuar opsional, bayar di tempat.
+      - jam: "11.00"
+        isi: Snorkeling di sekitar Lengkuas.
+      - jam: "12.30"
+        isi: Makan siang di atas pasir timbul.
+      - jam: "14.00"
+        isi: Batu Berlayar dan Pulau Kepayang.
+      - jam: "16.30"
+        isi: Balik ke dermaga, bersih-bersih.
+  - label: Hari 3
+    tema: Kota dan pulang
+    lokasi: Tanjung Pandan → Bandara
+    agenda:
+      - jam: "08.00"
+        isi: Sarapan, keliling kota Tanjung Pandan.
+      - jam: "09.30"
+        isi: Belanja oleh-oleh.
+      - jam: "11.30"
+        isi: Drop off bandara. Trip selesai.
 bawa:
   - Sunscreen & topi
   - Sandal yang nggak licin — batunya basah

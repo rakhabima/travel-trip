@@ -58,6 +58,55 @@ keberangkatan:
     kuotaTotal: 16
     kuotaSisa: 15
 
+catatanItinerary: >-
+  Fast boat bisa ditunda kalau gelombang tinggi, biasanya di musim angin barat.
+  Kalau tertunda, jadwal hari itu digeser dan kami atur ulang.
+
+itinerary:
+  - label: Hari 1
+    tema: Menyeberang dan keliling pulau
+    lokasi: Bangsal → Gili Trawangan
+    agenda:
+      - jam: "08.00"
+        isi: Kumpul di Pelabuhan Bangsal, naik fast boat.
+      - jam: "08.45"
+        isi: Sampai Trawangan, jalan kaki ke penginapan.
+      - jam: "10.30"
+        isi: Ambil sepeda, keliling pulau. Satu putaran sekitar satu setengah jam santai.
+      - jam: "13.00"
+        isi: Makan siang di sisi timur.
+      - jam: "17.30"
+        isi: Sunset di sisi barat, tempat yang paling sepi.
+      - jam: "19.30"
+        isi: Makan malam di pasar malam Trawangan.
+  - label: Hari 2
+    tema: Hopping tiga gili
+    lokasi: Trawangan → Meno → Air
+    agenda:
+      - jam: "08.30"
+        isi: Sarapan, berangkat hopping naik kapal.
+      - jam: "09.30"
+        isi: Snorkeling di titik penyu dekat Gili Meno.
+      - jam: "11.00"
+        isi: Patung bawah laut Nest, kedalamannya sekitar tiga meter.
+      - jam: "12.30"
+        isi: Makan siang di Gili Air.
+      - jam: "14.30"
+        isi: Waktu bebas di Gili Air, bisa berenang atau duduk saja.
+      - jam: "16.30"
+        isi: Balik ke Trawangan.
+  - label: Hari 3
+    tema: Pulang
+    lokasi: Gili Trawangan → Bangsal
+    agenda:
+      - jam: "07.30"
+        isi: Sarapan, beres-beres.
+      - jam: "09.00"
+        isi: Waktu bebas terakhir di pantai.
+      - jam: "11.00"
+        isi: Fast boat balik ke Bangsal.
+      - jam: "12.00"
+        isi: Sampai Bangsal. Trip selesai.
 bawa:
   - Sunscreen & topi
   - Baju renang

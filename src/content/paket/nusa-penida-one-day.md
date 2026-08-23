@@ -51,6 +51,31 @@ keberangkatan:
     kuotaTotal: 12
     kuotaSisa: 3
 
+catatanItinerary: >-
+  Urutan spot bisa ditukar menyesuaikan antrean kapal dan kondisi jalan di Penida.
+  Jalannya sempit dan berbatu, jadi perpindahan antar spot memang makan waktu.
+
+itinerary:
+  - label: Rundown
+    tema: Sanur → Penida Barat → balik
+    lokasi: Pelabuhan Sanur → Kelingking → Broken Beach → Crystal Bay
+    agenda:
+      - jam: "07.30"
+        isi: Kumpul di Pelabuhan Sanur, briefing singkat, naik fast boat.
+      - jam: "08.30"
+        isi: Sampai Toya Pakeh, langsung naik mobil menuju sisi barat.
+      - jam: "10.00"
+        isi: Kelingking Beach. Turun ke pantainya opsional, tangganya curam sekitar 45 menit sekali jalan.
+      - jam: "12.00"
+        isi: Makan siang di warung dekat Broken Beach.
+      - jam: "13.00"
+        isi: Broken Beach dan Angel Billabong, foto-foto di tebingnya.
+      - jam: "15.00"
+        isi: Crystal Bay, waktunya berenang atau sekadar duduk di pasir.
+      - jam: "16.30"
+        isi: Balik ke Toya Pakeh, naik fast boat ke Sanur.
+      - jam: "17.30"
+        isi: Sampai Sanur. Trip selesai.
 bawa:
   - Sunscreen & topi
   - Baju ganti

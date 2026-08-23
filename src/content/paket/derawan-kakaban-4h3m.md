@@ -48,6 +48,65 @@ keberangkatan:
     kuotaTotal: 12
     kuotaSisa: 11
 
+catatanItinerary: >-
+  Kakaban dan Sangalaki masuk kawasan konservasi. Kalau pengelola menutup
+  akses karena alasan konservasi, rutenya diganti tanpa biaya tambahan.
+
+itinerary:
+  - label: Hari 1
+    tema: Berau ke Derawan
+    lokasi: Berau → Pulau Derawan
+    agenda:
+      - jam: "09.00"
+        isi: Penjemputan di Bandara Kalimarau, Berau.
+      - jam: "11.00"
+        isi: Perjalanan darat ke Tanjung Batu.
+      - jam: "14.00"
+        isi: Naik speedboat ke Pulau Derawan, sekitar 30 menit.
+      - jam: "15.00"
+        isi: Check in, istirahat. Penyu biasanya sudah kelihatan dari dermaga.
+      - jam: "18.30"
+        isi: Makan malam, briefing rencana besok.
+  - label: Hari 2
+    tema: Kakaban dan Maratua
+    lokasi: Kakaban → Maratua
+    agenda:
+      - jam: "07.00"
+        isi: Sarapan, berangkat naik speedboat.
+      - jam: "08.30"
+        isi: Danau ubur-ubur Kakaban. Berenang tanpa fin, supaya nggak melukai mereka.
+      - jam: "11.00"
+        isi: Snorkeling di Maratua, spot barracuda kalau arusnya mendukung.
+      - jam: "13.00"
+        isi: Makan siang di Maratua.
+      - jam: "15.00"
+        isi: Laguna Maratua, air tenang dan dangkal.
+      - jam: "17.00"
+        isi: Balik ke Derawan.
+  - label: Hari 3
+    tema: Sangalaki dan penyu
+    lokasi: Sangalaki → Derawan
+    agenda:
+      - jam: "07.30"
+        isi: Sarapan, ke Pulau Sangalaki.
+      - jam: "09.00"
+        isi: Cari pari manta di sekitar Sangalaki. Ini bergantung keberuntungan.
+      - jam: "12.00"
+        isi: Makan siang.
+      - jam: "14.00"
+        isi: Snorkeling santai di depan penginapan, biasanya ketemu penyu.
+      - jam: "18.00"
+        isi: Makan malam terakhir.
+  - label: Hari 4
+    tema: Pulang
+    lokasi: Derawan → Berau
+    agenda:
+      - jam: "07.00"
+        isi: Sarapan, beres-beres.
+      - jam: "08.30"
+        isi: Speedboat ke Tanjung Batu, lanjut darat ke Berau.
+      - jam: "12.00"
+        isi: Drop off Bandara Kalimarau. Trip selesai.
 bawa:
   - Sunscreen reef-safe
   - Baju ganti + sandal

@@ -55,6 +55,53 @@ keberangkatan:
     kuotaTotal: 14
     kuotaSisa: 12
 
+catatanItinerary: >-
+  Jeep dan jalur Bromo tunduk pada pengelola taman nasional. Kalau ada penutupan
+  mendadak karena aktivitas vulkanik, rute diganti dan kami kabari secepatnya.
+
+itinerary:
+  - label: Hari 1
+    tema: Berangkat malam ke Bromo
+    lokasi: Malang → Penanjakan
+    agenda:
+      - jam: "22.00"
+        isi: Kumpul di Stasiun Malang, berangkat naik mobil AC.
+      - jam: "00.30"
+        isi: Sampai basecamp, istirahat sebentar sambil menunggu jeep.
+      - jam: "02.30"
+        isi: Naik jeep menuju Penanjakan. Dingin, pakai jaket dari sekarang.
+  - label: Hari 2
+    tema: Sunrise, lautan pasir, lalu turun
+    lokasi: Penanjakan → Bromo → penginapan
+    agenda:
+      - jam: "04.30"
+        isi: Sampai titik sunrise, cari posisi sebelum ramai.
+      - jam: "06.30"
+        isi: Turun ke lautan pasir, jalan atau naik kuda ke tangga kawah.
+      - jam: "08.30"
+        isi: Bukit Teletubbies dan Pasir Berbisik.
+      - jam: "10.00"
+        isi: Balik ke basecamp, sarapan, mandi.
+      - jam: "13.00"
+        isi: Perjalanan ke penginapan dekat Tumpak Sewu.
+      - jam: "18.00"
+        isi: Makan malam, tidur cepat karena besok jalan kaki cukup jauh.
+  - label: Hari 3
+    tema: Tumpak Sewu dan pulang
+    lokasi: Tumpak Sewu → Goa Tetes → Malang
+    agenda:
+      - jam: "06.00"
+        isi: Sarapan, jalan ke viewpoint atas Tumpak Sewu.
+      - jam: "07.00"
+        isi: Turun ke dasar air terjun. Tangganya licin dan curam, sekitar 40 menit.
+      - jam: "09.30"
+        isi: Lanjut ke Goa Tetes buat yang masih kuat.
+      - jam: "12.00"
+        isi: Makan siang, bersih-bersih.
+      - jam: "13.30"
+        isi: Perjalanan balik ke Malang.
+      - jam: "16.00"
+        isi: Sampai Stasiun Malang. Trip selesai.
 bawa:
   - Jaket tebal & sarung tangan
   - Sepatu yang nyaman untuk trekking
