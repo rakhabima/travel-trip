@@ -4,7 +4,7 @@ lokasi: Bangka Belitung
 destinasi: belitung
 durasi: 3 hari 2 malam
 level: Santai
-foto: https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=900&q=80
+foto: https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=1200&h=675&q=60
 ringkas: Batu granit raksasa di Pulau Lengkuas, mercusuar Belanda, dan pantai-pantai yang airnya bening sampai dasar.
 highlight:
   - Mercusuar Pulau Lengkuas

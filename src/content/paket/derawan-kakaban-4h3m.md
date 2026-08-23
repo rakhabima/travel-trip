@@ -4,7 +4,7 @@ lokasi: Berau, Kalimantan Timur
 destinasi: derawan
 durasi: 4 hari 3 malam
 level: Sedang
-foto: https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80
+foto: https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&h=675&q=60
 ringkas: Danau ubur-ubur tanpa sengat di Kakaban, penyu di Derawan, dan pasir putih Maratua.
 highlight:
   - Danau ubur-ubur Kakaban

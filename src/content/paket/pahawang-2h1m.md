@@ -4,7 +4,7 @@ lokasi: Pesawaran, Lampung
 destinasi: pahawang
 durasi: 2 hari 1 malam
 level: Santai
-foto: https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=900&q=80
+foto: https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=1200&h=675&q=60
 ringkas: Snorkeling di taman nemo, main ke Pulau Kelagian, nginap di homestay warga. Trip termurah yang kami jalankan.
 highlight:
   - Taman nemo Pahawang Kecil

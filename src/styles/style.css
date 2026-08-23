@@ -200,12 +200,15 @@ img, svg { max-width: 100%; }
 .hero__isi { position: relative; }
 
 .hero__visual { position: relative; }
+/* height:auto wajib. Tanpa itu atribut height di markup dianggap tinggi pasti,
+   lalu aspect-ratio diabaikan dan fotonya ketarik. */
 .hero__foto {
-  display: block; width: 100%; aspect-ratio: 4 / 3.9; max-height: 520px; object-fit: cover;
-  border-radius: var(--radius-l); box-shadow: var(--bayang-l);
+  display: block; width: 100%; height: auto; aspect-ratio: 4 / 3.9; max-height: 520px;
+  object-fit: cover; border-radius: var(--radius-l); box-shadow: var(--bayang-l);
 }
 .hero__foto--kecil {
-  position: absolute; left: -52px; bottom: -26px; width: 36%; aspect-ratio: 4/3.4;
+  display: block; position: absolute; left: -52px; bottom: -26px;
+  width: 36%; height: auto; aspect-ratio: 4/3.4; object-fit: cover;
   border-radius: var(--radius-m); border: 5px solid var(--gelap-900); box-shadow: var(--bayang-l);
 }
 .hero__kartu {
@@ -614,7 +617,9 @@ main { flex: 1; }
 .paket__pisah { color: var(--terang-400); }
 .paket__judul { font-size: clamp(1.9rem, 3.6vw, 2.7rem); margin-bottom: 12px; }
 .paket__ringkas { font-size: 1.08rem; color: var(--tinta-lembut); max-width: 62ch; margin-bottom: 16px; }
-.paket__foto { margin: 26px 0 34px; border-radius: var(--radius-xl); overflow: hidden; }
+/* aspect-ratio:auto membatalkan 4/3 dari .foto. Kalau tidak, figure-nya tetap
+   setinggi 4/3 sementara img cuma setinggi clamp, sisanya jadi kotak kosong. */
+.paket__foto { margin: 26px 0 34px; aspect-ratio: auto; border-radius: var(--radius-xl); overflow: hidden; }
 .paket__foto img { width: 100%; height: clamp(240px, 34vw, 420px); object-fit: cover; display: block; }
 
 .paket__isi { display: grid; grid-template-columns: 1fr 348px; gap: 44px; align-items: start; }

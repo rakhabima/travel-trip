@@ -4,7 +4,7 @@ lokasi: Maluku Tengah
 destinasi: ora
 durasi: 4 hari 3 malam
 level: Sedang
-foto: https://images.unsplash.com/photo-1590523278191-995cbcda646b?auto=format&fit=crop&w=900&q=80
+foto: https://images.unsplash.com/photo-1590523278191-995cbcda646b?auto=format&fit=crop&w=1200&h=675&q=60
 ringkas: Penginapan di atas air menghadap tebing karst, dengan terumbu karang yang mulai tepat di bawah lantai kamar.
 highlight:
   - Cottage di atas air
