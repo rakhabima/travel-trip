@@ -31,8 +31,8 @@ const bulanTerakhir = namaBulan([...new Set(semua.map((j) => j.bulan))].sort().a
       <div class="hero__isi">
         <h1>Nggak suka rame?<br />Ikut kita, yuk.</h1>
         <p class="hero__lead">
-          Open trip ke pantai dan pulau di Indonesia, maksimal 16 orang per trip.
-          Datang sendiri juga nggak masalah, separuh peserta kami memang begitu.
+          Jelajahi pantai dan pulau di Indonesia bersama kami, maksimal 16 orang per keberangkatan.
+          Datang sendiri bukan masalah, dijamin semua bakal saling kenal.
         </p>
         <div class="hero__aksi">
           <a class="btn btn--wa" href={waLink("Halo, saya lihat website-nya. Saya mau tanya jadwal open trip terdekat.")} target="_blank" rel="noopener">
@@ -83,7 +83,7 @@ const bulanTerakhir = namaBulan([...new Set(semua.map((j) => j.bulan))].sort().a
         </div>
         <div class="trust__item">
           <span class="trust__angka">{BRAND.statPeserta}</span>
-          <span class="trust__label">Peserta diantar sejak {BRAND.sejak}</span>
+          <span class="trust__label">Peserta sejak {BRAND.sejak}</span>
         </div>
       </div>
     </div>
@@ -110,7 +110,7 @@ const bulanTerakhir = namaBulan([...new Set(semua.map((j) => j.bulan))].sort().a
   <section class="seksi seksi--rapat">
     <div class="wadah">
       <div class="seksi-kepala">
-        <h2>Mau ke mana?</h2>
+        <h2>Mau jalan ke mana?</h2>
       </div>
       <Destinasi />
     </div>
@@ -119,7 +119,7 @@ const bulanTerakhir = namaBulan([...new Set(semua.map((j) => j.bulan))].sort().a
   <section class="seksi laut laut--pola terang">
     <div class="wadah">
       <div class="seksi-kepala">
-        <h2>Yang bisa kamu pegang</h2>
+        <h2>Komitmen kami</h2>
       </div>
       <Alasan />
     </div>
@@ -131,14 +131,14 @@ const bulanTerakhir = namaBulan([...new Set(semua.map((j) => j.bulan))].sort().a
         <h2>Cara booking</h2>
       </div>
       <Langkah />
-      <p class="seksi-kaki">Nggak ada form pendaftaran di website ini. Semuanya lewat chat.</p>
+      <p class="seksi-kaki">Tidak ada form pendaftaran di website ini. Semuanya melalui chat.</p>
     </div>
   </section>
 
   <section class="seksi seksi--rapat">
     <div class="wadah">
       <div class="seksi-kepala">
-        <h2>Kata yang sudah ikut</h2>
+        <h2>Kata mereka yang sudah ikut</h2>
       </div>
       <Testimoni batas={3} />
       <div class="mt-l">
@@ -166,7 +166,7 @@ const bulanTerakhir = namaBulan([...new Set(semua.map((j) => j.bulan))].sort().a
       <div class="cta">
         <div class="cta__teks">
           <h2>Belum tahu mau ke mana?</h2>
-          <p>Sebutkan tanggal kosong dan budget kamu. Nanti dicarikan yang paling pas.</p>
+          <p>Sebutkan tanggal kosong dan budget kamu. Kami bisa carikan perjalanan terbaik untukmu.</p>
         </div>
         <div class="cta__aksi">
           <a class="btn btn--wa" href={waLink("Halo, saya belum tahu mau ke mana. Tanggal kosong saya sekitar ... dan budget sekitar ... Bisa dibantu?")} target="_blank" rel="noopener">

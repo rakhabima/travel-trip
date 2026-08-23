@@ -59,17 +59,17 @@ export const DESTINASI = [
 // Tiap poin sengaja memuat bagian yang merugikan kami sendiri — itu yang
 // membedakan janji dari klaim kosong.
 export const ALASAN = [
-  { ikon: "orang", judul: "Maksimal 16 orang", isi: "Kuotanya nggak pernah ditambah, walaupun ada yang mau bayar lebih di menit terakhir." },
-  { ikon: "dompet", judul: "Harga yang tertulis itu harga akhir", isi: "Yang nggak termasuk ditulis di halaman paketnya, bukan disebut waktu kamu sudah di dermaga." },
-  { ikon: "perisai", judul: "Cuaca menang dari jadwal", isi: "Kalau nggak memungkinkan, rutenya diubah atau tripnya ditunda. Uang peserta nggak hangus." },
-  { ikon: "chat", judul: "Yang balas chat orangnya", isi: "Bukan bot, bukan CS gantian. Tapi kalau lagi memandu trip, balasannya bisa lebih lama." },
-  { ikon: "foto", judul: "Dokumentasi ikut, nggak nambah biaya", isi: "Foto dibagikan maksimal 7 hari setelah trip. Kalau lewat, tagih saja." },
-  { ikon: "kompas", judul: "Kru dan guide orang setempat", isi: "Kapal, jeep, dan homestay dari partner yang sudah lama kami pakai, bukan yang paling murah tiap kali." },
+  { ikon: "orang", judul: "Maksimal 16 orang", isi: "Kuotanya nggak akan ditambah, walaupun ada yang mau bayar lebih." },
+  { ikon: "dompet", judul: "Harga yang tertulis adalah harga akhir", isi: "Biaya di luar tanggungan kami tertulis di halaman paketnya, bukan disebut waktu kamu sudah berangkat." },
+  { ikon: "perisai", judul: "Uang kamu tidak hangus", isi: "Kalau nggak memungkinkan untuk berangkat, rutenya diubah atau tripnya ditunda. Uang kamu aman." },
+  { ikon: "chat", judul: "Yang balas chat orangnya", isi: "Pesan kamu langsung masuk ke kami, bukan bot, bukan CS." },
+  { ikon: "foto", judul: "Dokumentasi nggak nambah biaya", isi: "Foto dibagikan maksimal 7 hari setelah trip. Kalau lewat, tagih saja." },
+  { ikon: "kompas", judul: "Kru dan guide warga lokal", isi: "Kapal, jeep, dan homestay dari partner yang sudah lama kami pakai, bukan hanya cari yang paling murah." },
 ];
 
 export const LANGKAH = [
-  { no: "01", judul: "Pilih tanggal", isi: "Buka halaman Jadwal, saring per destinasi atau bulan, lalu lihat tanggal yang masih tersedia." },
-  { no: "02", judul: "Chat & kunci kursi", isi: `Admin cek kuota dan kirim rincian. DP ${KEBIJAKAN.dp} untuk mengunci kursi.` },
+  { no: "01", judul: "Pilih tanggal", isi: "Buka halaman Jadwal, saring berdasarkan destinasi atau bulan, lalu lihat tanggal yang masih tersedia." },
+  { no: "02", judul: "Chat dan amankan kursi", isi: `Admin cek kuota dan kirim rincian. DP ${KEBIJAKAN.dp} untuk mengunci kursi.` },
   { no: "03", judul: "Berangkat", isi: `Pelunasan ${KEBIJAKAN.pelunasan}. ${KEBIJAKAN.grupWa}` },
 ];
 
