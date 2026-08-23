@@ -8,18 +8,22 @@ import Testimoni from "../components/Testimoni.astro";
 import FormCari from "../components/FormCari.astro";
 import Ikon from "../components/Ikon.astro";
 import { BRAND } from "../data/konten";
-import { jadwalPerPaket } from "../lib/paket";
+import { jadwalPerPaket, semuaJadwal } from "../lib/paket";
+import { namaBulan } from "../lib/tanggal";
 import { waLink } from "../lib/wa";
 
-const jadwal = await jadwalPerPaket();
-const tersedia = jadwal.filter((j) => j.batch.kuotaSisa > 0);
-const preview = tersedia.slice(0, 3);
-const terdekat = tersedia[0];
+const perPaket = await jadwalPerPaket();
+const preview = perPaket.filter((j) => j.batch.kuotaSisa > 0).slice(0, 3);
+const terdekat = preview[0];
+
+// Slot pertama trust bar dihitung dari data, jadi nggak pernah basi.
+const semua = await semuaJadwal();
+const bulanTerakhir = namaBulan([...new Set(semua.map((j) => j.bulan))].sort().at(-1) ?? "");
 ---
 <Dasar
   judulPenuh={`${BRAND.nama} · Open Trip Pulau & Laut Indonesia`}
   judul="Beranda"
-  deskripsi="Open trip pantai, pulau, dan gunung dengan grup kecil. Jadwal terbuka, harga jelas, langsung tanya lewat WhatsApp."
+  deskripsi="Open trip pantai dan pulau dengan grup kecil, maksimal 16 orang per keberangkatan. Jadwal terbuka, harga jelas, langsung tanya lewat WhatsApp."
 >
 
   <section class="hero hero--utama">
@@ -27,10 +31,11 @@ const terdekat = tersedia[0];
       <div class="hero__isi">
         <h1>Nggak suka rame?<br />Ikut kita, yuk.</h1>
         <p class="hero__lead">
-          Open trip ke pantai dan pulau di Indonesia, maksimal 16 orang per trip. Datang sendiri juga nggak masalah. Nikmati perjalananmu disini.
+          Open trip ke pantai dan pulau di Indonesia, maksimal 16 orang per trip.
+          Datang sendiri juga nggak masalah, separuh peserta kami memang begitu.
         </p>
         <div class="hero__aksi">
-          <a class="btn btn--wa" href={waLink("Halo, saya lihat website-nya. Saya mau tanya jadwal open trip terdekat dan sisa kuotanya.")} target="_blank" rel="noopener">
+          <a class="btn btn--wa" href={waLink("Halo, saya lihat website-nya. Saya mau tanya jadwal open trip terdekat.")} target="_blank" rel="noopener">
             <Ikon nama="wa" /> Tanya via WhatsApp
           </a>
           <a class="btn btn--garis-terang" href="/jadwal/">Lihat semua jadwal</a>
@@ -65,8 +70,8 @@ const terdekat = tersedia[0];
     <div class="wadah">
       <div class="trust">
         <div class="trust__item">
-          <span class="trust__angka">2 orang</span>
-          <span class="trust__label">Dijalankan {BRAND.adminNama} &amp; satu trip leader tetap</span>
+          <span class="trust__angka">{semua.length} jadwal</span>
+          <span class="trust__label">Keberangkatan sampai {bulanTerakhir}</span>
         </div>
         <div class="trust__item">
           <span class="trust__angka">Sejak {BRAND.sejak}</span>
@@ -78,7 +83,7 @@ const terdekat = tersedia[0];
         </div>
         <div class="trust__item">
           <span class="trust__angka">{BRAND.statPeserta}</span>
-          <span class="trust__label">Peserta diantar, rating {BRAND.statRating}</span>
+          <span class="trust__label">Peserta diantar sejak {BRAND.sejak}</span>
         </div>
       </div>
     </div>
@@ -87,8 +92,7 @@ const terdekat = tersedia[0];
   <section class="seksi">
     <div class="wadah">
       <div class="seksi-kepala">
-        <span class="eyebrow">Trip terdekat</span>
-        <h2>Tiga keberangkatan yang paling dekat</h2>
+        <h2>Berangkat dalam waktu dekat</h2>
       </div>
 
       <div class="grid-trip">
@@ -97,7 +101,7 @@ const terdekat = tersedia[0];
 
       <div class="mt-l">
         <a class="btn btn--garis" href="/jadwal/">
-          Lihat seluruh jadwal trip <Ikon nama="panah" />
+          Lihat semua {semua.length} keberangkatan <Ikon nama="panah" />
         </a>
       </div>
     </div>
@@ -106,9 +110,7 @@ const terdekat = tersedia[0];
   <section class="seksi seksi--rapat">
     <div class="wadah">
       <div class="seksi-kepala">
-        <span class="eyebrow">Destinasi</span>
-        <h2>Mau ke arah mana dulu?</h2>
-        <p>Klik salah satu destinasi untuk langsung melihat batch yang tersedia di halaman jadwal.</p>
+        <h2>Mau ke mana?</h2>
       </div>
       <Destinasi />
     </div>
@@ -117,57 +119,31 @@ const terdekat = tersedia[0];
   <section class="seksi laut laut--pola terang">
     <div class="wadah">
       <div class="seksi-kepala">
-        <span class="eyebrow">Kenapa lewat kami</span>
-        <h2>Enam hal yang paling sering ditanyakan sebelum booking</h2>
+        <h2>Yang bisa kamu pegang</h2>
       </div>
       <Alasan />
     </div>
   </section>
 
-  <section class="seksi">
-    <div class="wadah sisi-kiri-lebar">
-      <div>
-        <span class="eyebrow">Cara kami jalan</span>
-        <h2>Trip kecil, urusan beres, tanpa biaya kejutan</h2>
-        <ul class="cek-list" style="margin-top:22px">
-          <li><Ikon nama="cek" /><span><b>Grup maksimal 16 orang.</b> Semua kebagian spot foto, semua kebagian perhatian trip leader.</span></li>
-          <li><Ikon nama="cek" /><span><b>Harga yang tertulis itu harga akhir.</b> Rincian termasuk &amp; tidak termasuk ada di tiap kartu trip.</span></li>
-          <li><Ikon nama="cek" /><span><b>Grup WhatsApp dibuka H-7.</b> Kenalan dulu sebelum ketemu, plus info titik kumpul dan cuaca.</span></li>
-          <li><Ikon nama="cek" /><span><b>Aman untuk yang belum bisa berenang.</b> Pelampung wajib, selalu ada pendamping di air.</span></li>
-          <li><Ikon nama="cek" /><span><b>Dokumentasi sudah termasuk.</b> Foto dibagikan maksimal 7 hari setelah trip selesai.</span></li>
-        </ul>
-      </div>
-      <div class="galeri" style="grid-template-columns:1fr 1fr">
-        <figure class="foto"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Peserta snorkeling di antara gerombolan ikan" loading="lazy" /><figcaption>Snorkeling bareng trip leader</figcaption></figure>
-        <figure class="foto foto--tinggi"><img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&fit=crop&w=800&q=80" alt="Perahu kecil di laguna berair jernih" loading="lazy" /><figcaption>Kapal &amp; laguna</figcaption></figure>
-        <figure class="foto foto--tinggi"><img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=800&q=80" alt="Terumbu karang berwarna-warni di perairan dangkal" loading="lazy" /><figcaption>Terumbu karang</figcaption></figure>
-        <figure class="foto"><img src="https://images.unsplash.com/photo-1590523278191-995cbcda646b?auto=format&fit=crop&w=800&q=80" alt="Pantai berpasir dengan pohon kelapa saat matahari terbenam" loading="lazy" /><figcaption>Sunset di pantai</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
   <section class="seksi seksi--rapat">
     <div class="wadah">
       <div class="seksi-kepala">
-        <span class="eyebrow">Alur booking</span>
-        <h2>Dari lihat-lihat sampai berangkat, tiga langkah</h2>
-        <p>Tidak ada form panjang dan tidak ada pembayaran di website ini — semua dikoordinasikan lewat WhatsApp.</p>
+        <h2>Cara booking</h2>
       </div>
       <Langkah />
+      <p class="seksi-kaki">Nggak ada form pendaftaran di website ini. Semuanya lewat chat.</p>
     </div>
   </section>
 
   <section class="seksi seksi--rapat">
     <div class="wadah">
       <div class="seksi-kepala">
-        <span class="eyebrow">Kata peserta</span>
-        <h2>Rating {BRAND.statRating} dari peserta yang sudah jalan</h2>
-        <p>Dikumpulkan dari chat WhatsApp dan kolom ulasan Instagram setelah trip selesai.</p>
+        <h2>Kata yang sudah ikut</h2>
       </div>
       <Testimoni batas={3} />
       <div class="mt-l">
         <a class="btn btn--garis" href="/tentang/">
-          Baca cerita lengkapnya <Ikon nama="panah" />
+          Kenalan dulu sama kami <Ikon nama="panah" />
         </a>
       </div>
     </div>
@@ -175,15 +151,10 @@ const terdekat = tersedia[0];
 
   <section class="seksi seksi--rapat">
     <div class="wadah">
-      <div class="seksi-kepala">
-        <span class="eyebrow">Galeri</span>
-        <h2>Dokumentasi trip sebelumnya</h2>
-        <p>Foto asli menyusul — blok di bawah ini akan diganti dokumentasi keberangkatan terakhir.</p>
-      </div>
       <div class="galeri">
         <figure class="foto foto--lebar"><img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80" alt="Pemandangan teluk dari puncak bukit" loading="lazy" /><figcaption>Viewpoint Pulau Padar</figcaption></figure>
         <figure class="foto"><img src="https://images.unsplash.com/photo-1570789210967-2cac24afeb00?auto=format&fit=crop&w=800&q=80" alt="Gugusan pulau karst di Raja Ampat" loading="lazy" /><figcaption>Gugusan pulau Raja Ampat</figcaption></figure>
-        <figure class="foto"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80" alt="Pantai dengan perahu layar dan payung jerami" loading="lazy" /><figcaption>Santai di pantai</figcaption></figure>
+        <figure class="foto"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Peserta snorkeling di antara gerombolan ikan" loading="lazy" /><figcaption>Snorkeling bareng trip leader</figcaption></figure>
         <figure class="foto"><img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=800&q=80" alt="Garis pantai berpasir putih dari udara" loading="lazy" /><figcaption>Pantai pasir putih</figcaption></figure>
         <figure class="foto foto--lebar"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Ombak kecil di pantai saat senja" loading="lazy" /><figcaption>Senja dari tepi pantai</figcaption></figure>
       </div>
@@ -194,12 +165,12 @@ const terdekat = tersedia[0];
     <div class="wadah">
       <div class="cta">
         <div class="cta__teks">
-          <h2>Masih bingung pilih trip yang mana?</h2>
-          <p>Chat saja, sebutkan tanggal kosongmu dan budget-nya. Nanti dibantu carikan batch yang paling pas.</p>
+          <h2>Belum tahu mau ke mana?</h2>
+          <p>Sebutkan tanggal kosong dan budget kamu. Nanti dicarikan yang paling pas.</p>
         </div>
         <div class="cta__aksi">
-          <a class="btn btn--wa" href={waLink("Halo, saya masih bingung pilih trip. Tanggal kosong saya sekitar ... dan budget sekitar ... Bisa dibantu rekomendasi?")} target="_blank" rel="noopener">
-            <Ikon nama="wa" /> Konsultasi via WhatsApp
+          <a class="btn btn--wa" href={waLink("Halo, saya belum tahu mau ke mana. Tanggal kosong saya sekitar ... dan budget sekitar ... Bisa dibantu?")} target="_blank" rel="noopener">
+            <Ikon nama="wa" /> Minta rekomendasi
           </a>
           <a class="btn btn--garis-terang" href="/kontak/">Baca FAQ dulu</a>
         </div>

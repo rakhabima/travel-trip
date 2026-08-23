@@ -56,13 +56,15 @@ export const DESTINASI = [
 ];
 
 // `ikon` merujuk id sprite tanpa awalan "ic-".
+// Tiap poin sengaja memuat bagian yang merugikan kami sendiri — itu yang
+// membedakan janji dari klaim kosong.
 export const ALASAN = [
-  { ikon: "orang", judul: "Grup maksimal 16 orang", isi: "Semua kebagian spot foto dan perhatian trip leader. Bukan rombongan bus." },
-  { ikon: "dompet", judul: "Harga tertulis = harga akhir", isi: "Rincian termasuk & tidak termasuk ada di tiap kartu trip. Tanpa biaya kejutan." },
-  { ikon: "foto", judul: "Dokumentasi sudah termasuk", isi: "Foto darat & underwater dibagikan maksimal 7 hari setelah trip selesai." },
-  { ikon: "chat", judul: "Dibalas orangnya langsung", isi: "Chat masuk ke WhatsApp admin, bukan bot. Biasanya dibalas di bawah 1 jam." },
-  { ikon: "perisai", judul: "Aman untuk non-perenang", isi: "Pelampung wajib saat snorkeling dan selalu ada pendamping di air." },
-  { ikon: "kompas", judul: "Guide & kru lokal", isi: "Kapal, jeep, dan homestay dari operator setempat yang sudah lama kami pakai." },
+  { ikon: "orang", judul: "Maksimal 16 orang", isi: "Kuotanya nggak pernah ditambah, walaupun ada yang mau bayar lebih di menit terakhir." },
+  { ikon: "dompet", judul: "Harga yang tertulis itu harga akhir", isi: "Yang nggak termasuk ditulis di halaman paketnya, bukan disebut waktu kamu sudah di dermaga." },
+  { ikon: "perisai", judul: "Cuaca menang dari jadwal", isi: "Kalau nggak memungkinkan, rutenya diubah atau tripnya ditunda. Uang peserta nggak hangus." },
+  { ikon: "chat", judul: "Yang balas chat orangnya", isi: "Bukan bot, bukan CS gantian. Tapi kalau lagi memandu trip, balasannya bisa lebih lama." },
+  { ikon: "foto", judul: "Dokumentasi ikut, nggak nambah biaya", isi: "Foto dibagikan maksimal 7 hari setelah trip. Kalau lewat, tagih saja." },
+  { ikon: "kompas", judul: "Kru dan guide orang setempat", isi: "Kapal, jeep, dan homestay dari partner yang sudah lama kami pakai, bukan yang paling murah tiap kali." },
 ];
 
 export const LANGKAH = [

@@ -690,3 +690,7 @@ main { flex: 1; }
   .jemput li { grid-template-columns: 1fr; gap: 4px; }
   .jemput__biaya { justify-self: start; }
 }
+
+/* kepala seksi tanpa paragraf — margin bawah h2 tidak perlu ditumpuk */
+.seksi-kepala h2:last-child { margin-bottom: 0; }
+.seksi-kaki { margin: 22px 0 0; font-size: .92rem; color: var(--tinta-lembut); }
