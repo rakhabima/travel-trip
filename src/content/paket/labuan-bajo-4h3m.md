@@ -6,7 +6,7 @@ durasi: 4 hari 3 malam
 level: Santai
 tipe: Open Trip
 unggulan: true
-foto: https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?auto=format&fit=crop&w=900&q=80
+foto: https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?auto=format&fit=crop&w=1200&h=675&q=60
 ringkas: Sailing 3 hari 2 malam ke Padar, Pink Beach, Manta Point, plus Komodo. Kapal phinisi sharing cabin.
 highlight:
   - Sunrise Pulau Padar

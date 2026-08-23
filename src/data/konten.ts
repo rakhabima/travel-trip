@@ -14,8 +14,10 @@ export const FITUR = {
   jadwal: true,
 };
 
-export const FOTO = (id: string, w = 1200) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+// h ikut dikirim supaya Unsplash yang memotong. Kalau cuma w, foto potret tetap
+// datang sebagai potret lalu dipaksa masuk kotak lanskap dan subjeknya hilang.
+export const FOTO = (id: string, w = 1200, h = Math.round((w * 3) / 4)) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=60`;
 
 export const BRAND = {
   nama: "Ombak Lepas",
@@ -73,7 +75,7 @@ export const DESTINASI = [
   { slug: "raja-ampat", nama: "Raja Ampat", sub: "Piaynemo · Arborek", foto: FOTO("photo-1570789210967-2cac24afeb00", 700) },
   { slug: "kep-seribu", nama: "Kepulauan Seribu", sub: "Dekat Jakarta · pemula", foto: FOTO("photo-1519046904884-53103b34b206", 700) },
   { slug: "bromo", nama: "Bromo & Malang", sub: "Sunrise · Tumpak Sewu", foto: FOTO("photo-1526772662000-3f88f10405ff", 700) },
-  { slug: "karimunjawa", nama: "Karimunjawa", sub: "Snorkeling · hiu", foto: FOTO("photo-1518815231560-8f41ec531527", 700) },
+  { slug: "karimunjawa", nama: "Karimunjawa", sub: "Snorkeling · hiu", foto: FOTO("photo-1619017107453-3d950380f0a9", 700) },
   { slug: "nusa-penida", nama: "Nusa Penida", sub: "Kelingking · Diamond Beach", foto: FOTO("photo-1537996194471-e657df975ab4", 700) },
   { slug: "pahawang", nama: "Pahawang", sub: "Taman nemo · homestay warga", foto: FOTO("photo-1583212292454-1fe6229603b7", 700) },
   { slug: "gili", nama: "Gili Trawangan", sub: "Snorkeling bareng penyu · tanpa motor", foto: FOTO("photo-1519046904884-53103b34b206", 700) },
