@@ -134,7 +134,7 @@ const subjudul = d.highlight.join(" · ");
           <h3>Belum termasuk</h3>
           <ul class="cek-list" style="--x:1">
             {d.exclude.map((i) => (
-              <li><span style="color:var(--pasir-400);margin-top:2px">✕</span><span>{i}</span></li>
+              <li><span style="color:var(--terang-400);margin-top:2px">✕</span><span>{i}</span></li>
             ))}
           </ul>
         </div>
@@ -151,9 +151,9 @@ const subjudul = d.highlight.join(" · ");
           <figcaption>Kapal yang dipakai selama sailing</figcaption>
         </figure>
 
-        <div class="panel" style="background:var(--laut-800);border-color:var(--laut-800)">
-          <h3 style="color:var(--pasir-100)">Siap ikut?</h3>
-          <p style="color:rgba(251,243,230,.75);font-size:.94rem">Sebutkan tanggal batch yang kamu mau, admin cek kuotanya langsung.</p>
+        <div class="panel" style="background:var(--gelap-800);border-color:var(--gelap-800)">
+          <h3 style="color:var(--terang-100)">Siap ikut?</h3>
+          <p style="color:rgba(246,250,253,.75);font-size:.94rem">Sebutkan tanggal batch yang kamu mau, admin cek kuotanya langsung.</p>
           <a class="btn btn--wa btn--blok" href={waLink(`Halo, saya mau ikut trip ${d.nama}. Untuk batch tanggal ... , apakah masih ada kursi?`)} target="_blank" rel="noopener">
             <Ikon nama="wa" /> Booking via WhatsApp
           </a>
