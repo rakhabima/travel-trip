@@ -21,6 +21,27 @@ Cloudflare memakai versi yang sama dengan lokal.
 Kalau tampilan di `dev` terlihat kosong atau aneh setelah skema konten berubah,
 cache-nya basi. Hentikan server, lalu `rm -rf .astro && npm run dev`.
 
+## Deploy
+
+Cloudflare Workers, tersambung ke GitHub. Setiap push ke `main` otomatis dibangun
+dan tayang di <https://travel-trip.radentafabian.workers.dev>.
+
+Konfigurasinya ada di `wrangler.jsonc`. Berkas itu wajib ada. Tanpa itu wrangler
+menebak framework sendiri lalu menjalankan `astro add cloudflare` di tengah build,
+yang memasang adapter dan binding yang tidak kita butuhkan. Situs ini statis penuh,
+tidak ada kode server, jadi tidak ada adapter yang perlu dipasang.
+
+Saat ganti klien, tiga tempat ini harus diubah bersamaan dan nilainya harus cocok:
+
+| tempat | isi |
+|---|---|
+| `astro.config.mjs` → `site` | alamat lengkap dengan `https://` |
+| `wrangler.jsonc` → `name` | nama worker, jadi bagian awal subdomain |
+| Cloudflare dashboard | nama proyeknya |
+
+Kalau `site` tidak sama persis dengan alamat yang tayang, tautan kanonik dan
+pratinjau tautan di WhatsApp akan menunjuk domain yang salah.
+
 ## Struktur
 
 ```
