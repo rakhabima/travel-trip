@@ -1,0 +1,104 @@
+---
+import Dasar from "../layouts/Dasar.astro";
+import Testimoni from "../components/Testimoni.astro";
+import Legalitas from "../components/Legalitas.astro";
+import Ikon from "../components/Ikon.astro";
+import { BRAND, LEGALITAS } from "../data/konten";
+import { waLink } from "../lib/wa";
+---
+<Dasar
+  judul="Tentang Kami"
+  deskripsi="Siapa yang menjalankan trip, bagaimana cara kami kerja, dan dokumen legalitas yang bisa kamu cek sendiri."
+  gambar="https://images.unsplash.com/photo-1590523278191-995cbcda646b?auto=format&fit=crop&w=1200&q=80"
+>
+
+  <section class="hero hero--halaman">
+    <div class="hero__bg" style="background-image:url('https://images.unsplash.com/photo-1590523278191-995cbcda646b?auto=format&fit=crop&w=1600&q=80')"></div>
+    <div class="wadah hero__isi">
+      <h1>Bukan agen besar. Hanya dua orang yang memang suka jalan.</h1>
+      <p class="hero__lead">
+        Dari chat pertama sampai foto dibagikan, yang mengurus hanya kami.
+      </p>
+    </div>
+  </section>
+
+  <section class="seksi">
+    <div class="wadah profil">
+      <figure class="foto profil__foto foto--polos">
+        <img src="https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?auto=format&fit=crop&w=800&q=80" alt="Trip leader duduk menghadap teluk saat memandu trip" loading="lazy" />
+      </figure>
+      <div>
+        <h2>{BRAND.adminNama} &amp; Ayu</h2>
+        <p>
+          Berawal ada tahun {BRAND.sejak}, dari kebiasaan mengajak teman patungan sewa kapal ke
+          Karimunjawa. Lama-lama yang ikut makin banyak dan bukan teman sendiri lagi. Jadi
+          kami rapikan semuanya. Jadwalnya tetap, harganya ditulis lengkap, dan pesertanya dibatasi
+          supaya rasanya tetap kayak jalan bareng teman.
+        </p>
+        <p>
+          Sampai sekarang masih berdua. {BRAND.adminNama} yang ngatur rute dan bales WhatsApp,
+          Ayu yang mendampingi di lapangan sekaligus motret. Kalau kamu chat sebelum berangkat,
+          orang yang sama itu juga yang nanti kamu temui di titik kumpul.
+        </p>
+        <p>
+          Angka 16 itu bukan angka jualan. Di atas itu satu trip leader nggak bisa lagi
+          memperhatikan semua orang di air, dan spot foto mulai harus antre. Kami pernah
+          diminta untuk menambah kuota dan kami menolak. Itu sebabnya beberapa batch tutup lebih cepat
+          daripada seharusnya.
+        </p>
+        <p>
+          Kapal, jeep, dan homestay bukan punya kami. Semuanya dari partner setempat yang
+          sudah lama kerja bareng. Bukan sekadar mencari yang paling murah, tapi yang sudah kami
+          kenal dan tahu cara kerjanya.
+        </p>
+        <blockquote class="profil__kutip">
+          &ldquo;Kami lebih suka satu kapal isi 16 orang yang semuanya kenal nama satu sama lain,
+          daripada tiga kapal penuh yang cuma jadi angka.&rdquo;
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  {LEGALITAS.badanUsaha && (
+    <section class="seksi seksi--rapat">
+      <div class="wadah wadah--sempit">
+        <div class="seksi-kepala">
+          <h2>Cek dulu, baru transfer</h2>
+          <p>
+            Banyak open trip dijalankan dari akun Instagram dan rekening pribadi. Ini dokumen
+            kami beserta nomornya, biar kamu bisa memastikan sendiri sebelum kirim uang.
+          </p>
+        </div>
+        <Legalitas />
+      </div>
+    </section>
+  )}
+
+  <section class="seksi">
+    <div class="wadah">
+      <div class="seksi-kepala">
+        <h2>Kata mereka yang sudah ikut</h2>
+      </div>
+      <Testimoni />
+    </div>
+  </section>
+
+
+  <section class="seksi seksi--rapat">
+    <div class="wadah">
+      <div class="cta">
+        <div class="cta__teks">
+          <h2>Mau kenalan dulu sebelum daftar?</h2>
+          <p>Boleh banget. Chat saja, tanya apa pun soal trip, rute, atau kondisi di lapangan.</p>
+        </div>
+        <div class="cta__aksi">
+          <a class="btn btn--wa" href={waLink("Halo, saya baru baca halaman Tentang. Boleh tanya-tanya dulu soal tripnya?")} target="_blank" rel="noopener">
+            <Ikon nama="wa" /> Chat WhatsApp
+          </a>
+          <a class="btn btn--garis-terang" href="/paket/">Lihat jadwal trip</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Dasar>

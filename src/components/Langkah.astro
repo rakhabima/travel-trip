@@ -1,0 +1,12 @@
+---
+import { LANGKAH } from "../data/konten";
+---
+<div class="grid-langkah">
+  {LANGKAH.map((l) => (
+    <article class="langkah">
+      <span class="langkah__no">{l.no}</span>
+      <h3>{l.judul}</h3>
+      <p>{l.isi}</p>
+    </article>
+  ))}
+</div>

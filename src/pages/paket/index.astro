@@ -1,0 +1,107 @@
+---
+import Dasar from "../../layouts/Dasar.astro";
+import KartuTrip from "../../components/KartuTrip.astro";
+import FilterJadwal from "../../components/FilterJadwal.astro";
+import Ikon from "../../components/Ikon.astro";
+import { BRAND, FITUR, KEBIJAKAN } from "../../data/konten";
+import { bulanTersedia, jumlahKeberangkatan, semuaPaket } from "../../lib/paket";
+import { namaBulan } from "../../lib/tanggal";
+import { waLink } from "../../lib/wa";
+
+const paket = await semuaPaket();
+const bulan = await bulanTersedia();
+const jumlahBatch = await jumlahKeberangkatan();
+
+const rentang =
+  bulan.length > 1
+    ? `${namaBulan(bulan[0])} sampai ${namaBulan(bulan[bulan.length - 1])}`
+    : namaBulan(bulan[0] ?? "");
+---
+<Dasar
+  judul="Paket Trip"
+  deskripsi="Semua paket open trip laut dan pulau: harga per orang, titik jemput, fasilitas, dan rundown hariannya. Booking langsung lewat WhatsApp."
+  gambar="https://images.unsplash.com/photo-1531761535209-180857e963b9?auto=format&fit=crop&w=1200&q=80"
+>
+
+  <section class="hero hero--halaman">
+    <div class="hero__bg" style="background-image:url('https://images.unsplash.com/photo-1531761535209-180857e963b9?auto=format&fit=crop&w=1600&q=80')"></div>
+    <div class="wadah hero__isi">
+      <h1>Paket trip yang kami jalankan</h1>
+      <p class="hero__lead">
+        {FITUR.jadwal
+          ? `${paket.length} tujuan dengan ${jumlahBatch} tanggal keberangkatan, ${rentang}. Kursi dikunci setelah DP masuk.`
+          : `${paket.length} tujuan, dari trip sehari sampai lima hari. Tanggal keberangkatan ditanyakan lewat chat.`}
+      </p>
+    </div>
+  </section>
+
+  <section class="seksi">
+    <div class="wadah">
+
+      <FilterJadwal />
+
+      <p class="filter__hasil" data-hasil aria-live="polite">
+        {paket.length} tujuan ditampilkan dari total {paket.length}.
+      </p>
+
+      <div class="grid-trip" data-grid-jadwal>
+        {paket.map((p) => <KartuTrip paket={p} />)}
+      </div>
+
+      <div class="kosong" data-kosong hidden>
+        <p class="kosong__judul">Belum ada trip yang cocok.</p>
+        <p class="kosong__isi">
+          Coba longgarkan filternya. Atau chat saja. Kadang kami buka batch tambahan
+          kalau ada yang minta duluan.
+        </p>
+        <a class="btn btn--wa" target="_blank" rel="noopener"
+           href={waLink("Halo, saya mau tanya tanggal trip yang belum ada di daftar.")}
+           data-kosong-wa={`https://wa.me/${BRAND.waNomor}?text=`}>
+          <Ikon nama="wa" /> Tanya tanggal lain
+        </a>
+      </div>
+
+      <div class="dua-kolom mt-l">
+        <div class="panel panel--senja">
+          <h3>Alur booking</h3>
+          <ol style="margin:0;padding-left:20px;color:var(--tinta-lembut);font-size:.95rem">
+            <li>Chat WhatsApp, sebutkan nama trip dan jumlah orang.</li>
+            <li>Admin cek kuota dan kirim rincian.</li>
+            <li>DP {KEBIJAKAN.dp} untuk mengunci kursi ({KEBIJAKAN.dpTenggat}).</li>
+            <li>Pelunasan {KEBIJAKAN.pelunasan}.</li>
+            <li>{KEBIJAKAN.grupWa}</li>
+          </ol>
+        </div>
+        <div class="panel">
+          <h3>Mau tanggal sendiri?</h3>
+          <p style="color:var(--tinta-lembut);font-size:.95rem">
+            Semua rute di atas bisa dijalankan sebagai private trip mulai 6 orang. Tanggal,
+            itinerary, dan tipe penginapan menyesuaikan permintaan. Cocok untuk rombongan
+            kantor, keluarga, atau angkatan kuliah.
+          </p>
+          <a class="btn btn--wa" href={waLink("Halo, saya mau tanya private trip. Rencana ... orang, sekitar tanggal ... , tujuan ...")} target="_blank" rel="noopener">
+            <Ikon nama="wa" /> Minta penawaran private trip
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seksi seksi--rapat">
+    <div class="wadah">
+      <div class="cta">
+        <div class="cta__teks">
+          <h2>Belum yakin yang mana?</h2>
+          <p>Sebutkan tanggal kosong dan budget kamu. Nanti dicarikan yang paling pas.</p>
+        </div>
+        <div class="cta__aksi">
+          <a class="btn btn--wa" href={waLink("Halo, saya masih bingung pilih trip yang mana. Bisa dibantu?")} target="_blank" rel="noopener">
+            <Ikon nama="wa" /> Minta rekomendasi
+          </a>
+          <a class="btn btn--garis-terang" href="/tentang/">Kenalan dulu sama kami</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Dasar>

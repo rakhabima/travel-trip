@@ -1,0 +1,57 @@
+---
+import { BRAND } from "../data/konten";
+import { waLink } from "../lib/wa";
+import Ikon from "./Ikon.astro";
+---
+<footer class="footer">
+  <div class="wadah">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="/">
+          <span class="logo__mark"><Ikon nama="ombak" /></span>
+          <span class="logo__teks">
+            <span class="logo__nama">{BRAND.nama}</span>
+            <span class="logo__sub">{BRAND.tagline}</span>
+          </span>
+        </a>
+        <p class="footer__teks">
+          Melayani kamu menjelajahi laut dan pulau di Indonesia dengan grup kecil. Dijalankan langsung oleh tim kami, berbasis di {BRAND.kota}.
+        </p>
+      </div>
+      <div>
+        <h4>Halaman</h4>
+        <ul>
+          <li><a href="/">Beranda</a></li>
+          <li><a href="/paket/">Paket Trip</a></li>
+          <li><a href="/tentang/">Tentang</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/syarat/">Syarat &amp; Ketentuan</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <ul>
+          <li>
+            <a href={waLink("Halo, saya menemukan kontak ini dari website. Saya mau tanya open trip.")} target="_blank" rel="noopener">
+              <Ikon nama="wa" /> <span>{BRAND.waTampil}</span>
+            </a>
+          </li>
+          <li>
+            <a href={BRAND.instagramUrl} target="_blank" rel="noopener">
+              <Ikon nama="ig" /> <span>{BRAND.instagram}</span>
+            </a>
+          </li>
+          <li>
+            <span style="display:inline-flex;gap:8px;align-items:center;font-size:.92rem">
+              <Ikon nama="pin" /> <span>{BRAND.kota}</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bawah">
+      <span>© {new Date().getFullYear()} {BRAND.nama}. Semua harga dalam Rupiah.</span>
+      <span>Website contoh. Konten masih placeholder, foto sementara dari Unsplash.</span>
+    </div>
+  </div>
+</footer>

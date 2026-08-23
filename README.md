@@ -1,90 +1,201 @@
-# Website Profil Trip Organizer — Mockup / Template
+# Situs Open Trip Organizer
 
-Static multi-page site (HTML + CSS + JS biasa, tanpa build step). Semua konten
-masih **placeholder** dan siap diganti per prospek.
+Situs profil + jadwal untuk open trip organizer. Static site, dibangun dengan
+[Astro](https://astro.build). Tidak ada backend, tidak ada pembayaran.
+Semua tombol booking mengarah ke WhatsApp.
+
+Klien demo saat ini: **Ombak Lepas** (fiktif, isinya placeholder).
 
 ## Menjalankan
 
-Buka `index.html` langsung di browser, atau:
-
 ```bash
-python3 -m http.server 8000   # lalu buka http://localhost:8000
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # hasil di dist/
+npm run preview  # cek hasil build
 ```
+
+Butuh Node 18 ke atas.
+
+Kalau tampilan di `dev` terlihat kosong atau aneh setelah skema konten berubah,
+cache-nya basi. Hentikan server, lalu `rm -rf .astro && npm run dev`.
 
 ## Struktur
 
 ```
-index.html        Beranda — hero + search bar, trust bar, preview 3 trip,
-                  grid destinasi, 6 alasan, alur booking, testimoni, galeri
-jadwal.html       Jadwal Trip — filter (destinasi/bulan/sisa kursi) + grid keberangkatan
-itinerary.html    Itinerary harian trip unggulan (Labuan Bajo 4H3M)
-tentang.html      Profil organizer + testimoni
-kontak.html       FAQ + blok kontak WhatsApp/Instagram
-assets/css/style.css
-assets/js/data.js   <-- SATU-SATUNYA file konten yang perlu diedit
-assets/js/app.js    render kartu trip, isi brand, menu mobile
+src/
+  content/paket/*.md      satu berkas per paket trip
+  content/artikel/*.md    artikel, belum ada isinya
+  content.config.ts       skema paket & artikel
+  data/konten.ts          brand, destinasi, alasan, FAQ, kebijakan DP
+  lib/tanggal.ts          format tanggal Indonesia
+  lib/paket.ts            query paket & keberangkatan
+  lib/wa.ts               tautan WhatsApp + format rupiah
+  layouts/Dasar.astro     head, meta, nav, footer (semua halaman)
+  components/             kartu trip, filter, seksi beranda, sprite ikon
+  pages/                  beranda, tentang, faq, syarat
+  pages/paket/index.astro daftar semua paket
+  pages/paket/[id].astro  halaman detail tiap paket, dibuat otomatis
+  styles/style.css        seluruh CSS, belum dipecah
+public/favicon.svg
+sketsa/                   mockup HTML/CSS/JS awal, disimpan sebagai referensi
 ```
 
-## Cara ganti klien (5 menit)
+Halaman yang dihasilkan: lima halaman utama plus satu halaman per paket.
+Syarat & Ketentuan sengaja hanya ditautkan dari footer, tidak dari menu.
 
-Semua ada di **`assets/js/data.js`**:
+## Paket layanan: basic dan premium
 
-| Bagian | Isi |
-|---|---|
-| `BRAND` | nama usaha, nomor WA, handle IG, kota basis, angka trust bar, nama admin |
-| `DESTINASI` | kartu destinasi di beranda; `slug`-nya harus sama dengan field `destinasi` di `TRIPS` supaya filter jalan |
-| `TRIPS` | array jadwal trip — dipakai otomatis di Beranda (3 teratas yang masih ada kuota) dan halaman Jadwal |
-| `ALASAN` | 6 kartu "kenapa lewat kami"; `ikon` = id sprite tanpa awalan `ic-` |
-| `LANGKAH` | alur booking 3 tahap di beranda |
-| `ITINERARY` | rundown harian untuk 1 trip unggulan (`tripId` menunjuk ke salah satu id di `TRIPS`) |
-| `TESTIMONI` | testimoni di halaman Tentang |
-| `FAQ` | pertanyaan di halaman Kontak |
+Satu saklar di `src/data/konten.ts` menentukan versi mana yang dibangun:
+
+```ts
+export const FITUR = {
+  jadwal: true,   // false untuk klien paket basic
+};
+```
+
+| | `false` (basic) | `true` (premium) |
+|---|---|---|
+| Tanggal keberangkatan | tidak ditampilkan | ditampilkan |
+| Status tersedia/penuh | tidak ada | ada |
+| Filter | budget saja | budget, bulan, ketersediaan |
+| Form cari di hero | hilang | ada |
+| Panel pilih tanggal | diganti ajakan chat | daftar tanggal + tombol WA |
+| Tombol salin jadwal | hilang | ada |
+| Urutan kartu | termurah dulu | tanggal terdekat dulu |
+| Perlu cron harian | tidak | ya |
+
+Alasan belahannya di situ: jadwal adalah satu-satunya bagian situs yang berubah
+rutin. Klien basic tidak dapat admin panel, jadi apa pun yang perlu diperbarui
+sering tidak boleh ditampilkan.
+
+Harga di mode basic diambil dari `hargaMulai` di tiap berkas paket, bukan dari
+keberangkatan. Klien basic cukup menulis satu angka tanpa mengarang tanggal.
+
+**Hati-hati soal `hargaMulai`.** Di mode premium field ini diabaikan, karena
+harga diambil dari `keberangkatan`. Jadi kalau harga batch diubah tapi
+`hargaMulai` lupa disesuaikan, tidak ada yang rusak sekarang, tapi harganya
+langsung basi begitu situs diturunkan ke mode basic. Perbarui keduanya.
+
+Harga hardcoded tetap berarti perubahan harga jadi permintaan ke developer.
+Bedanya cuma frekuensi: tanggal berubah tiap bulan, harga mungkin setahun
+sekali. Sebaiknya jumlah perubahan per tahun yang termasuk ditulis di kontrak.
+
+## Ganti klien
+
+Dua tempat:
+
+1. `src/data/konten.ts`: nama usaha, nomor WA, Instagram, kota, statistik,
+   destinasi, alasan, FAQ, dan kebijakan DP/pembatalan.
+2. `src/content/paket/*.md`: satu berkas per paket trip.
 
 Nomor WhatsApp cukup diubah di `BRAND.waNomor` (format `628xxx`, tanpa `+`).
-Semua tombol WA di seluruh situs otomatis ikut, lengkap dengan teks chat
-yang sudah terisi.
+Semua tombol WA di seluruh situs ikut, lengkap dengan teks chat yang sudah terisi.
 
-### Cara kerja penggantian otomatis
+Ganti juga `site` di `astro.config.mjs` ke domain klien. Dipakai untuk
+URL kanonik dan tautan Open Graph.
 
-- `data-brand="nama"` → diisi dari `BRAND.nama`
-- `data-wa="teks chat"` → jadi `https://wa.me/<nomor>?text=<teks>`
-- `data-ig` → diisi `BRAND.instagramUrl`
-- `data-trip="semua"` / `data-trip="preview"` → tempat kartu trip dirender
-- `data-destinasi`, `data-alasan`, `data-langkah`, `data-testimoni` → seksi lain
-  yang ikut dirender dari `data.js`
-- `data-cari="beranda"` (form hero, meneruskan pilihan lewat query string) dan
-  `data-cari="jadwal"` (filter yang menyaring kartu langsung di halaman).
-  Isi `<select>` destinasi & bulan dibuat otomatis dari data — tidak perlu diedit manual.
+Kalau menambah destinasi baru, `slug` di `DESTINASI` harus sama persis dengan
+field `destinasi` di berkas paket. Kalau tidak cocok, kartu destinasinya akan
+terus berbunyi "Segera dibuka".
 
-Judul halaman memakai token `{BRAND}` yang diganti saat load.
+## Legalitas
+
+Blok legalitas di halaman Tentang diisi dari `LEGALITAS` di `src/data/konten.ts`.
+Field yang dikosongkan tampil sebagai slot bertanda "belum diisi". Ini
+disengaja, supaya klien tahu ada yang belum lengkap. Kalau `badanUsaha` kosong, seluruh
+seksinya hilang.
+
+Foto dokumen ditaruh di `public/dokumen/`, lalu path-nya diisi ke field `gambar`:
+
+```ts
+{ nama: "NIB", nomor: "0123456789012", keterangan: "...", gambar: "/dokumen/nib.jpg" }
+```
+
+**Jangan mengarang nomor dokumen.** Nomor NIB, TDUP, atau akta yang bentuknya
+meyakinkan tapi fiktif itu masalah lain sama sekali dari testimoni contoh.
+Biarkan kosong sampai klien mengirim datanya.
+
+### Peringatan sebelum mengunggah foto dokumen
+
+Dokumen resmi memuat data yang ikut tersebar begitu fotonya dipasang di web:
+
+- Akta pendirian: nama lengkap dan alamat rumah pendiri, kadang tanda tangan
+- NPWP: nomor pajak
+- NIB: kadang memuat NIK
+
+Memasang dokumen legalitas itu lazim di pasar ini dan memang menaikkan
+kepercayaan. Tapi sampaikan ke klien apa yang sedang dia terbitkan, dan minta
+dia menyensor bagian yang tidak perlu terlihat sebelum mengirim berkasnya.
+
+## Model paket
+
+Satu paket bisa punya banyak keberangkatan. Harga dan kuota melekat di
+keberangkatan, bukan di paket, karena batch high season biasanya lebih mahal.
+
+```yaml
+keberangkatan:
+  - mulai: 2026-09-12
+    selesai: 2026-09-15
+    harga: 2850000
+    hargaCoret: 3200000     # opsional, untuk harga promo
+    kuotaTotal: 16
+    kuotaSisa: 5
+```
+
+Tanggal tampil (`12 – 15 September 2026`) diturunkan dari `mulai`/`selesai`,
+tidak ditulis manual.
+
+Biaya dipisah tiga: `include`, `exclude`, dan `opsional`. Yang terakhir untuk
+tambahan yang dibayar peserta sendiri di lokasi, seperti sewa alat atau asuransi.
+
+`titikKumpul` berupa daftar, dan `tambahan` di tiap titik bisa negatif kalau
+titik itu justru lebih murah.
+
+### Kalimat yang memuat titik dua harus diberi tanda kutip
+
+Jebakan YAML yang membuat build gagal, dan pesan errornya tidak menunjuk
+kalimat penyebabnya:
+
+```yaml
+isi: Keliling darat: Bukit Love dan pantai      # SALAH, build gagal
+isi: "Keliling darat: Bukit Love dan pantai"    # benar
+```
+
+YAML membaca titik dua yang diikuti spasi sebagai pemisah kunci dan nilai.
+Berlaku untuk semua field, bukan cuma `isi`. Kalau ragu, beri tanda kutip.
+
+### Jadwal lewat hilang sendiri
+
+Hanya berlaku kalau `FITUR.jadwal` bernilai `true`.
+
+Keberangkatan yang tanggalnya sudah lewat disaring **saat build**, bukan saat
+halaman dibuka. Artinya situs harus di-build ulang tiap hari lewat cron.
+Kalau tidak, jadwal lama akan tetap tampil sampai ada perubahan berikutnya.
+
+Paket yang seluruh keberangkatannya sudah lewat hilang dari daftar, tapi
+halaman detailnya tetap ada dan akan melempar error saat build. Tambah tanggal
+baru atau hapus berkasnya.
+
+## Sisa kursi tidak ditampilkan
+
+`kuotaSisa` tetap disimpan di data dan dipakai filter "hanya yang masih
+tersedia", tapi angkanya tidak muncul di layar. Yang tampil cuma dua keadaan:
+**Tersedia** atau **Kuota penuh**.
+
+Alasannya beban update: angka sisa kursi berubah tiap ada satu orang mendaftar,
+sementara status tersedia/penuh cuma berubah sekali per batch.
 
 ## Foto
 
-Semua foto **sementara** diambil dari Unsplash (gratis, boleh dipakai komersial,
-boleh hotlink). Dua tempat menggantinya:
+Masih memakai Unsplash lewat hotlink. Ganti dengan dokumentasi trip asli sebelum
+dipakai klien sungguhan. Dua tempat: field `foto:` di berkas paket, dan
+`<img src="https://images.unsplash.com/...">` langsung di `src/pages/*.astro`.
 
-1. **Foto kartu trip** → field `foto:` di tiap trip dalam `assets/js/data.js`.
-   Helper `FOTO("photo-xxxx", 900)` menyusun URL Unsplash; kalau sudah punya foto
-   sendiri, cukup tulis `foto: "assets/img/padar.jpg"`.
-2. **Foto hero, galeri, dan profil** → `<img src="https://images.unsplash.com/...">`
-   langsung di masing-masing halaman HTML. Cari `images.unsplash.com` lalu ganti
-   `src`-nya, `alt` dan `figcaption` menyesuaikan.
+## Yang sengaja tidak ada
 
-Sebelum dipakai untuk klien sungguhan, ganti dengan dokumentasi trip asli — foto
-stok bikin halaman terasa generik dan tidak menunjukkan grup yang sebenarnya.
+Form pendaftaran, keranjang, pembayaran, login, akun peserta, dan ketersediaan
+kursi real-time.
 
-## Yang sengaja TIDAK ada
-
-- Tidak ada form pendaftaran, keranjang, pembayaran, atau login.
-  Semua aksi booking mengarah ke `wa.me` dengan pesan yang sudah terisi.
-
-## Catatan teknis
-
-- Font dari Google Fonts: **Source Serif 4** (judul) + **Inter** (teks & UI).
-  Kalau mau full offline, self-host font-nya dan ganti `<link>` di tiap halaman.
-- Ikon SVG disuntikkan sebagai sprite dari `app.js` (`SPRITE`), dipakai lewat
-  `<svg class="ikon"><use href="#ic-nama"></use></svg>`.
-- Nav & footer ditulis di tiap halaman (identik). Kalau nanti mau pakai
-  templating/SSG, dua blok ini yang pertama dijadikan partial.
-- Palet & tipografi ada di `:root` `style.css` — ganti variabel warna saja
-  kalau prospek punya warna brand sendiri.
+Ini batas produk, bukan pekerjaan yang belum selesai. Semua booking
+dikoordinasikan lewat WhatsApp, dan kuota diperbarui manual oleh klien.

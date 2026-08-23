@@ -1,0 +1,62 @@
+---
+import Dasar from "../layouts/Dasar.astro";
+import Ikon from "../components/Ikon.astro";
+import { BRAND, FAQ } from "../data/konten";
+import { waLink } from "../lib/wa";
+---
+<Dasar
+  judul="FAQ"
+  deskripsi="Pertanyaan yang paling sering masuk soal berangkat sendirian, pembayaran, bawa anak, dan telat di titik kumpul."
+  gambar="https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=1200&q=80"
+>
+
+  <section class="hero hero--halaman">
+    <div class="hero__bg" style="background-image:url('https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=1600&q=80')"></div>
+    <div class="wadah hero__isi">
+      <h1>Yang paling sering ditanya</h1>
+      <p class="hero__lead">
+        Kalau setelah baca ini masih ada yang mengganjal, langsung chat saja.
+        Nggak perlu isi form apa pun.
+      </p>
+    </div>
+  </section>
+
+  <section class="seksi">
+    <div class="wadah wadah--sempit">
+      <div class="faq">
+        {FAQ.map((f, i) => (
+          <details open={i === 0}>
+            <summary>{f.t}</summary>
+            <p>{f.j}</p>
+          </details>
+        ))}
+      </div>
+
+      <p class="faq__kaki">
+        Pertanyaan yang khusus satu trip seperti titik jemput, apa yang termasuk, barang
+        bawaan, dan aturan DP ditulis lengkap di <a href="/paket/">halaman paketnya masing-masing</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="seksi seksi--rapat">
+    <div class="wadah">
+      <div class="cta">
+        <div class="cta__teks">
+          <h2>Masih ada yang mau ditanya?</h2>
+          <p>
+            Chat masuk ke WhatsApp {BRAND.adminNama} langsung. Setiap hari {BRAND.jamOperasional}.
+            Di luar jam itu tetap masuk, dibalas paginya.
+          </p>
+        </div>
+        <div class="cta__aksi">
+          <a class="btn btn--wa" href={waLink("Halo, saya ada pertanyaan yang belum terjawab di FAQ website.")} target="_blank" rel="noopener">
+            <Ikon nama="wa" /> Tanya langsung
+          </a>
+          <a class="btn btn--garis-terang" href="/paket/">Lihat jadwal trip</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Dasar>

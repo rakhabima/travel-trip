@@ -1,0 +1,45 @@
+---
+import { BRAND } from "../data/konten";
+import { waLink, WA_UMUM } from "../lib/wa";
+import Ikon from "./Ikon.astro";
+
+const path = Astro.url.pathname;
+const aktif = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
+
+const tautan = [
+  { href: "/", label: "Beranda" },
+  { href: "/paket/", label: "Paket Trip" },
+  { href: "/tentang/", label: "Tentang" },
+  { href: "/faq/", label: "FAQ" },
+];
+---
+<header class="nav">
+  <div class="wadah nav__isi">
+    <a class="logo" href="/">
+      <span class="logo__mark"><Ikon nama="ombak" /></span>
+      <span class="logo__teks">
+        <span class="logo__nama">{BRAND.nama}</span>
+        <span class="logo__sub">{BRAND.tagline}</span>
+      </span>
+    </a>
+    <button class="nav__burger" aria-expanded="false" aria-label="Buka menu"><Ikon nama="menu" /></button>
+    <ul class="nav__tautan">
+      {tautan.map((t) => (
+        <li><a href={t.href} aria-current={aktif(t.href) ? "page" : undefined}>{t.label}</a></li>
+      ))}
+    </ul>
+    <a class="btn btn--wa btn--kecil nav__wa" href={waLink(WA_UMUM)} target="_blank" rel="noopener">
+      <Ikon nama="wa" /> WhatsApp
+    </a>
+  </div>
+</header>
+
+<script>
+  const burger = document.querySelector(".nav__burger");
+  const daftar = document.querySelector(".nav__tautan");
+
+  burger?.addEventListener("click", () => {
+    const buka = daftar?.classList.toggle("buka");
+    burger.setAttribute("aria-expanded", String(!!buka));
+  });
+</script>

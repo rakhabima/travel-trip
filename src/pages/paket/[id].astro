@@ -1,0 +1,283 @@
+---
+import { getCollection, render } from "astro:content";
+import Dasar from "../../layouts/Dasar.astro";
+import Ikon from "../../components/Ikon.astro";
+import { batchAktif, catatanHarga, hargaBervariasi, hargaMulaiDari, statusBatch, type Paket } from "../../lib/paket";
+import { rentangTanggal } from "../../lib/tanggal";
+import { FITUR, KEBIJAKAN } from "../../data/konten";
+import { rupiah, waLink, waPaket, waWaitingList } from "../../lib/wa";
+
+export async function getStaticPaths() {
+  const daftar = await getCollection("paket");
+  return daftar.map((paket) => ({ params: { id: paket.id }, props: { paket } }));
+}
+
+interface Props { paket: Paket }
+const { paket } = Astro.props;
+const d = paket.data;
+const { Content } = await render(paket);
+
+const batch = batchAktif(paket);
+const termurah = hargaMulaiDari(paket);
+const bervariasi = hargaBervariasi(paket);
+const catatan = catatanHarga(paket);
+
+// Teks polos untuk tombol salin, dipakai apa adanya di grup WhatsApp.
+const teksJadwal = [
+  `Jadwal ${d.nama} · ${d.durasi}`,
+  ...batch.map((b) => {
+    const k = b.kuotaSisa > 0 ? "tersedia" : "PENUH";
+    return `• ${rentangTanggal(b.mulai, b.selesai)} · ${rupiah(b.harga)} (${k})`;
+  }),
+].join("\n");
+
+const teksItinerary = [
+  `Itinerary ${d.nama} (${d.durasi})`,
+  ...d.itinerary.flatMap((h) => [
+    "",
+    `${h.label} · ${h.tema}`,
+    ...h.agenda.map((a) => `${a.jam}  ${a.isi}`),
+  ]),
+].join("\n");
+---
+<Dasar
+  judul={d.nama}
+  deskripsi={d.ringkas}
+  gambar={d.foto}
+>
+
+  <section class="seksi seksi--rapat">
+    <div class="wadah">
+
+      <a class="kartu__tautan" href="/paket/" style="margin-bottom:16px;display:inline-flex">
+        <Ikon nama="panah-kiri" /> Semua jadwal
+      </a>
+
+      <div class="paket__atas">
+        <div>
+          <div class="paket__meta">
+            <span class="paket__lokasi"><Ikon nama="pin" /> {d.lokasi}</span>
+            <span class="paket__pisah">·</span>
+            <span>{d.durasi}</span>
+            <span class="paket__pisah">·</span>
+            <span>Level {d.level}</span>
+            {d.minimumPeserta && (
+              <>
+                <span class="paket__pisah">·</span>
+                <span>Min. {d.minimumPeserta} peserta</span>
+              </>
+            )}
+          </div>
+          <h1 class="paket__judul">{d.nama}</h1>
+          <p class="paket__ringkas">{d.ringkas}</p>
+          {d.highlight.length > 0 && (
+            <ul class="tag-list">
+              {d.highlight.map((h) => <li>{h}</li>)}
+            </ul>
+          )}
+        </div>
+      </div>
+
+      <figure class="foto foto--polos paket__foto">
+        <img src={d.foto} alt={`Suasana trip ${d.nama} di ${d.lokasi}`} width="1200" height="560" />
+      </figure>
+
+      <div class="paket__isi">
+
+        <div class="paket__utama">
+
+          <section>
+            <h2 class="paket__h2">Tentang trip ini</h2>
+            <div class="prosa"><Content /></div>
+          </section>
+
+          <section>
+            <h2 class="paket__h2">Titik jemput</h2>
+            <ul class="jemput">
+              {d.titikKumpul.map((t) => (
+                <li>
+                  <span class="jemput__nama"><Ikon nama="pin" /> {t.nama}</span>
+                  <span class="jemput__jam">{t.jam ? `Kumpul ${t.jam}` : "Jam menyusul"}</span>
+                  <span class="jemput__biaya">
+                    {t.tambahan === 0 ? "harga normal"
+                      : t.tambahan > 0 ? `+${rupiah(t.tambahan)}`
+                      : `−${rupiah(Math.abs(t.tambahan))}`}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="paket__h2">Biaya</h2>
+            <div class="fasilitas">
+              <div class="panel">
+                <h3>Sudah termasuk</h3>
+                <ul class="cek-list">
+                  {d.include.map((i) => <li><Ikon nama="cek" /><span>{i}</span></li>)}
+                </ul>
+              </div>
+              <div class="panel">
+                <h3>Belum termasuk</h3>
+                <ul class="cek-list" style="--x:1">
+                  {d.exclude.map((i) => (
+                    <li><span class="silang">✕</span><span>{i}</span></li>
+                  ))}
+                </ul>
+              </div>
+              {d.opsional.length > 0 && (
+                <div class="panel panel--senja">
+                  <h3>Tambahan, kalau mau</h3>
+                  <p class="panel__cat">Dibayar sendiri di lokasi, bukan lewat kami.</p>
+                  <ul class="opsional">
+                    {d.opsional.map((o) => (
+                      <li><span>{o.nama}</span><span class="opsional__harga">{rupiah(o.harga)}</span></li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </section>
+
+          {d.itinerary.length > 0 && (
+            <section>
+              <div class="paket__h2-baris">
+                <h2 class="paket__h2">Itinerary</h2>
+                <button class="btn btn--garis btn--kecil salin" type="button" data-salin={teksItinerary}>
+                  <Ikon nama="salin" /> Salin itinerary
+                </button>
+              </div>
+              <div class="itin">
+                {d.itinerary.map((h) => (
+                  <section class="itin__hari">
+                    <span class="itin__titik"></span>
+                    <span class="itin__label">{h.label}</span>
+                    <h3 class="itin__tema">{h.tema}</h3>
+                    <p class="itin__lokasi"><Ikon nama="pin" /> {h.lokasi}</p>
+                    <ul class="itin__agenda">
+                      {h.agenda.map((a) => (
+                        <li><span class="itin__jam">{a.jam}</span><span>{a.isi}</span></li>
+                      ))}
+                    </ul>
+                  </section>
+                ))}
+              </div>
+              {d.catatanItinerary && (
+                <p class="paket__catatan">{d.catatanItinerary}</p>
+              )}
+            </section>
+          )}
+
+          {d.bawa.length > 0 && (
+            <section>
+              <h2 class="paket__h2">Yang perlu dibawa</h2>
+              <ul class="tag-list">
+                {d.bawa.map((b) => <li>{b}</li>)}
+              </ul>
+            </section>
+          )}
+
+          <section>
+            <h2 class="paket__h2">Pembayaran &amp; pembatalan</h2>
+            <div class="panel">
+              <p class="dp">
+                Cukup DP <b>{KEBIJAKAN.dp}</b> untuk mengunci kursi, dibayar {KEBIJAKAN.dpTenggat}.
+                Sisanya dilunasi {KEBIJAKAN.pelunasan}.
+              </p>
+              <ul class="cek-list" style="--x:1;margin-top:14px">
+                <li><span class="silang">·</span><span>{KEBIJAKAN.pembatalan}</span></li>
+                <li><span class="silang">·</span><span>{KEBIJAKAN.pembatalanKami}</span></li>
+                {d.minimumPeserta && (
+                  <li><span class="silang">·</span><span>Trip berangkat kalau peserta minimal {d.minimumPeserta} orang. Kalau kurang sampai H-7, kamu bisa pindah batch atau uangnya kembali penuh.</span></li>
+                )}
+              </ul>
+            </div>
+          </section>
+
+        </div>
+
+        <aside class="paket__panel">
+          <div class="panel harga-panel">
+            <span class="harga-panel__label">Harga per orang</span>
+            <span class="harga-panel__nilai">
+              {bervariasi && <span class="harga-panel__dari">mulai</span>}
+              <span>{termurah !== null ? rupiah(termurah) : "Tanya harga"}</span>
+            </span>
+            {catatan && <span class="harga-panel__cat">{catatan}</span>}
+
+            <div class="harga-panel__pisah"></div>
+
+            {FITUR.jadwal ? (
+            <>
+            <span class="harga-panel__label">Pilih tanggal</span>
+            <ul class="tanggal">
+              {batch.map((b) => {
+                const k = statusBatch(b);
+                const penuh = b.kuotaSisa <= 0;
+                const pesan = penuh
+                  ? waWaitingList(d.nama, rentangTanggal(b.mulai, b.selesai))
+                  : waPaket(d.nama, rentangTanggal(b.mulai, b.selesai));
+                return (
+                  <li class:list={["tanggal__item", penuh && "tanggal__item--penuh"]}>
+                    <a href={waLink(pesan)} target="_blank" rel="noopener">
+                      <span class="tanggal__hari">{rentangTanggal(b.mulai, b.selesai)}</span>
+                      <span class="tanggal__bawah">
+                        <span class="tanggal__harga">{rupiah(b.harga)}</span>
+                        <span class={`chip chip--${k.kelas}`}>{k.teks}</span>
+                      </span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <button class="btn btn--garis btn--blok btn--kecil salin" type="button" data-salin={teksJadwal}>
+              <Ikon nama="salin" /> Salin jadwal
+            </button>
+            </>
+            ) : (
+              <p class="harga-panel__cat" style="margin:0 0 14px">
+                Tanggal keberangkatan menyesuaikan permintaan. Chat dulu untuk tanya
+                jadwal terdekat dan sisa kursinya.
+              </p>
+            )}
+
+            <a class="btn btn--wa btn--blok" href={waLink(waPaket(d.nama))} target="_blank" rel="noopener" style="margin-top:10px">
+              <Ikon nama="wa" /> Tanya via WhatsApp
+            </a>
+            <p class="harga-panel__kaki">Nggak ada form. Langsung chat, dibalas orangnya.</p>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="paket-bar">
+    <div class="paket-bar__harga">
+      <span class="paket-bar__label">{bervariasi ? "Mulai dari" : "Per orang"}</span>
+      <span class="paket-bar__nilai">{termurah !== null ? rupiah(termurah) : "Tanya harga"}</span>
+    </div>
+    <a class="btn btn--wa" href={waLink(waPaket(d.nama))} target="_blank" rel="noopener">
+      <Ikon nama="wa" /> Tanya trip ini
+    </a>
+  </div>
+
+</Dasar>
+
+<script>
+  // Progressive enhancement: teksnya sudah ada di atribut, tombol cuma menyalin.
+  for (const el of document.querySelectorAll<HTMLButtonElement>("[data-salin]")) {
+    el.addEventListener("click", async () => {
+      const teks = el.dataset.salin ?? "";
+      const semula = el.innerHTML;
+      try {
+        await navigator.clipboard.writeText(teks);
+        el.textContent = "Tersalin";
+      } catch {
+        el.textContent = "Gagal menyalin";
+      }
+      setTimeout(() => { el.innerHTML = semula; }, 1800);
+    });
+  }
+</script>

@@ -1,0 +1,121 @@
+---
+import { FITUR } from "../data/konten";
+import { bulanTersedia } from "../lib/paket";
+import { namaBulan } from "../lib/tanggal";
+
+const bulan = await bulanTersedia();
+---
+<form class:list={["filter", !FITUR.jadwal && "filter--ringkas"]} data-filter>
+  <label class="cari__medan">
+    <span>Budget per orang</span>
+    <select name="harga">
+      <option value="">Semua</option>
+      <option value="murah">Di bawah Rp1 juta</option>
+      <option value="sedang">Rp1 – 3 juta</option>
+      <option value="mahal">Di atas Rp3 juta</option>
+    </select>
+  </label>
+  {FITUR.jadwal && (
+    <>
+      <label class="cari__medan">
+        <span>Bulan berangkat</span>
+        <select name="bulan">
+          <option value="">Semua</option>
+          {bulan.map((b) => <option value={b}>{namaBulan(b)}</option>)}
+        </select>
+      </label>
+      <label class="cari__medan">
+        <span>Ketersediaan</span>
+        <select name="tersedia">
+          <option value="">Semua</option>
+          <option value="1">Tersedia</option>
+        </select>
+      </label>
+    </>
+  )}
+  <button class="btn btn--garis btn--kecil" type="button" data-reset>Reset</button>
+</form>
+
+<script>
+  // Kartu sudah dirender semua saat build. Skrip ini cuma menyembunyikan
+  // yang tidak cocok, tidak pernah membuat atau menghapus kartu, supaya
+  // tanpa JS halaman tetap menampilkan seluruh jadwal.
+  const form = document.querySelector<HTMLFormElement>("[data-filter]");
+  const grid = document.querySelector("[data-grid-jadwal]");
+  const info = document.querySelector("[data-hasil]");
+  const kosong = document.querySelector<HTMLElement>("[data-kosong]");
+  const waKosong = document.querySelector<HTMLAnchorElement>("[data-kosong-wa]");
+
+  if (form && grid) {
+    const kartu = Array.from(grid.querySelectorAll<HTMLElement>("[data-baris]"));
+    const nilai = (nama: string) =>
+      form.querySelector<HTMLSelectElement>(`[name='${nama}']`)?.value ?? "";
+
+    const cocokHarga = (harga: string, h: number) => {
+      if (!harga) return true;
+      if (harga === "murah") return h < 1_000_000;
+      if (harga === "sedang") return h >= 1_000_000 && h <= 3_000_000;
+      return h > 3_000_000;
+    };
+
+    const terapkan = () => {
+      const harga = nilai("harga");
+      const bulan = nilai("bulan");
+      const tersedia = nilai("tersedia");
+      let tampil = 0;
+
+      for (const el of kartu) {
+        // Satu kartu mewakili satu paket, jadi bulannya berupa daftar.
+        const bulanPaket = (el.dataset.bulan ?? "").split(" ");
+        const cocok =
+          cocokHarga(harga, Number(el.dataset.harga)) &&
+          (!bulan || bulanPaket.includes(bulan)) &&
+          (!tersedia || Number(el.dataset.sisa) > 0);
+        el.hidden = !cocok;
+        if (cocok) tampil++;
+      }
+
+      if (kosong) kosong.hidden = tampil > 0;
+
+      // Pesan WA-nya ikut menyebut filter yang dipilih, jadi admin langsung
+      // tahu permintaan apa yang belum tertampung di jadwal.
+      if (waKosong && tampil === 0) {
+        const teks = (nama: string) => {
+          const el = form.querySelector<HTMLSelectElement>(`[name='${nama}']`);
+          return el?.value ? el.selectedOptions[0]?.textContent?.trim() ?? "" : "";
+        };
+        const bagian: string[] = [];
+        const b = teks("bulan");
+        const h = teks("harga");
+        if (b) bagian.push(`bulan ${b}`);
+        if (h) bagian.push(`budget ${h.toLowerCase()}`);
+        const pesan = bagian.length
+          ? `Halo, saya cari trip ${bagian.join(" dengan ")}, tapi belum ada di jadwal. Ada rencana batch tambahan?`
+          : "Halo, saya mau tanya tanggal trip yang belum ada di jadwal.";
+        waKosong.href = (waKosong.dataset.kosongWa ?? "") + encodeURIComponent(pesan);
+      }
+      if (info) {
+        info.textContent = `${tampil} tujuan ditampilkan dari total ${kartu.length}.`;
+      }
+    };
+
+    // Prefill dari query string, mis. tautan dari form cari di beranda.
+    const q = new URLSearchParams(location.search);
+    for (const nama of ["harga", "bulan", "tersedia"]) {
+      const el = form.querySelector<HTMLSelectElement>(`[name='${nama}']`);
+      if (el && q.has(nama)) el.value = q.get(nama) ?? "";
+    }
+
+    form.addEventListener("change", terapkan);
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      terapkan();
+    });
+    form.querySelector("[data-reset]")?.addEventListener("click", () => {
+      form.reset();
+      terapkan();
+    });
+
+    terapkan();
+  }
+</script>

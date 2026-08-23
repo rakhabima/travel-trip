@@ -1,0 +1,67 @@
+---
+import { BRAND, LEGALITAS } from "../data/konten";
+import Ikon from "./Ikon.astro";
+
+const L = LEGALITAS;
+---
+<div class="legal">
+
+  <div class="legal__dokumen">
+    {L.dokumen.map((d) => (
+      <figure class="dok">
+        {d.gambar
+          ? <img src={d.gambar} alt={`Dokumen ${d.nama} ${BRAND.nama}`} loading="lazy" />
+          : <span class="dok__slot"><Ikon nama="sertifikat" /> Foto dokumen belum diunggah</span>}
+        <figcaption class="dok__isi">
+          <span class="dok__nama"><Ikon nama="cek" /> {d.nama}</span>
+          {d.nomor
+            ? <span class="dok__nomor">{d.nomor}</span>
+            : <span class="legal__kosong">nomor belum diisi</span>}
+          {d.keterangan && <span class="dok__ket">{d.keterangan}</span>}
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+
+  <dl class="legal__daftar">
+    <div class="legal__baris">
+      <dt>Badan hukum</dt>
+      <dd>{L.badanUsaha}</dd>
+    </div>
+    <div class="legal__baris">
+      <dt>Kantor</dt>
+      <dd>
+        {L.alamat
+          ? <>
+              {L.alamat}
+              {L.petaUrl && (
+                <a class="legal__peta" href={L.petaUrl} target="_blank" rel="noopener">
+                  <Ikon nama="pin" /> Lihat di peta
+                </a>
+              )}
+            </>
+          : <span class="legal__kosong">belum diisi</span>}
+      </dd>
+    </div>
+  </dl>
+
+  {L.rekeningAtasNama && (
+    <p class="legal__catatan">
+      <Ikon nama="perisai" />
+      <span>
+        Pembayaran masuk ke rekening atas nama <b>{L.rekeningAtasNama}</b>, bukan rekening
+        pribadi. Kalau ada yang mengarahkan kamu transfer ke nama orang, itu bukan kami.
+      </span>
+    </p>
+  )}
+
+  <p class="legal__catatan">
+    <Ikon nama="ig" />
+    <span>
+      Dokumentasi trip dan komentar peserta ada di Instagram kami,
+      <a href={BRAND.instagramUrl} target="_blank" rel="noopener"> {BRAND.instagram}</a>.
+      Di situ paling gampang lihat apakah kami memang jalan terus.
+    </span>
+  </p>
+
+</div>

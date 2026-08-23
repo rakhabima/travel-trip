@@ -1,0 +1,34 @@
+---
+import { DESTINASI } from "../data/konten";
+import { semuaPaket } from "../lib/paket";
+
+const paket = await semuaPaket();
+
+// Sekarang satu destinasi umumnya punya satu paket, jadi kartunya menautkan
+// langsung ke halaman paket. Kalau nanti ada lebih dari satu, arahkan ke jadwal.
+function tautan(slug: string) {
+  const cocok = paket.filter((p) => p.data.destinasi === slug);
+  if (cocok.length === 1) return `/paket/${cocok[0].id}/`;
+  return "/paket/";
+}
+
+const jumlahPer = (slug: string) =>
+  paket.filter((p) => p.data.destinasi === slug).length;
+---
+<div class="grid-dest">
+  {DESTINASI.map((d) => {
+    const jumlah = jumlahPer(d.slug);
+    return (
+      <a class="dest" href={tautan(d.slug)}>
+        <img src={d.foto} alt={`Pemandangan ${d.nama}`} loading="lazy" width="700" height="500" />
+        <span class="dest__isi">
+          <span class="dest__nama">{d.nama}</span>
+          <span class="dest__sub">{d.sub}</span>
+        </span>
+        <span class="dest__jumlah">
+          {jumlah === 0 ? "Segera dibuka" : jumlah === 1 ? "Lihat trip" : `${jumlah} paket`}
+        </span>
+      </a>
+    );
+  })}
+</div>

@@ -1,0 +1,181 @@
+---
+import Dasar from "../layouts/Dasar.astro";
+import KartuTrip from "../components/KartuTrip.astro";
+import Destinasi from "../components/Destinasi.astro";
+import Alasan from "../components/Alasan.astro";
+import Langkah from "../components/Langkah.astro";
+import Testimoni from "../components/Testimoni.astro";
+import FormCari from "../components/FormCari.astro";
+import Ikon from "../components/Ikon.astro";
+import { BRAND, FITUR } from "../data/konten";
+import { jumlahKeberangkatan, semuaPaket } from "../lib/paket";
+import { batchTerdekat } from "../lib/paket";
+import { waLink } from "../lib/wa";
+
+const paket = await semuaPaket();
+const preview = paket.slice(0, 3);
+const sorot = preview[0];
+const sorotBatch = sorot ? batchTerdekat(sorot) : null;
+
+// Slot pertama trust bar dihitung dari data, jadi nggak pernah basi.
+const jumlahBatch = await jumlahKeberangkatan();
+---
+<Dasar
+  judulPenuh={`${BRAND.nama} · Open Trip Pulau & Laut Indonesia`}
+  judul="Beranda"
+  deskripsi="Open trip pantai dan pulau dengan grup kecil, maksimal 16 orang per keberangkatan. Jadwal terbuka, harga jelas, langsung tanya lewat WhatsApp."
+>
+
+  <section class="hero hero--utama">
+    <div class="wadah hero__grid">
+      <div class="hero__isi">
+        <h1>Nggak suka rame?<br />Ikut kita, yuk.</h1>
+        <p class="hero__lead">
+          Jelajahi pantai dan pulau di Indonesia bersama kami, maksimal 16 orang per keberangkatan.
+          Datang sendiri bukan masalah, dijamin semua bakal saling kenal.
+        </p>
+        <div class="hero__aksi">
+          <a class="btn btn--wa" href={waLink("Halo, saya lihat website-nya. Saya mau tanya jadwal open trip terdekat.")} target="_blank" rel="noopener">
+            <Ikon nama="wa" /> Tanya via WhatsApp
+          </a>
+          <a class="btn btn--garis-terang" href="/paket/">Lihat semua jadwal</a>
+        </div>
+        <p class="hero__catatan">
+          <Ikon nama="jam" />
+          <span>Setiap hari {BRAND.jamOperasional}</span>
+        </p>
+      </div>
+
+      <div class="hero__visual">
+        <img class="hero__foto" src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=900&q=80"
+             alt="Teluk berpasir putih dengan perbukitan hijau, suasana trip pulau" width="900" height="990" />
+        <img class="hero__foto--kecil" src="https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?auto=format&fit=crop&w=600&q=80"
+             alt="Peserta trip duduk menikmati pemandangan teluk" width="600" height="450" />
+        {sorot && (
+          <div class="hero__kartu">
+            <span class="hero__kartu-label">{FITUR.jadwal ? "Trip terdekat" : "Trip unggulan"}</span>
+            <span class="hero__kartu-nilai">{sorot.data.nama}</span>
+            <span class="hero__kartu-sub">
+              {sorotBatch ? `${sorotBatch.tanggalPendek} · ` : ""}{sorot.data.lokasi}
+            </span>
+          </div>
+        )}
+      </div>
+
+      <FormCari />
+    </div>
+  </section>
+
+  <section>
+    <div class="wadah">
+      <div class="trust">
+        <div class="trust__item">
+          <span class="trust__angka">{FITUR.jadwal ? jumlahBatch : paket.length} {FITUR.jadwal ? "jadwal" : "trip"}</span>
+          <span class="trust__label">{FITUR.jadwal ? "Keberangkatan yang sedang dibuka" : "Tujuan yang kami jalankan"}</span>
+        </div>
+        <div class="trust__item">
+          <span class="trust__angka">Sejak {BRAND.sejak}</span>
+          <span class="trust__label">Basis di {BRAND.kota}</span>
+        </div>
+        <div class="trust__item">
+          <span class="trust__angka">{BRAND.statTrip}</span>
+          <span class="trust__label">Trip yang sudah berjalan</span>
+        </div>
+        <div class="trust__item">
+          <span class="trust__angka">{BRAND.statPeserta}</span>
+          <span class="trust__label">Peserta sejak {BRAND.sejak}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seksi">
+    <div class="wadah">
+      <div class="seksi-kepala">
+        <h2>{FITUR.jadwal ? "Berangkat dalam waktu dekat" : "Trip yang kami jalankan"}</h2>
+      </div>
+
+      <div class="grid-trip">
+        {preview.map((p) => <KartuTrip paket={p} />)}
+      </div>
+
+      <div class="mt-l">
+        <a class="btn btn--garis" href="/paket/">
+          Lihat semua {paket.length} paket trip <Ikon nama="panah" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seksi seksi--rapat">
+    <div class="wadah">
+      <div class="seksi-kepala">
+        <h2>Mau jalan ke mana?</h2>
+      </div>
+      <Destinasi />
+    </div>
+  </section>
+
+  <section class="seksi laut laut--pola terang">
+    <div class="wadah">
+      <div class="seksi-kepala">
+        <h2>Komitmen kami</h2>
+      </div>
+      <Alasan />
+    </div>
+  </section>
+
+  <section class="seksi seksi--rapat">
+    <div class="wadah">
+      <div class="seksi-kepala">
+        <h2>Cara booking</h2>
+      </div>
+      <Langkah />
+      <p class="seksi-kaki">Tidak ada form pendaftaran di website ini. Semuanya melalui chat.</p>
+    </div>
+  </section>
+
+  <section class="seksi seksi--rapat">
+    <div class="wadah">
+      <div class="seksi-kepala">
+        <h2>Kata mereka yang sudah ikut</h2>
+      </div>
+      <Testimoni batas={3} />
+      <div class="mt-l">
+        <a class="btn btn--garis" href="/tentang/">
+          Kenalan dulu sama kami <Ikon nama="panah" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seksi seksi--rapat">
+    <div class="wadah">
+      <div class="galeri">
+        <figure class="foto foto--lebar"><img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80" alt="Pemandangan teluk dari puncak bukit" loading="lazy" /><figcaption>Viewpoint Pulau Padar</figcaption></figure>
+        <figure class="foto"><img src="https://images.unsplash.com/photo-1570789210967-2cac24afeb00?auto=format&fit=crop&w=800&q=80" alt="Gugusan pulau karst di Raja Ampat" loading="lazy" /><figcaption>Gugusan pulau Raja Ampat</figcaption></figure>
+        <figure class="foto"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Peserta snorkeling di antara gerombolan ikan" loading="lazy" /><figcaption>Snorkeling bareng trip leader</figcaption></figure>
+        <figure class="foto"><img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=800&q=80" alt="Garis pantai berpasir putih dari udara" loading="lazy" /><figcaption>Pantai pasir putih</figcaption></figure>
+        <figure class="foto foto--lebar"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Ombak kecil di pantai saat senja" loading="lazy" /><figcaption>Senja dari tepi pantai</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="seksi seksi--rapat">
+    <div class="wadah">
+      <div class="cta">
+        <div class="cta__teks">
+          <h2>Belum tahu mau ke mana?</h2>
+          <p>Sebutkan tanggal kosong dan budget kamu. Kami bisa carikan perjalanan terbaik untukmu.</p>
+        </div>
+        <div class="cta__aksi">
+          <a class="btn btn--wa" href={waLink("Halo, saya belum tahu mau ke mana. Tanggal kosong saya sekitar ... dan budget sekitar ... Bisa dibantu?")} target="_blank" rel="noopener">
+            <Ikon nama="wa" /> Minta rekomendasi
+          </a>
+          <a class="btn btn--garis-terang" href="/faq/">Baca FAQ dulu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Dasar>

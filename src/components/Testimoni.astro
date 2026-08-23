@@ -1,0 +1,25 @@
+---
+import { TESTIMONI } from "../data/konten";
+
+interface Props {
+  batas?: number;
+}
+
+const { batas } = Astro.props;
+const daftar = batas ? TESTIMONI.slice(0, batas) : TESTIMONI;
+---
+<div class="grid-testi">
+  {daftar.map((t) => (
+    <figure class="testi">
+      <span class="testi__kutip">&ldquo;</span>
+      <blockquote class="testi__isi">{t.isi}</blockquote>
+      <figcaption class="testi__orang">
+        <span class="testi__avatar">{t.nama.trim().charAt(0)}</span>
+        <span>
+          <span class="testi__nama">{t.nama}</span><br />
+          <span class="testi__asal">{t.asal}</span>
+        </span>
+      </figcaption>
+    </figure>
+  ))}
+</div>

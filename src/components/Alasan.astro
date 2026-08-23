@@ -1,0 +1,13 @@
+---
+import { ALASAN } from "../data/konten";
+import Ikon from "./Ikon.astro";
+---
+<div class="grid-alasan">
+  {ALASAN.map((a) => (
+    <article class="alasan">
+      <span class="alasan__ikon"><Ikon nama={a.ikon} /></span>
+      <h3>{a.judul}</h3>
+      <p>{a.isi}</p>
+    </article>
+  ))}
+</div>
