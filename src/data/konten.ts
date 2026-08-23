@@ -53,6 +53,12 @@ export const DESTINASI = [
   { slug: "bromo", nama: "Bromo & Malang", sub: "Sunrise · Tumpak Sewu", foto: FOTO("photo-1526772662000-3f88f10405ff", 700) },
   { slug: "karimunjawa", nama: "Karimunjawa", sub: "Snorkeling · hiu", foto: FOTO("photo-1518815231560-8f41ec531527", 700) },
   { slug: "nusa-penida", nama: "Nusa Penida", sub: "Kelingking · Diamond Beach", foto: FOTO("photo-1537996194471-e657df975ab4", 700) },
+  { slug: "pahawang", nama: "Pahawang", sub: "Taman nemo · homestay warga", foto: FOTO("photo-1583212292454-1fe6229603b7", 700) },
+  { slug: "gili", nama: "Gili Trawangan", sub: "Snorkeling bareng penyu · tanpa motor", foto: FOTO("photo-1519046904884-53103b34b206", 700) },
+  { slug: "belitung", nama: "Belitung", sub: "Batu granit · mercusuar Lengkuas", foto: FOTO("photo-1547036967-23d11aacaee0", 700) },
+  { slug: "banyuwangi", nama: "Banyuwangi", sub: "Api biru Ijen · Pulau Merah", foto: FOTO("photo-1552733407-5d5c46c3bb3b", 700) },
+  { slug: "derawan", nama: "Derawan", sub: "Danau ubur-ubur · penyu", foto: FOTO("photo-1544551763-46a013bb70d5", 700) },
+  { slug: "ora", nama: "Ora Beach", sub: "Cottage di atas air · Maluku", foto: FOTO("photo-1590523278191-995cbcda646b", 700) },
 ];
 
 // `ikon` merujuk id sprite tanpa awalan "ic-".
