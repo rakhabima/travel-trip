@@ -1,0 +1,14 @@
+{
+  // Tanpa berkas ini wrangler jalan "astro add cloudflare" sendiri saat build.
+  "name": "travel-trip",
+  "compatibility_date": "2026-08-23",
+
+  // Statis penuh, tidak ada worker script.
+  "assets": {
+    "directory": "./dist"
+  },
+
+  // Subdomainnya harus cocok dengan "site" di astro.config.mjs.
+  "workers_dev": true,
+  "preview_urls": true
+}
