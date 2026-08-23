@@ -72,8 +72,27 @@ export async function semuaJadwal(): Promise<Jadwal[]> {
   return baris.sort((a, b) => a.batch.mulai.getTime() - b.batch.mulai.getTime());
 }
 
-export function statusKuota(b: Keberangkatan): { kelas: string; teks: string } {
-  if (b.kuotaSisa <= 0) return { kelas: "habis", teks: "Kuota penuh" };
-  if (b.kuotaSisa <= 4) return { kelas: "tipis", teks: `Sisa ${b.kuotaSisa} kursi` };
-  return { kelas: "aman", teks: `Sisa ${b.kuotaSisa} dari ${b.kuotaTotal} kursi` };
+/**
+ * Satu baris per paket, memakai keberangkatan terdekatnya. Dipakai di beranda:
+ * kartu sekarang menautkan ke halaman paket, jadi menampilkan satu paket dua kali
+ * cuma menghasilkan dua kartu yang menuju tempat yang sama.
+ */
+export async function jadwalPerPaket(): Promise<Jadwal[]> {
+  const semua = await semuaJadwal();
+  const terlihat = new Set<string>();
+  return semua.filter((j) => {
+    if (terlihat.has(j.paket.id)) return false;
+    terlihat.add(j.paket.id);
+    return true;
+  });
+}
+
+/**
+ * Angka sisa kursi tetap disimpan di data — dipakai filter dan dipantau klien —
+ * tapi tidak ditampilkan. Yang muncul di layar cuma tersedia atau penuh.
+ */
+export function statusBatch(b: Keberangkatan): { kelas: "tersedia" | "penuh"; teks: string } {
+  return b.kuotaSisa > 0
+    ? { kelas: "tersedia", teks: "Tersedia" }
+    : { kelas: "penuh", teks: "Kuota penuh" };
 }

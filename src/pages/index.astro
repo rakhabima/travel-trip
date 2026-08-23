@@ -8,10 +8,10 @@ import Testimoni from "../components/Testimoni.astro";
 import FormCari from "../components/FormCari.astro";
 import Ikon from "../components/Ikon.astro";
 import { BRAND } from "../data/konten";
-import { semuaJadwal, statusKuota } from "../lib/paket";
+import { jadwalPerPaket } from "../lib/paket";
 import { waLink } from "../lib/wa";
 
-const jadwal = await semuaJadwal();
+const jadwal = await jadwalPerPaket();
 const tersedia = jadwal.filter((j) => j.batch.kuotaSisa > 0);
 const preview = tersedia.slice(0, 3);
 const terdekat = tersedia[0];
@@ -51,7 +51,7 @@ const terdekat = tersedia[0];
             <span class="hero__kartu-label">Trip terdekat</span>
             <span class="hero__kartu-nilai">{terdekat.paket.data.nama}</span>
             <span class="hero__kartu-sub">
-              {terdekat.tanggalPendek} · {statusKuota(terdekat.batch).teks.toLowerCase()}
+              {terdekat.tanggalPendek} · {terdekat.paket.data.lokasi}
             </span>
           </div>
         )}
@@ -89,11 +89,10 @@ const terdekat = tersedia[0];
       <div class="seksi-kepala">
         <span class="eyebrow">Trip terdekat</span>
         <h2>Tiga keberangkatan yang paling dekat</h2>
-        <p>Kuota dihitung setelah DP masuk, jadi angka sisa kursi di bawah ini berubah cukup cepat.</p>
       </div>
 
       <div class="grid-trip">
-        {preview.map((j) => <KartuTrip jadwal={j} jumlahInclude={3} />)}
+        {preview.map((j) => <KartuTrip jadwal={j} />)}
       </div>
 
       <div class="mt-l">

@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Dasar from "../layouts/Dasar.astro";
 import Ikon from "../components/Ikon.astro";
-import { semuaPaket, batchTerdekat, statusKuota } from "../lib/paket";
+import { semuaPaket, batchTerdekat } from "../lib/paket";
 import { rentangPendek } from "../lib/tanggal";
 import { rupiah, waLink, waPaket } from "../lib/wa";
 
@@ -82,7 +82,7 @@ const subjudul = d.highlight.join(" · ");
         {batch && (
           <div class="trust__item">
             <span class="trust__angka">{rentangPendek(batch.mulai, batch.selesai)}</span>
-            <span class="trust__label">Batch terdekat · {statusKuota(batch).teks.toLowerCase()}</span>
+            <span class="trust__label">Batch terdekat</span>
           </div>
         )}
       </div>

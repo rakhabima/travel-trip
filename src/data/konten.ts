@@ -66,7 +66,7 @@ export const ALASAN = [
 ];
 
 export const LANGKAH = [
-  { no: "01", judul: "Pilih tanggal", isi: "Buka halaman Jadwal, saring per destinasi atau bulan, lalu cek sisa kursinya." },
+  { no: "01", judul: "Pilih tanggal", isi: "Buka halaman Jadwal, saring per destinasi atau bulan, lalu lihat tanggal yang masih tersedia." },
   { no: "02", judul: "Chat & kunci kursi", isi: `Admin cek kuota dan kirim rincian. DP ${KEBIJAKAN.dp} untuk mengunci kursi.` },
   { no: "03", judul: "Berangkat", isi: `Pelunasan ${KEBIJAKAN.pelunasan}. ${KEBIJAKAN.grupWa}` },
 ];
