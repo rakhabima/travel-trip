@@ -1,24 +1,33 @@
 ---
 import { DESTINASI } from "../data/konten";
-import { semuaJadwal } from "../lib/paket";
+import { semuaPaket } from "../lib/paket";
 
-const jadwal = await semuaJadwal();
+const paket = await semuaPaket();
 
-// Yang dihitung keberangkatan yang masih ada kursinya, bukan jumlah paket.
+// Sekarang satu destinasi umumnya punya satu paket, jadi kartunya menautkan
+// langsung ke halaman paket. Kalau nanti ada lebih dari satu, arahkan ke jadwal.
+function tautan(slug: string) {
+  const cocok = paket.filter((p) => p.data.destinasi === slug);
+  if (cocok.length === 1) return `/paket/${cocok[0].id}/`;
+  return "/jadwal/";
+}
+
 const jumlahPer = (slug: string) =>
-  jadwal.filter((j) => j.paket.data.destinasi === slug && j.batch.kuotaSisa > 0).length;
+  paket.filter((p) => p.data.destinasi === slug).length;
 ---
 <div class="grid-dest">
   {DESTINASI.map((d) => {
     const jumlah = jumlahPer(d.slug);
     return (
-      <a class="dest" href={`/jadwal/?destinasi=${d.slug}`}>
+      <a class="dest" href={tautan(d.slug)}>
         <img src={d.foto} alt={`Pemandangan ${d.nama}`} loading="lazy" width="700" height="500" />
         <span class="dest__isi">
           <span class="dest__nama">{d.nama}</span>
           <span class="dest__sub">{d.sub}</span>
         </span>
-        <span class="dest__jumlah">{jumlah ? `${jumlah} jadwal aktif` : "Segera dibuka"}</span>
+        <span class="dest__jumlah">
+          {jumlah === 0 ? "Segera dibuka" : jumlah === 1 ? "Lihat trip" : `${jumlah} paket`}
+        </span>
       </a>
     );
   })}

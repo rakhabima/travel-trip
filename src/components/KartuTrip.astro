@@ -1,5 +1,7 @@
 ---
 import type { Jadwal } from "../lib/paket";
+import { batchAktif } from "../lib/paket";
+import { kunciBulan } from "../lib/tanggal";
 import { rupiah } from "../lib/wa";
 import Ikon from "./Ikon.astro";
 
@@ -11,15 +13,25 @@ const { jadwal } = Astro.props;
 const { paket, batch, tanggal } = jadwal;
 const d = paket.data;
 
-const penuh = batch.kuotaSisa <= 0;
+// Kartu mewakili satu paket, bukan satu keberangkatan. Yang ditampilkan
+// tanggal terdekat; sisanya dihitung jadi keterangan "+N tanggal lagi".
+const semuaBatch = batchAktif(paket);
+const tanggalLain = semuaBatch.length - 1;
+const adaTersedia = semuaBatch.some((b) => b.kuotaSisa > 0);
+
+// Filter di halaman jadwal menyaring per paket, jadi atributnya memuat
+// semua bulan yang dipunyai paket ini, bukan cuma bulan terdekat.
+const bulanPaket = [...new Set(semuaBatch.map((b) => kunciBulan(b.mulai)))].join(" ");
+const termurah = Math.min(...semuaBatch.map((b) => b.harga));
 ---
 <a
-  class:list={["kartu", penuh && "kartu--penuh"]}
+  class:list={["kartu", !adaTersedia && "kartu--penuh"]}
   href={`/paket/${paket.id}/`}
   data-baris
   data-destinasi={d.destinasi}
-  data-bulan={jadwal.bulan}
-  data-sisa={batch.kuotaSisa}
+  data-bulan={bulanPaket}
+  data-harga={termurah}
+  data-sisa={adaTersedia ? 1 : 0}
 >
   <div class="kartu__foto">
     <span class="kartu__durasi"><Ikon nama="jam" /> {d.durasi}</span>
@@ -29,8 +41,9 @@ const penuh = batch.kuotaSisa <= 0;
   <div class="kartu__isi">
     <div class="kartu__chip">
       <span class="chip chip--tanggal">{tanggal}</span>
-      <span class={`chip chip--${penuh ? "penuh" : "tersedia"}`}>
-        {penuh ? "KUOTA PENUH" : "TERSEDIA"}
+      {tanggalLain > 0 && <span class="chip chip--lain">+{tanggalLain} tanggal lagi</span>}
+      <span class={`chip chip--${adaTersedia ? "tersedia" : "penuh"}`}>
+        {adaTersedia ? "TERSEDIA" : "KUOTA PENUH"}
       </span>
     </div>
 

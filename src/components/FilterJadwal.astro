@@ -1,19 +1,18 @@
 ---
-import { DESTINASI } from "../data/konten";
 import { semuaJadwal } from "../lib/paket";
 import { namaBulan } from "../lib/tanggal";
-import Ikon from "./Ikon.astro";
 
 const jadwal = await semuaJadwal();
 const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
 ---
 <form class="filter" data-filter>
-  <span class="filter__judul"><Ikon nama="filter" /> Saring jadwal</span>
   <label class="cari__medan">
-    <span>Destinasi</span>
-    <select name="destinasi">
-      <option value="">Semua destinasi</option>
-      {DESTINASI.map((d) => <option value={d.slug}>{d.nama}</option>)}
+    <span>Budget per orang</span>
+    <select name="harga">
+      <option value="">Berapa saja</option>
+      <option value="murah">Di bawah Rp1 juta</option>
+      <option value="sedang">Rp1 – 3 juta</option>
+      <option value="mahal">Di atas Rp3 juta</option>
     </select>
   </label>
   <label class="cari__medan">
@@ -26,7 +25,7 @@ const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
   <label class="cari__medan">
     <span>Ketersediaan</span>
     <select name="tersedia">
-      <option value="">Tampilkan semua batch</option>
+      <option value="">Tampilkan semua</option>
       <option value="1">Hanya yang masih tersedia</option>
     </select>
   </label>
@@ -41,36 +40,64 @@ const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
   const grid = document.querySelector("[data-grid-jadwal]");
   const info = document.querySelector("[data-hasil]");
   const kosong = document.querySelector<HTMLElement>("[data-kosong]");
+  const waKosong = document.querySelector<HTMLAnchorElement>("[data-kosong-wa]");
 
   if (form && grid) {
     const kartu = Array.from(grid.querySelectorAll<HTMLElement>("[data-baris]"));
     const nilai = (nama: string) =>
       form.querySelector<HTMLSelectElement>(`[name='${nama}']`)?.value ?? "";
 
+    const cocokHarga = (harga: string, h: number) => {
+      if (!harga) return true;
+      if (harga === "murah") return h < 1_000_000;
+      if (harga === "sedang") return h >= 1_000_000 && h <= 3_000_000;
+      return h > 3_000_000;
+    };
+
     const terapkan = () => {
-      const destinasi = nilai("destinasi");
+      const harga = nilai("harga");
       const bulan = nilai("bulan");
       const tersedia = nilai("tersedia");
       let tampil = 0;
 
       for (const el of kartu) {
+        // Satu kartu mewakili satu paket, jadi bulannya berupa daftar.
+        const bulanPaket = (el.dataset.bulan ?? "").split(" ");
         const cocok =
-          (!destinasi || el.dataset.destinasi === destinasi) &&
-          (!bulan || el.dataset.bulan === bulan) &&
+          cocokHarga(harga, Number(el.dataset.harga)) &&
+          (!bulan || bulanPaket.includes(bulan)) &&
           (!tersedia || Number(el.dataset.sisa) > 0);
         el.hidden = !cocok;
         if (cocok) tampil++;
       }
 
       if (kosong) kosong.hidden = tampil > 0;
+
+      // Pesan WA-nya ikut menyebut filter yang dipilih, jadi admin langsung
+      // tahu permintaan apa yang belum tertampung di jadwal.
+      if (waKosong && tampil === 0) {
+        const teks = (nama: string) => {
+          const el = form.querySelector<HTMLSelectElement>(`[name='${nama}']`);
+          return el?.value ? el.selectedOptions[0]?.textContent?.trim() ?? "" : "";
+        };
+        const bagian: string[] = [];
+        const b = teks("bulan");
+        const h = teks("harga");
+        if (b) bagian.push(`bulan ${b}`);
+        if (h) bagian.push(`budget ${h.toLowerCase()}`);
+        const pesan = bagian.length
+          ? `Halo, saya cari trip ${bagian.join(" dengan ")}, tapi belum ada di jadwal. Ada rencana batch tambahan?`
+          : "Halo, saya mau tanya tanggal trip yang belum ada di jadwal.";
+        waKosong.href = (waKosong.dataset.kosongWa ?? "") + encodeURIComponent(pesan);
+      }
       if (info) {
-        info.textContent = `${tampil} keberangkatan ditampilkan dari total ${kartu.length}.`;
+        info.textContent = `${tampil} tujuan ditampilkan dari total ${kartu.length}.`;
       }
     };
 
-    // Prefill dari tautan kartu destinasi di beranda.
+    // Prefill dari query string, mis. tautan dari form cari di beranda.
     const q = new URLSearchParams(location.search);
-    for (const nama of ["destinasi", "bulan", "tersedia"]) {
+    for (const nama of ["harga", "bulan", "tersedia"]) {
       const el = form.querySelector<HTMLSelectElement>(`[name='${nama}']`);
       if (el && q.has(nama)) el.value = q.get(nama) ?? "";
     }

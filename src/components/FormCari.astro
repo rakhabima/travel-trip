@@ -1,5 +1,4 @@
 ---
-import { DESTINASI } from "../data/konten";
 import { semuaJadwal } from "../lib/paket";
 import { namaBulan } from "../lib/tanggal";
 import Ikon from "./Ikon.astro";
@@ -10,10 +9,12 @@ const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
 ---
 <form class="cari" action="/jadwal/" method="get">
   <label class="cari__medan">
-    <span>Destinasi</span>
-    <select name="destinasi">
-      <option value="">Semua destinasi</option>
-      {DESTINASI.map((d) => <option value={d.slug}>{d.nama}</option>)}
+    <span>Budget per orang</span>
+    <select name="harga">
+      <option value="">Berapa saja</option>
+      <option value="murah">Di bawah Rp1 juta</option>
+      <option value="sedang">Rp1 – 3 juta</option>
+      <option value="mahal">Di atas Rp3 juta</option>
     </select>
   </label>
   <label class="cari__medan">
@@ -27,10 +28,10 @@ const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
     <span>Ketersediaan</span>
     <select name="tersedia">
       <option value="1">Hanya yang masih tersedia</option>
-      <option value="">Tampilkan semua batch</option>
+      <option value="">Tampilkan semua</option>
     </select>
   </label>
   <button class="btn btn--wa cari__tombol" type="submit">
-    <Ikon nama="cari" /> Cari jadwal
+    <Ikon nama="cari" /> Cari trip
   </button>
 </form>

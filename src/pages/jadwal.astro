@@ -3,16 +3,17 @@ import Dasar from "../layouts/Dasar.astro";
 import KartuTrip from "../components/KartuTrip.astro";
 import FilterJadwal from "../components/FilterJadwal.astro";
 import Ikon from "../components/Ikon.astro";
-import { KEBIJAKAN } from "../data/konten";
-import { semuaJadwal } from "../lib/paket";
+import { BRAND, KEBIJAKAN } from "../data/konten";
+import { jadwalPerPaket, semuaJadwal } from "../lib/paket";
 import { namaBulan } from "../lib/tanggal";
 import { waLink } from "../lib/wa";
 
-const jadwal = await semuaJadwal();
+const jadwal = await jadwalPerPaket();
+const semua = await semuaJadwal();
 
 // Judul rentang diambil dari keberangkatan pertama dan terakhir supaya
 // tidak perlu diedit tiap kali batch baru masuk.
-const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
+const bulan = [...new Set(semua.map((j) => j.bulan))].sort();
 const rentang =
   bulan.length > 1 ? `${namaBulan(bulan[0])} – ${namaBulan(bulan[bulan.length - 1])}` : namaBulan(bulan[0] ?? "");
 ---
@@ -28,7 +29,7 @@ const rentang =
       <span class="eyebrow">Jadwal Trip</span>
       <h1>Semua keberangkatan yang sedang dibuka</h1>
       <p class="hero__lead">
-        {jadwal.length} keberangkatan sampai akhir tahun. Kursi dikunci setelah DP masuk, dan kalau ada
+        {jadwal.length} tujuan, {semua.length} tanggal keberangkatan. Kursi dikunci setelah DP masuk, dan kalau ada
         perubahan tanggal karena cuaca, kamu selalu dikabari lebih dulu.
       </p>
     </div>
@@ -45,17 +46,25 @@ const rentang =
       <FilterJadwal />
 
       <p class="filter__hasil" data-hasil aria-live="polite">
-        {jadwal.length} keberangkatan ditampilkan dari total {jadwal.length}.
+        {jadwal.length} tujuan ditampilkan dari total {jadwal.length}.
       </p>
 
       <div class="grid-trip" data-grid-jadwal>
         {jadwal.map((j) => <KartuTrip jadwal={j} />)}
       </div>
 
-      <p class="kosong" data-kosong hidden>
-        Belum ada keberangkatan yang cocok dengan filter ini. Coba longgarkan pilihannya,
-        atau tanya tanggal lain lewat WhatsApp.
-      </p>
+      <div class="kosong" data-kosong hidden>
+        <p class="kosong__judul">Belum ada trip yang cocok.</p>
+        <p class="kosong__isi">
+          Coba longgarkan filternya. Atau chat saja — kadang kami buka batch tambahan
+          kalau ada yang minta duluan.
+        </p>
+        <a class="btn btn--wa" target="_blank" rel="noopener"
+           href={waLink("Halo, saya mau tanya tanggal trip yang belum ada di jadwal.")}
+           data-kosong-wa={`https://wa.me/${BRAND.waNomor}?text=`}>
+          <Ikon nama="wa" /> Tanya tanggal lain
+        </a>
+      </div>
 
       <div class="dua-kolom mt-l">
         <div class="panel panel--senja">
