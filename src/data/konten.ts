@@ -1,6 +1,19 @@
 // Konten situs di luar paket trip. Paket ada di src/content/paket/*.md.
 // Semua isi masih placeholder. Ganti per klien.
 
+// Saklar paket layanan.
+//
+// jadwal: false  Paket basic. Tidak ada tanggal, status kuota, atau filter bulan.
+//                Harga diambil dari `hargaMulai` di tiap berkas paket dan
+//                di-hardcode, karena klien tidak dapat admin panel.
+//                Tidak ada yang perlu diperbarui rutin, jadi cron tidak perlu.
+//
+// jadwal: true   Paket premium. Tanggal keberangkatan, status tersedia/penuh,
+//                dan filter bulan aktif. Perlu build ulang harian lewat cron.
+export const FITUR = {
+  jadwal: true,
+};
+
 export const FOTO = (id: string, w = 1200) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
@@ -83,7 +96,7 @@ export const ALASAN = [
 ];
 
 export const LANGKAH = [
-  { no: "01", judul: "Pilih tanggal", isi: "Buka halaman Jadwal, saring berdasarkan destinasi atau bulan, lalu lihat tanggal yang masih tersedia." },
+  { no: "01", judul: "Pilih tripnya", isi: "Buka halaman Paket Trip, lihat rincian dan rundown hariannya, lalu pilih yang paling pas." },
   { no: "02", judul: "Chat dan amankan kursi", isi: `Admin cek kuota dan kirim rincian. DP ${KEBIJAKAN.dp} untuk mengunci kursi.` },
   { no: "03", judul: "Berangkat", isi: `Pelunasan ${KEBIJAKAN.pelunasan}. ${KEBIJAKAN.grupWa}` },
 ];

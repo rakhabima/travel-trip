@@ -34,6 +34,9 @@ opsional:
   - nama: Asuransi perjalanan
     harga: 15000
 
+hargaMulai: 685000
+hargaCatatan: dari Marina Ancol
+
 keberangkatan:
   - mulai: 2026-10-25
     selesai: 2026-10-26

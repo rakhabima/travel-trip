@@ -40,6 +40,9 @@ opsional:
   - nama: Asuransi perjalanan
     harga: 20000
 
+hargaMulai: 1150000
+hargaCatatan: dari titik jemput Malang
+
 keberangkatan:
   - mulai: 2026-11-14
     selesai: 2026-11-16

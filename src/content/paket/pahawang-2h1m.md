@@ -36,6 +36,9 @@ opsional:
   - nama: Sewa kamera underwater
     harga: 85000
 
+hargaMulai: 575000
+hargaCatatan: dari Bandar Lampung
+
 keberangkatan:
   - mulai: 2026-09-26
     selesai: 2026-09-27

@@ -48,7 +48,14 @@ const paket = defineCollection({
     opsional: z.array(z.object({ nama: z.string(), harga: z.number() })).default([]),
 
     minimumPeserta: z.number().optional(),
-    keberangkatan: z.array(keberangkatan).min(1),
+
+    // Dipakai kalau situs berjalan tanpa jadwal (FITUR.jadwal = false).
+    // Klien paket basic cukup mengisi dua field ini, tanpa mengarang tanggal.
+    hargaMulai: z.number().optional(),
+    hargaCatatan: z.string().default(""),
+
+    // Kosong kalau situsnya tidak menampilkan jadwal.
+    keberangkatan: z.array(keberangkatan).default([]),
 
     itinerary: z.array(hari).default([]),
     catatanItinerary: z.string().default(""),

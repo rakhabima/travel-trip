@@ -1,11 +1,11 @@
 ---
-import { semuaJadwal } from "../lib/paket";
+import { FITUR } from "../data/konten";
+import { bulanTersedia } from "../lib/paket";
 import { namaBulan } from "../lib/tanggal";
 
-const jadwal = await semuaJadwal();
-const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
+const bulan = await bulanTersedia();
 ---
-<form class="filter" data-filter>
+<form class:list={["filter", !FITUR.jadwal && "filter--ringkas"]} data-filter>
   <label class="cari__medan">
     <span>Budget per orang</span>
     <select name="harga">
@@ -15,20 +15,24 @@ const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
       <option value="mahal">Di atas Rp3 juta</option>
     </select>
   </label>
-  <label class="cari__medan">
-    <span>Bulan berangkat</span>
-    <select name="bulan">
-      <option value="">Semua</option>
-      {bulan.map((b) => <option value={b}>{namaBulan(b)}</option>)}
-    </select>
-  </label>
-  <label class="cari__medan">
-    <span>Ketersediaan</span>
-    <select name="tersedia">
-      <option value="">Semua</option>
-      <option value="1">Tersedia</option>
-    </select>
-  </label>
+  {FITUR.jadwal && (
+    <>
+      <label class="cari__medan">
+        <span>Bulan berangkat</span>
+        <select name="bulan">
+          <option value="">Semua</option>
+          {bulan.map((b) => <option value={b}>{namaBulan(b)}</option>)}
+        </select>
+      </label>
+      <label class="cari__medan">
+        <span>Ketersediaan</span>
+        <select name="tersedia">
+          <option value="">Semua</option>
+          <option value="1">Tersedia</option>
+        </select>
+      </label>
+    </>
+  )}
   <button class="btn btn--garis btn--kecil" type="button" data-reset>Reset</button>
 </form>
 

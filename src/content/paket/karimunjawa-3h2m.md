@@ -31,6 +31,9 @@ opsional:
   - nama: Asuransi perjalanan
     harga: 20000
 
+hargaMulai: 1390000
+hargaCatatan: dari Pelabuhan Jepara
+
 keberangkatan:
   - mulai: 2026-12-05
     selesai: 2026-12-07

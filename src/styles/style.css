@@ -823,3 +823,6 @@ main { flex: 1; }
 @media (max-width: 520px) {
   .syarat__bagian p { padding-left: 0; }
 }
+/* filter tanpa jadwal cuma punya satu dropdown */
+.filter--ringkas { grid-template-columns: minmax(0, 1fr) auto; }
+.kartu__harga--tanya { font-size: 1.05rem; font-weight: 700; }

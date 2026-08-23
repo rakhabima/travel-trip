@@ -40,6 +40,9 @@ opsional:
     harga: 450000
 
 # Batch Desember lebih mahal, high season akhir tahun.
+hargaMulai: 2850000
+hargaCatatan: belum termasuk tiket pesawat
+
 keberangkatan:
   - mulai: 2026-09-12
     selesai: 2026-09-15

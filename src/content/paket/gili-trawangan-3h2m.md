@@ -37,6 +37,9 @@ opsional:
   - nama: Sesi foto underwater
     harga: 150000
 
+hargaMulai: 1750000
+hargaCatatan: dari Pelabuhan Bangsal
+
 keberangkatan:
   - mulai: 2026-09-19
     selesai: 2026-09-21

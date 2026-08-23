@@ -37,6 +37,9 @@ opsional:
   - nama: Asuransi perjalanan
     harga: 20000
 
+hargaMulai: 1290000
+hargaCatatan: dari Stasiun Malang
+
 keberangkatan:
   - mulai: 2026-09-05
     selesai: 2026-09-07

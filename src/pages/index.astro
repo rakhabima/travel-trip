@@ -7,18 +7,18 @@ import Langkah from "../components/Langkah.astro";
 import Testimoni from "../components/Testimoni.astro";
 import FormCari from "../components/FormCari.astro";
 import Ikon from "../components/Ikon.astro";
-import { BRAND } from "../data/konten";
-import { jadwalPerPaket, semuaJadwal } from "../lib/paket";
-import { namaBulan } from "../lib/tanggal";
+import { BRAND, FITUR } from "../data/konten";
+import { jumlahKeberangkatan, semuaPaket } from "../lib/paket";
+import { batchTerdekat } from "../lib/paket";
 import { waLink } from "../lib/wa";
 
-const perPaket = await jadwalPerPaket();
-const preview = perPaket.filter((j) => j.batch.kuotaSisa > 0).slice(0, 3);
-const terdekat = preview[0];
+const paket = await semuaPaket();
+const preview = paket.slice(0, 3);
+const sorot = preview[0];
+const sorotBatch = sorot ? batchTerdekat(sorot) : null;
 
 // Slot pertama trust bar dihitung dari data, jadi nggak pernah basi.
-const semua = await semuaJadwal();
-const bulanTerakhir = namaBulan([...new Set(semua.map((j) => j.bulan))].sort().at(-1) ?? "");
+const jumlahBatch = await jumlahKeberangkatan();
 ---
 <Dasar
   judulPenuh={`${BRAND.nama} · Open Trip Pulau & Laut Indonesia`}
@@ -38,7 +38,7 @@ const bulanTerakhir = namaBulan([...new Set(semua.map((j) => j.bulan))].sort().a
           <a class="btn btn--wa" href={waLink("Halo, saya lihat website-nya. Saya mau tanya jadwal open trip terdekat.")} target="_blank" rel="noopener">
             <Ikon nama="wa" /> Tanya via WhatsApp
           </a>
-          <a class="btn btn--garis-terang" href="/jadwal/">Lihat semua jadwal</a>
+          <a class="btn btn--garis-terang" href="/paket/">Lihat semua jadwal</a>
         </div>
         <p class="hero__catatan">
           <Ikon nama="jam" />
@@ -51,12 +51,12 @@ const bulanTerakhir = namaBulan([...new Set(semua.map((j) => j.bulan))].sort().a
              alt="Teluk berpasir putih dengan perbukitan hijau, suasana trip pulau" width="900" height="990" />
         <img class="hero__foto--kecil" src="https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?auto=format&fit=crop&w=600&q=80"
              alt="Peserta trip duduk menikmati pemandangan teluk" width="600" height="450" />
-        {terdekat && (
+        {sorot && (
           <div class="hero__kartu">
-            <span class="hero__kartu-label">Trip terdekat</span>
-            <span class="hero__kartu-nilai">{terdekat.paket.data.nama}</span>
+            <span class="hero__kartu-label">{FITUR.jadwal ? "Trip terdekat" : "Trip unggulan"}</span>
+            <span class="hero__kartu-nilai">{sorot.data.nama}</span>
             <span class="hero__kartu-sub">
-              {terdekat.tanggalPendek} · {terdekat.paket.data.lokasi}
+              {sorotBatch ? `${sorotBatch.tanggalPendek} · ` : ""}{sorot.data.lokasi}
             </span>
           </div>
         )}
@@ -70,8 +70,8 @@ const bulanTerakhir = namaBulan([...new Set(semua.map((j) => j.bulan))].sort().a
     <div class="wadah">
       <div class="trust">
         <div class="trust__item">
-          <span class="trust__angka">{semua.length} jadwal</span>
-          <span class="trust__label">Keberangkatan sampai {bulanTerakhir}</span>
+          <span class="trust__angka">{FITUR.jadwal ? jumlahBatch : paket.length} {FITUR.jadwal ? "jadwal" : "trip"}</span>
+          <span class="trust__label">{FITUR.jadwal ? "Keberangkatan yang sedang dibuka" : "Tujuan yang kami jalankan"}</span>
         </div>
         <div class="trust__item">
           <span class="trust__angka">Sejak {BRAND.sejak}</span>
@@ -92,16 +92,16 @@ const bulanTerakhir = namaBulan([...new Set(semua.map((j) => j.bulan))].sort().a
   <section class="seksi">
     <div class="wadah">
       <div class="seksi-kepala">
-        <h2>Berangkat dalam waktu dekat</h2>
+        <h2>{FITUR.jadwal ? "Berangkat dalam waktu dekat" : "Trip yang kami jalankan"}</h2>
       </div>
 
       <div class="grid-trip">
-        {preview.map((j) => <KartuTrip jadwal={j} />)}
+        {preview.map((p) => <KartuTrip paket={p} />)}
       </div>
 
       <div class="mt-l">
-        <a class="btn btn--garis" href="/jadwal/">
-          Lihat semua {semua.length} keberangkatan <Ikon nama="panah" />
+        <a class="btn btn--garis" href="/paket/">
+          Lihat semua {paket.length} paket trip <Ikon nama="panah" />
         </a>
       </div>
     </div>

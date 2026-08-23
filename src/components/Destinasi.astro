@@ -9,7 +9,7 @@ const paket = await semuaPaket();
 function tautan(slug: string) {
   const cocok = paket.filter((p) => p.data.destinasi === slug);
   if (cocok.length === 1) return `/paket/${cocok[0].id}/`;
-  return "/jadwal/";
+  return "/paket/";
 }
 
 const jumlahPer = (slug: string) =>

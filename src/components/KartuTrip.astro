@@ -1,37 +1,37 @@
 ---
-import type { Jadwal } from "../lib/paket";
-import { batchAktif } from "../lib/paket";
+import { FITUR } from "../data/konten";
+import { batchAktif, batchTerdekat, catatanHarga, hargaMulaiDari, hargaBervariasi, masihTersedia, type Paket } from "../lib/paket";
 import { kunciBulan } from "../lib/tanggal";
 import { rupiah } from "../lib/wa";
 import Ikon from "./Ikon.astro";
 
 interface Props {
-  jadwal: Jadwal;
+  paket: Paket;
 }
 
-const { jadwal } = Astro.props;
-const { paket, batch, tanggal } = jadwal;
+const { paket } = Astro.props;
 const d = paket.data;
 
-// Kartu mewakili satu paket, bukan satu keberangkatan. Yang ditampilkan
-// tanggal terdekat; sisanya dihitung jadi keterangan "+N tanggal lagi".
-const semuaBatch = batchAktif(paket);
-const tanggalLain = semuaBatch.length - 1;
-const adaTersedia = semuaBatch.some((b) => b.kuotaSisa > 0);
+const batch = batchAktif(paket);
+const terdekat = batchTerdekat(paket);
+const tanggalLain = Math.max(batch.length - 1, 0);
+const tersedia = masihTersedia(paket);
 
-// Filter di halaman jadwal menyaring per paket, jadi atributnya memuat
-// semua bulan yang dipunyai paket ini, bukan cuma bulan terdekat.
-const bulanPaket = [...new Set(semuaBatch.map((b) => kunciBulan(b.mulai)))].join(" ");
-const termurah = Math.min(...semuaBatch.map((b) => b.harga));
+const harga = hargaMulaiDari(paket);
+const mulaiDari = hargaBervariasi(paket);
+const coret = terdekat?.data.hargaCoret;
+
+// Atribut filter. Tanpa jadwal cuma harga yang dipakai.
+const bulanPaket = [...new Set(batch.map((b) => kunciBulan(b.mulai)))].join(" ");
 ---
 <a
-  class:list={["kartu", !adaTersedia && "kartu--penuh"]}
+  class:list={["kartu", !tersedia && "kartu--penuh"]}
   href={`/paket/${paket.id}/`}
   data-baris
   data-destinasi={d.destinasi}
   data-bulan={bulanPaket}
-  data-harga={termurah}
-  data-sisa={adaTersedia ? 1 : 0}
+  data-harga={harga ?? 0}
+  data-sisa={tersedia ? 1 : 0}
 >
   <div class="kartu__foto">
     <span class="kartu__durasi"><Ikon nama="jam" /> {d.durasi}</span>
@@ -39,21 +39,32 @@ const termurah = Math.min(...semuaBatch.map((b) => b.harga));
   </div>
 
   <div class="kartu__isi">
-    <div class="kartu__chip">
-      <span class="chip chip--tanggal">{tanggal}</span>
-      {tanggalLain > 0 && <span class="chip chip--lain">+{tanggalLain} tanggal lagi</span>}
-      <span class={`chip chip--${adaTersedia ? "tersedia" : "penuh"}`}>
-        {adaTersedia ? "TERSEDIA" : "KUOTA PENUH"}
-      </span>
-    </div>
+    {FITUR.jadwal && terdekat && (
+      <div class="kartu__chip">
+        <span class="chip chip--tanggal">{terdekat.tanggal}</span>
+        {tanggalLain > 0 && <span class="chip chip--lain">+{tanggalLain} tanggal lagi</span>}
+        <span class={`chip chip--${tersedia ? "tersedia" : "penuh"}`}>
+          {tersedia ? "TERSEDIA" : "KUOTA PENUH"}
+        </span>
+      </div>
+    )}
+
+    {!FITUR.jadwal && (
+      <div class="kartu__chip">
+        <span class="chip chip--tanggal">{d.lokasi}</span>
+        <span class="chip chip--lain">Level {d.level}</span>
+      </div>
+    )}
 
     <h3 class="kartu__judul">{d.nama}</h3>
     <p class="kartu__ringkas">{d.ringkas}</p>
 
     <div class="kartu__kaki">
       <div class="kartu__harga">
-        {batch.hargaCoret && <s>{rupiah(batch.hargaCoret)}</s>}
-        <strong>{rupiah(batch.harga)}</strong>
+        {coret && <s>{rupiah(coret)}</s>}
+        {harga !== null
+          ? <strong>{mulaiDari ? `mulai ${rupiah(harga)}` : rupiah(harga)}</strong>
+          : <strong class="kartu__harga--tanya">Tanya harga</strong>}
       </div>
       <span class="kartu__perorang">per orang</span>
     </div>

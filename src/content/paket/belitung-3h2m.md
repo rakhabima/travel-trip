@@ -34,6 +34,9 @@ opsional:
   - nama: Tiket naik mercusuar
     harga: 30000
 
+hargaMulai: 2150000
+hargaCatatan: belum termasuk tiket pesawat
+
 keberangkatan:
   - mulai: 2026-10-24
     selesai: 2026-10-26

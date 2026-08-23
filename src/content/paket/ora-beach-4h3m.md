@@ -33,6 +33,9 @@ opsional:
   - nama: Upgrade cottage tepi laut
     harga: 650000
 
+hargaMulai: 5750000
+hargaCatatan: belum termasuk tiket pesawat
+
 keberangkatan:
   - mulai: 2026-11-14
     selesai: 2026-11-17

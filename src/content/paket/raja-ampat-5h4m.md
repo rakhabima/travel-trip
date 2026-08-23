@@ -34,6 +34,9 @@ opsional:
   - nama: Sewa alat diving (per hari)
     harga: 550000
 
+hargaMulai: 6450000
+hargaCatatan: belum termasuk tiket pesawat
+
 keberangkatan:
   - mulai: 2026-10-03
     selesai: 2026-10-07

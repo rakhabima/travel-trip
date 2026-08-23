@@ -33,6 +33,8 @@ opsional:
   - nama: Asuransi perjalanan
     harga: 15000
 
+hargaMulai: 795000
+
 keberangkatan:
   - mulai: 2026-09-05
     selesai: 2026-09-05

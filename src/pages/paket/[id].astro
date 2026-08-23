@@ -2,9 +2,9 @@
 import { getCollection, render } from "astro:content";
 import Dasar from "../../layouts/Dasar.astro";
 import Ikon from "../../components/Ikon.astro";
-import { batchAktif, statusBatch, type Paket } from "../../lib/paket";
+import { batchAktif, catatanHarga, hargaBervariasi, hargaMulaiDari, statusBatch, type Paket } from "../../lib/paket";
 import { rentangTanggal } from "../../lib/tanggal";
-import { KEBIJAKAN } from "../../data/konten";
+import { FITUR, KEBIJAKAN } from "../../data/konten";
 import { rupiah, waLink, waPaket, waWaitingList } from "../../lib/wa";
 
 export async function getStaticPaths() {
@@ -18,9 +18,9 @@ const d = paket.data;
 const { Content } = await render(paket);
 
 const batch = batchAktif(paket);
-const terdekat = batch[0];
-const termurah = batch.length ? Math.min(...batch.map((b) => b.harga)) : null;
-const bervariasi = new Set(batch.map((b) => b.harga)).size > 1;
+const termurah = hargaMulaiDari(paket);
+const bervariasi = hargaBervariasi(paket);
+const catatan = catatanHarga(paket);
 
 // Teks polos untuk tombol salin, dipakai apa adanya di grup WhatsApp.
 const teksJadwal = [
@@ -49,7 +49,7 @@ const teksItinerary = [
   <section class="seksi seksi--rapat">
     <div class="wadah">
 
-      <a class="kartu__tautan" href="/jadwal/" style="margin-bottom:16px;display:inline-flex">
+      <a class="kartu__tautan" href="/paket/" style="margin-bottom:16px;display:inline-flex">
         <Ikon nama="panah-kiri" /> Semua jadwal
       </a>
 
@@ -201,14 +201,14 @@ const teksItinerary = [
             <span class="harga-panel__label">Harga per orang</span>
             <span class="harga-panel__nilai">
               {bervariasi && <span class="harga-panel__dari">mulai</span>}
-              <span>{termurah !== null ? rupiah(termurah) : "—"}</span>
+              <span>{termurah !== null ? rupiah(termurah) : "Tanya harga"}</span>
             </span>
-            {terdekat?.hargaCatatan && (
-              <span class="harga-panel__cat">{terdekat.hargaCatatan}</span>
-            )}
+            {catatan && <span class="harga-panel__cat">{catatan}</span>}
 
             <div class="harga-panel__pisah"></div>
 
+            {FITUR.jadwal ? (
+            <>
             <span class="harga-panel__label">Pilih tanggal</span>
             <ul class="tanggal">
               {batch.map((b) => {
@@ -234,6 +234,13 @@ const teksItinerary = [
             <button class="btn btn--garis btn--blok btn--kecil salin" type="button" data-salin={teksJadwal}>
               <Ikon nama="salin" /> Salin jadwal
             </button>
+            </>
+            ) : (
+              <p class="harga-panel__cat" style="margin:0 0 14px">
+                Tanggal keberangkatan menyesuaikan permintaan. Chat dulu untuk tanya
+                jadwal terdekat dan sisa kursinya.
+              </p>
+            )}
 
             <a class="btn btn--wa btn--blok" href={waLink(waPaket(d.nama))} target="_blank" rel="noopener" style="margin-top:10px">
               <Ikon nama="wa" /> Tanya via WhatsApp
@@ -249,7 +256,7 @@ const teksItinerary = [
   <div class="paket-bar">
     <div class="paket-bar__harga">
       <span class="paket-bar__label">{bervariasi ? "Mulai dari" : "Per orang"}</span>
-      <span class="paket-bar__nilai">{termurah !== null ? rupiah(termurah) : "—"}</span>
+      <span class="paket-bar__nilai">{termurah !== null ? rupiah(termurah) : "Tanya harga"}</span>
     </div>
     <a class="btn btn--wa" href={waLink(waPaket(d.nama))} target="_blank" rel="noopener">
       <Ikon nama="wa" /> Tanya trip ini

@@ -1,13 +1,14 @@
 ---
-import { semuaJadwal } from "../lib/paket";
+import { FITUR } from "../data/konten";
+import { bulanTersedia } from "../lib/paket";
 import { namaBulan } from "../lib/tanggal";
 import Ikon from "./Ikon.astro";
 
 // Cuma meneruskan pilihan ke halaman jadwal lewat query string.
-const jadwal = await semuaJadwal();
-const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
+const bulan = await bulanTersedia();
 ---
-<form class="cari" action="/jadwal/" method="get">
+{FITUR.jadwal && (
+<form class="cari" action="/paket/" method="get">
   <label class="cari__medan">
     <span>Budget per orang</span>
     <select name="harga">
@@ -35,3 +36,4 @@ const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
     <Ikon nama="cari" /> Cari trip
   </button>
 </form>
+)}
