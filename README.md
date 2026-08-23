@@ -23,24 +23,38 @@ cache-nya basi. Hentikan server, lalu `rm -rf .astro && npm run dev`.
 
 ## Deploy
 
-Cloudflare Workers, tersambung ke GitHub. Setiap push ke `main` otomatis dibangun
-dan tayang di <https://travel-trip.radentafabian.workers.dev>.
+Cloudflare Workers, tayang di <https://travel-trip.radentafabian.workers.dev>.
 
-Konfigurasinya ada di `wrangler.jsonc`. Berkas itu wajib ada. Tanpa itu wrangler
-menebak framework sendiri lalu menjalankan `astro add cloudflare` di tengah build,
-yang memasang adapter dan binding yang tidak kita butuhkan. Situs ini statis penuh,
-tidak ada kode server, jadi tidak ada adapter yang perlu dipasang.
+Deploy dijalankan `.github/workflows/deploy.yml`, bukan integrasi Git bawaan
+Cloudflare. Pemicunya tiga: push ke `main`, jadwal harian, dan tombol manual di
+tab Actions. Jadwal harian dibutuhkan karena keberangkatan yang sudah lewat
+disaring saat build, jadi situs harus dibangun ulang walaupun kodenya tidak
+berubah.
 
-Saat ganti klien, tiga tempat ini harus diubah bersamaan dan nilainya harus cocok:
+Butuh dua secret di repo (Settings → Secrets and variables → Actions):
+
+| secret | dari mana |
+|---|---|
+| `CLOUDFLARE_API_TOKEN` | My Profile → API Tokens, template "Edit Cloudflare Workers" |
+| `CLOUDFLARE_ACCOUNT_ID` | 32 karakter hex di URL dashboard Cloudflare |
+
+`wrangler.jsonc` wajib ada. Tanpa itu wrangler menebak framework sendiri lalu
+menjalankan `astro add cloudflare` di tengah build, yang memasang adapter dan
+binding yang tidak kita butuhkan. Situs ini statis penuh, tidak ada kode server.
+
+Saat ganti klien, dua nilai ini harus diubah bersamaan dan harus cocok:
 
 | tempat | isi |
 |---|---|
 | `astro.config.mjs` → `site` | alamat lengkap dengan `https://` |
 | `wrangler.jsonc` → `name` | nama worker, jadi bagian awal subdomain |
-| Cloudflare dashboard | nama proyeknya |
 
 Kalau `site` tidak sama persis dengan alamat yang tayang, tautan kanonik dan
 pratinjau tautan di WhatsApp akan menunjuk domain yang salah.
+
+Catatan: GitHub mematikan pemicu `schedule` di repo yang tidak ada aktivitas
+selama 60 hari. Untuk klien betulan, rebuild harian perlu dipindah ke pemicu
+yang tidak bergantung pada keaktifan repo.
 
 ## Struktur
 
