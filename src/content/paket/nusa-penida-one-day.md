@@ -4,8 +4,6 @@ lokasi: Bali
 destinasi: nusa-penida
 durasi: 1 hari
 level: Santai
-rating: 4.8
-ulasan: 41
 foto: https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=80
 ringkas: Berangkat pagi balik sore. Kelingking, Broken Beach, Angel Billabong, dan Crystal Bay dalam satu hari.
 highlight:

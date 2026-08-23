@@ -4,8 +4,6 @@ lokasi: Jepara, Jawa Tengah
 destinasi: karimunjawa
 durasi: 3 hari 2 malam
 level: Santai
-rating: 4.7
-ulasan: 95
 foto: https://images.unsplash.com/photo-1518815231560-8f41ec531527?auto=format&fit=crop&w=900&q=80
 ringkas: Snorkeling Menjangan Kecil, penangkaran hiu, sunset Bukit Love. Batch ini sudah penuh.
 highlight:

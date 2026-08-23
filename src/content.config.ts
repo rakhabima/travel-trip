@@ -40,8 +40,6 @@ const paket = defineCollection({
     foto: z.string(),
     ringkas: z.string(),
     highlight: z.array(z.string()).default([]),
-    rating: z.number(),
-    ulasan: z.number(),
 
     titikKumpul: z.array(titikKumpul).min(1),
 

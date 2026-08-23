@@ -4,8 +4,6 @@ lokasi: DKI Jakarta
 destinasi: kep-seribu
 durasi: 2 hari 1 malam
 level: Santai
-rating: 4.8
-ulasan: 132
 foto: https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80
 ringkas: "Trip santai buat pemula: Pulau Harapan, hopping 4 pulau, sunset di Pulau Bulat."
 highlight:

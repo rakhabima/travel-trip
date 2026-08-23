@@ -4,8 +4,6 @@ lokasi: Papua Barat Daya
 destinasi: raja-ampat
 durasi: 5 hari 4 malam
 level: Sedang
-rating: 5.0
-ulasan: 24
 foto: https://images.unsplash.com/photo-1570789210967-2cac24afeb00?auto=format&fit=crop&w=900&q=80
 ringkas: Piaynemo, Telaga Bintang, Arborek, dan spot snorkeling terbaik di Waigeo bagian selatan.
 highlight:
