@@ -15,7 +15,8 @@ npm run build    # hasil di dist/
 npm run preview  # cek hasil build
 ```
 
-Butuh Node 18 ke atas.
+Butuh **Node 22.12 ke atas**. Versinya dikunci di `.node-version` supaya
+Cloudflare memakai versi yang sama dengan lokal.
 
 Kalau tampilan di `dev` terlihat kosong atau aneh setelah skema konten berubah,
 cache-nya basi. Hentikan server, lalu `rm -rf .astro && npm run dev`.
@@ -92,8 +93,9 @@ Dua tempat:
 Nomor WhatsApp cukup diubah di `BRAND.waNomor` (format `628xxx`, tanpa `+`).
 Semua tombol WA di seluruh situs ikut, lengkap dengan teks chat yang sudah terisi.
 
-Ganti juga `site` di `astro.config.mjs` ke domain klien. Dipakai untuk
-URL kanonik dan tautan Open Graph.
+Ganti juga `site` di `astro.config.mjs` ke domain klien. Nilainya harus sama
+persis dengan alamat yang tayang, kalau tidak pratinjau tautan di WhatsApp akan
+menunjuk domain yang salah.
 
 Kalau menambah destinasi baru, `slug` di `DESTINASI` harus sama persis dengan
 field `destinasi` di berkas paket. Kalau tidak cocok, kartu destinasinya akan
