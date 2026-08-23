@@ -33,7 +33,8 @@ src/
   lib/wa.ts               tautan WhatsApp + format rupiah
   layouts/Dasar.astro     head, meta, nav, footer (semua halaman)
   components/             kartu trip, filter, seksi beranda, sprite ikon
-  pages/                  beranda, jadwal, tentang, faq, syarat
+  pages/                  beranda, tentang, faq, syarat
+  pages/paket/index.astro daftar semua paket
   pages/paket/[id].astro  halaman detail tiap paket, dibuat otomatis
   styles/style.css        seluruh CSS, belum dipecah
 public/favicon.svg
@@ -42,6 +43,43 @@ sketsa/                   mockup HTML/CSS/JS awal, disimpan sebagai referensi
 
 Halaman yang dihasilkan: lima halaman utama plus satu halaman per paket.
 Syarat & Ketentuan sengaja hanya ditautkan dari footer, tidak dari menu.
+
+## Paket layanan: basic dan premium
+
+Satu saklar di `src/data/konten.ts` menentukan versi mana yang dibangun:
+
+```ts
+export const FITUR = {
+  jadwal: true,   // false untuk klien paket basic
+};
+```
+
+| | `false` (basic) | `true` (premium) |
+|---|---|---|
+| Tanggal keberangkatan | tidak ditampilkan | ditampilkan |
+| Status tersedia/penuh | tidak ada | ada |
+| Filter | budget saja | budget, bulan, ketersediaan |
+| Form cari di hero | hilang | ada |
+| Panel pilih tanggal | diganti ajakan chat | daftar tanggal + tombol WA |
+| Tombol salin jadwal | hilang | ada |
+| Urutan kartu | termurah dulu | tanggal terdekat dulu |
+| Perlu cron harian | tidak | ya |
+
+Alasan belahannya di situ: jadwal adalah satu-satunya bagian situs yang berubah
+rutin. Klien basic tidak dapat admin panel, jadi apa pun yang perlu diperbarui
+sering tidak boleh ditampilkan.
+
+Harga di mode basic diambil dari `hargaMulai` di tiap berkas paket, bukan dari
+keberangkatan. Klien basic cukup menulis satu angka tanpa mengarang tanggal.
+
+**Hati-hati soal `hargaMulai`.** Di mode premium field ini diabaikan, karena
+harga diambil dari `keberangkatan`. Jadi kalau harga batch diubah tapi
+`hargaMulai` lupa disesuaikan, tidak ada yang rusak sekarang, tapi harganya
+langsung basi begitu situs diturunkan ke mode basic. Perbarui keduanya.
+
+Harga hardcoded tetap berarti perubahan harga jadi permintaan ke developer.
+Bedanya cuma frekuensi: tanggal berubah tiap bulan, harga mungkin setahun
+sekali. Sebaiknya jumlah perubahan per tahun yang termasuk ditulis di kontrak.
 
 ## Ganti klien
 
@@ -128,6 +166,8 @@ YAML membaca titik dua yang diikuti spasi sebagai pemisah kunci dan nilai.
 Berlaku untuk semua field, bukan cuma `isi`. Kalau ragu, beri tanda kutip.
 
 ### Jadwal lewat hilang sendiri
+
+Hanya berlaku kalau `FITUR.jadwal` bernilai `true`.
 
 Keberangkatan yang tanggalnya sudah lewat disaring **saat build**, bukan saat
 halaman dibuka. Artinya situs harus di-build ulang tiap hari lewat cron.
