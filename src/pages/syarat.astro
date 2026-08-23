@@ -1,0 +1,55 @@
+---
+import Dasar from "../layouts/Dasar.astro";
+import Ikon from "../components/Ikon.astro";
+import { BRAND, SYARAT } from "../data/konten";
+import { waLink } from "../lib/wa";
+---
+<Dasar
+  judul="Syarat & Ketentuan"
+  deskripsi={`Aturan pendaftaran, pembayaran, pembatalan, dan tanggung jawab yang berlaku untuk semua trip ${BRAND.nama}.`}
+>
+
+  <section class="seksi">
+    <div class="wadah wadah--sempit">
+
+      <div class="seksi-kepala">
+        <h1>Syarat &amp; Ketentuan</h1>
+        <p>
+          Berlaku untuk semua keberangkatan {BRAND.nama}. Dengan membayar DP, kamu
+          dianggap sudah membaca dan menyetujui yang tertulis di halaman ini.
+        </p>
+      </div>
+
+      {SYARAT.contoh && (
+        <p class="syarat__contoh">
+          <Ikon nama="perisai" />
+          <span>
+            <b>Naskah ini masih contoh.</b> Isinya belum ditinjau pemilik usaha dan belum
+            mengikat. Ganti dengan ketentuan yang benar-benar berlaku sebelum situs
+            dipakai untuk menerima pembayaran.
+          </span>
+        </p>
+      )}
+
+      <ol class="syarat">
+        {SYARAT.bagian.map((b) => (
+          <li class="syarat__bagian">
+            <h2>{b.judul}</h2>
+            {b.isi.map((p) => <p>{p}</p>)}
+          </li>
+        ))}
+      </ol>
+
+      <p class="syarat__kaki">
+        Terakhir diperbarui {SYARAT.diperbarui}. Kalau ada yang belum jelas, tanyakan
+        sebelum membayar, bukan setelahnya.
+      </p>
+
+      <a class="btn btn--wa" href={waLink("Halo, saya mau tanya soal syarat & ketentuan trip.")} target="_blank" rel="noopener">
+        <Ikon nama="wa" /> Tanya soal ketentuan
+      </a>
+
+    </div>
+  </section>
+
+</Dasar>

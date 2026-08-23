@@ -1,5 +1,5 @@
 // Konten situs di luar paket trip. Paket ada di src/content/paket/*.md.
-// Semua isi masih placeholder — ganti per klien.
+// Semua isi masih placeholder. Ganti per klien.
 
 export const FOTO = (id: string, w = 1200) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
@@ -21,15 +21,24 @@ export const BRAND = {
   waktuBalas: "biasanya di bawah 1 jam",
 };
 
-// Belum tampil di mana-mana. Disiapkan untuk blok legalitas yang mau
-// ditambahkan setelah port selesai.
+// Tampil di halaman Tentang. Field yang dikosongkan akan muncul sebagai slot
+// bertanda "belum diisi". Ini disengaja, supaya klien tahu di mana datanya masuk.
+//
+// JANGAN mengarang nomor dokumen. Nomor NIB, TDUP, atau akta yang bentuknya
+// meyakinkan tapi fiktif itu masalah lain sama sekali dari testimoni contoh.
+// Seluruh seksi ini otomatis hilang kalau `badanUsaha` kosong.
 export const LEGALITAS = {
-  badanUsaha: "",
-  nib: "",
-  tdup: "",
+  badanUsaha: "CV Ombak Lepas Nusantara",
   alamat: "",
   petaUrl: "",
-  ulasanUrl: "",
+  rekeningAtasNama: "CV Ombak Lepas Nusantara",
+  // `gambar` diisi path foto dokumen, mis. "/dokumen/nib.jpg" (taruh di public/).
+  // Kosong = tampil sebagai slot bertanda, bukan hilang.
+  dokumen: [
+    { nama: "Akta pendirian", nomor: "", keterangan: "Disahkan Kementerian Hukum RI", gambar: "" },
+    { nama: "NIB", nomor: "", keterangan: "Terbit lewat sistem OSS", gambar: "" },
+    { nama: "TDUP", nomor: "", keterangan: "Terdaftar di Dinas Pariwisata Kota Malang", gambar: "" },
+  ],
 };
 
 // Sebarannya jauh antar operator (30%, 50%, atau nominal tetap), jadi
@@ -39,7 +48,7 @@ export const KEBIJAKAN = {
   dpTenggat: "maksimal 2×24 jam setelah konfirmasi admin",
   pelunasan: "paling lambat H-7 sebelum keberangkatan",
   pembatalan:
-    "DP tidak dikembalikan, tapi bisa dipindah ke batch lain dalam 6 bulan atau dialihkan ke nama orang lain — kabari admin maksimal H-10.",
+    "DP tidak dikembalikan, tapi bisa dipindah ke batch lain dalam 6 bulan atau dialihkan ke nama orang lain. Kabari admin maksimal H-10.",
   pembatalanKami:
     "Kalau trip dibatalkan dari pihak kami (cuaca ekstrem atau kuota tidak terpenuhi), seluruh pembayaran dikembalikan 100%.",
   grupWa: "Grup WhatsApp trip dibuka H-7, info titik kumpul dikirim H-3.",
@@ -62,7 +71,7 @@ export const DESTINASI = [
 ];
 
 // `ikon` merujuk id sprite tanpa awalan "ic-".
-// Tiap poin sengaja memuat bagian yang merugikan kami sendiri — itu yang
+// Tiap poin sengaja memuat bagian yang merugikan kami sendiri, karena itu yang
 // membedakan janji dari klaim kosong.
 export const ALASAN = [
   { ikon: "orang", judul: "Maksimal 16 orang", isi: "Kuotanya nggak akan ditambah, walaupun ada yang mau bayar lebih." },
@@ -99,31 +108,129 @@ export const TESTIMONI = [
 
 export const FAQ = [
   {
-    t: "Berapa DP untuk booking dan kapan pelunasannya?",
-    j: `DP ${KEBIJAKAN.dp} untuk mengunci kursi, dibayar ${KEBIJAKAN.dpTenggat}. Pelunasan ${KEBIJAKAN.pelunasan}. Kursi baru dihitung terisi setelah DP masuk.`,
-  },
-  {
-    t: "Kalau batal ikut, DP bisa kembali?",
-    j: `${KEBIJAKAN.pembatalan} ${KEBIJAKAN.pembatalanKami}`,
-  },
-  {
-    t: "Meeting point-nya di mana?",
-    j: "Tergantung trip — titik jemput dan jamnya tertulis di tiap kartu. Detail lokasi persis, beserta share location dan nama trip leader, dikirim di grup WhatsApp H-3.",
-  },
-  {
-    t: "Apa saja yang perlu dibawa?",
-    j: "Baju ganti secukupnya, sunscreen, topi, sandal gunung atau sepatu yang nyaman, obat pribadi, powerbank, dry bag, dan uang tunai. Alat snorkeling dan pelampung sudah kami sediakan.",
+    t: "Saya berangkat sendirian, nanti gimana?",
+    j: "Separuh peserta kami memang datang sendiri. Grup WhatsApp dibuka H-7, jadi kamu sudah kenal beberapa orang sebelum ketemu di titik kumpul. Kalau tripnya menginap dan kamu sendirian, kami satukan sekamar dengan peserta lain yang sama jenis kelaminnya.",
   },
   {
     t: "Belum bisa berenang, aman ikut trip laut?",
-    j: "Aman. Pelampung wajib dipakai saat snorkeling dan selalu ada pendamping di air. Kabari saja saat pendaftaran supaya trip leader bisa perhatikan lebih.",
+    j: "Aman. Pelampung wajib dipakai saat snorkeling dan selalu ada pendamping di air. Kabari saja waktu daftar, biar trip leader bisa perhatikan lebih.",
   },
   {
-    t: "Kalau pesertanya kurang, tripnya tetap berangkat?",
-    j: "Tiap paket punya minimum peserta yang tertulis di halamannya. Kalau tidak terpenuhi sampai H-7, trip ditunda atau dipindah ke batch lain, dan seluruh pembayaran dikembalikan penuh kalau kamu tidak mau pindah.",
+    t: "Berapa DP-nya, dan apa saja yang termasuk?",
+    j: "Beda tiap trip, jadi ditulis lengkap di halaman paketnya masing-masing: titik jemput, yang termasuk dan tidak termasuk, barang bawaan, sampai aturan DP dan pembatalan. Buka paket yang kamu incar, semuanya ada di sana.",
   },
   {
-    t: "Bisa private trip atau rombongan kantor?",
-    j: "Bisa. Minimal 6 orang, tanggal dan itinerary menyesuaikan permintaan. Chat admin untuk penawaran harganya.",
+    t: "Transfernya ke mana? Perlu kirim bukti?",
+    j: "Ke rekening atas nama badan usaha kami, nomornya dikirim admin setelah kamu konfirmasi. Bukti transfer dikirim ke chat yang sama, nanti kami balas konfirmasinya. Kalau ada yang mengarahkan kamu transfer ke rekening pribadi atas nama orang, itu bukan kami.",
+  },
+  {
+    t: "Boleh bawa anak? Ada batas usia?",
+    j: "Boleh, tapi tergantung tripnya. Trip santai seperti Kepulauan Seribu dan Pahawang aman untuk anak di atas 7 tahun kalau didampingi. Trip yang ada pendakian seperti Ijen kami sarankan minimal 15 tahun. Chat dulu dan sebutkan umurnya.",
+  },
+  {
+    t: "Kalau saya telat di titik kumpul gimana?",
+    j: "Kami tunggu sampai 30 menit dari jam yang dijanjikan. Lewat itu rombongan berangkat, karena jadwal kapal dan jeep nggak bisa digeser. Kamu masih bisa menyusul sendiri ke lokasi, tapi biayanya di luar paket. Kalau tahu bakal telat, kabari secepatnya.",
+  },
+  {
+    t: "Harga bisa nego kalau rombongan?",
+    j: "Untuk open trip harganya tetap, berapa pun jumlah orangnya. Kalau rombonganmu 6 orang ke atas, biasanya lebih masuk akal ambil private trip. Tanggalnya bebas dan harganya kami hitung ulang.",
+  },
+  {
+    t: "Saya punya alergi makanan atau kondisi kesehatan tertentu.",
+    j: "Kabari waktu daftar, jangan waktu sudah di lokasi. Alergi makanan biasanya bisa diatur dengan katering. Kondisi seperti asma atau masalah jantung perlu kami tahu supaya trip leader bisa mengatur kecepatan rombongan.",
   },
 ];
+
+// -------------------------------------------------------------------
+// SYARAT & KETENTUAN
+//
+// PERINGATAN: ini satu-satunya naskah di situs yang MENCIPTAKAN KEWAJIBAN.
+// Naskah pemasaran yang belum diganti cuma bikin situs terasa generik;
+// syarat yang belum diganti mengikat klien pada janji yang mungkin tidak
+// sanggup dia penuhi. Klien wajib membaca baris per baris.
+//
+// Selama `contoh: true`, halaman menampilkan pemberitahuan bahwa isinya
+// masih contoh. Ubah ke false setelah klien meninjau dan menyetujui.
+// -------------------------------------------------------------------
+export const SYARAT = {
+  contoh: true,
+  diperbarui: "23 Agustus 2026",
+  bagian: [
+    {
+      judul: "Pendaftaran dan pembayaran",
+      isi: [
+        "Kursi baru dihitung terisi setelah DP masuk, bukan setelah chat atau janji lisan.",
+        `DP ${KEBIJAKAN.dp}, dibayar ${KEBIJAKAN.dpTenggat}. Lewat batas itu kursi dilepas ke peminat lain tanpa pemberitahuan ulang.`,
+        `Pelunasan ${KEBIJAKAN.pelunasan}. Peserta yang belum melunasi sampai batas itu dianggap membatalkan, dan DP-nya mengikuti ketentuan pembatalan di bawah.`,
+        "Pembayaran hanya diterima lewat rekening atas nama badan usaha yang tercantum di halaman Tentang. Kami tidak pernah meminta transfer ke rekening pribadi atas nama perorangan.",
+      ],
+    },
+    {
+      judul: "Pembatalan oleh peserta",
+      isi: [
+        "DP tidak dikembalikan.",
+        "DP bisa dipindah ke batch lain dalam 6 bulan, atau dialihkan ke nama orang lain, dengan mengabari admin maksimal H-10.",
+        "Kalau pembatalan terjadi setelah pelunasan, biaya yang sudah kami bayarkan ke pihak ketiga seperti kapal, penginapan, dan tiket masuk tidak bisa ditarik kembali. Sisa yang belum terpakai dikembalikan.",
+      ],
+    },
+    {
+      judul: "Pembatalan atau perubahan dari kami",
+      isi: [
+        "Kalau minimum peserta tidak terpenuhi sampai H-7, trip ditunda atau dipindah ke batch lain. Peserta boleh memilih pindah, atau meminta pengembalian penuh.",
+        `${KEBIJAKAN.pembatalanKami}`,
+        "Urutan destinasi bisa berubah menyesuaikan cuaca, arus, dan arahan syahbandar atau pengelola kawasan. Perubahan urutan bukan dasar pembatalan, dan tidak menimbulkan pengembalian biaya.",
+      ],
+    },
+    {
+      judul: "Titik kumpul dan keterlambatan",
+      isi: [
+        "Peserta ditunggu paling lama 30 menit dari jam yang tertulis di halaman paket.",
+        "Lewat itu rombongan berangkat, karena jadwal kapal dan kendaraan tidak bisa digeser. Peserta yang tertinggal boleh menyusul sendiri ke lokasi dengan biaya sendiri, dan tidak ada pengembalian biaya paket.",
+      ],
+    },
+    {
+      judul: "Kesehatan dan keselamatan",
+      isi: [
+        "Peserta wajib memberitahu kondisi kesehatan yang bisa memengaruhi keikutsertaan sebelum keberangkatan: asma, masalah jantung, kehamilan, alergi berat, atau cedera yang belum pulih.",
+        "Pelampung wajib dipakai selama kegiatan di air. Peserta yang menolak memakainya tidak diizinkan turun.",
+        "Trip leader berhak melarang peserta mengikuti kegiatan tertentu kalau kondisinya dinilai tidak aman. Keputusan ini tidak menimbulkan pengembalian biaya.",
+      ],
+    },
+    {
+      judul: "Barang bawaan",
+      isi: [
+        "Barang pribadi sepenuhnya tanggung jawab masing-masing peserta.",
+        "Kami tidak menanggung kehilangan atau kerusakan barang, termasuk barang elektronik yang terkena air.",
+      ],
+    },
+    {
+      judul: "Perilaku peserta",
+      isi: [
+        "Peserta yang mengganggu kenyamanan rombongan, dalam pengaruh alkohol atau obat terlarang, atau melanggar aturan setempat bisa dikeluarkan dari trip.",
+        "Peserta yang dikeluarkan menanggung sendiri biaya kepulangan, dan tidak ada pengembalian biaya paket.",
+      ],
+    },
+    {
+      judul: "Dokumentasi",
+      isi: [
+        "Foto dan video yang kami ambil selama trip bisa kami pakai untuk promosi di media sosial dan website.",
+        "Peserta yang tidak bersedia wajahnya dipakai cukup memberitahu sebelum keberangkatan, dan kami hormati.",
+      ],
+    },
+    {
+      judul: "Keadaan memaksa",
+      isi: [
+        "Bencana alam, kerusuhan, wabah, atau kebijakan pemerintah yang membuat trip tidak mungkin dijalankan.",
+        "Dalam keadaan ini kami mengembalikan biaya yang belum terpakai. Biaya yang sudah dibayarkan ke pihak ketiga mengikuti kebijakan pihak tersebut, dan kami bantu mengurusnya sebisa kami.",
+      ],
+    },
+    {
+      judul: "Batas tanggung jawab",
+      isi: [
+        "Kami bertanggung jawab atas pelaksanaan trip sesuai yang tertulis di halaman paket masing-masing.",
+        "Di luar itu, hal seperti kecelakaan yang bukan karena kelalaian kami, keterlambatan transportasi umum menuju titik kumpul, dan perubahan kebijakan kawasan wisata berada di luar tanggung jawab kami.",
+        "Asuransi perjalanan tersedia sebagai tambahan opsional di tiap paket, dan kami sarankan diambil.",
+      ],
+    },
+  ],
+};
