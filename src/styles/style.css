@@ -258,7 +258,7 @@ img, svg { max-width: 100%; }
   font-family: var(--font-teks); font-size: .93rem; font-weight: 500; color: var(--tinta);
   padding: 11px 34px 11px 12px; border: 1.5px solid var(--garis); border-radius: var(--radius-s);
   background-color: #fff; appearance: none; width: 100%; cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234d6a71' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235D7186' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 10px center; background-size: 16px;
 }
 .cari__medan select:focus-visible, .filter select:focus-visible { outline: 2px solid var(--aksen-500); outline-offset: 1px; }
@@ -266,7 +266,7 @@ img, svg { max-width: 100%; }
 
 /* ---------- filter di halaman jadwal ---------- */
 .filter {
-  display: grid; grid-template-columns: auto repeat(3, 1fr) auto; gap: 14px; align-items: end;
+  display: grid; grid-template-columns: repeat(3, 1fr) auto; gap: 14px; align-items: end;
   background: var(--terang-50); border: 1px solid var(--garis); border-radius: var(--radius-l);
   padding: 16px 18px; box-shadow: var(--bayang-s); margin-bottom: 16px;
 }
@@ -694,3 +694,9 @@ main { flex: 1; }
 /* kepala seksi tanpa paragraf — margin bawah h2 tidak perlu ditumpuk */
 .seksi-kepala h2:last-child { margin-bottom: 0; }
 .seksi-kaki { margin: 22px 0 0; font-size: .92rem; color: var(--tinta-lembut); }
+.chip--lain { background: var(--aksen-100); color: var(--aksen-600); }
+
+/* [hidden] kalah dari selector kelas yang menyetel display, jadi ditegaskan */
+[hidden] { display: none !important; }
+.kosong__judul { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--tinta); margin: 0 0 6px; }
+.kosong__isi { margin: 0 auto 18px; max-width: 44ch; }
