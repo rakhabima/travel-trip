@@ -1,3 +1,4 @@
+git commit -m "feat: satu kartu per tujuan, filter budget, dan blok kosong yang mengajak chat"
 ---
 import { semuaJadwal } from "../lib/paket";
 import { namaBulan } from "../lib/tanggal";
@@ -11,7 +12,7 @@ const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
   <label class="cari__medan">
     <span>Budget per orang</span>
     <select name="harga">
-      <option value="">Berapa saja</option>
+      <option value="">Semua</option>
       <option value="murah">Di bawah Rp1 juta</option>
       <option value="sedang">Rp1 – 3 juta</option>
       <option value="mahal">Di atas Rp3 juta</option>
@@ -20,15 +21,15 @@ const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
   <label class="cari__medan">
     <span>Bulan berangkat</span>
     <select name="bulan">
-      <option value="">Kapan saja</option>
+      <option value="">Semua</option>
       {bulan.map((b) => <option value={b}>{namaBulan(b)}</option>)}
     </select>
   </label>
   <label class="cari__medan">
     <span>Ketersediaan</span>
     <select name="tersedia">
-      <option value="1">Hanya yang masih tersedia</option>
-      <option value="">Tampilkan semua</option>
+      <option value="1">Tersedia</option>
+      <option value="">Semua</option>
     </select>
   </label>
   <button class="btn btn--wa cari__tombol" type="submit">

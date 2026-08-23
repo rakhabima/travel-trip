@@ -29,8 +29,8 @@ const rentang =
       <span class="eyebrow">Jadwal Trip</span>
       <h1>Semua keberangkatan yang sedang dibuka</h1>
       <p class="hero__lead">
-        {jadwal.length} tujuan, {semua.length} tanggal keberangkatan. Kursi dikunci setelah DP masuk, dan kalau ada
-        perubahan tanggal karena cuaca, kamu selalu dikabari lebih dulu.
+        {jadwal.length} tujuan dan {semua.length} tanggal keberangkatan. Kursi kamu aman setelah DP masuk. Jika ada
+        perubahan tanggal karena cuaca, kamu pasti dikabari lebih dulu.
       </p>
     </div>
   </section>
@@ -39,8 +39,8 @@ const rentang =
     <div class="wadah">
       <div class="seksi-kepala">
         <span class="eyebrow">{rentang}</span>
-        <h2>Pilih tanggalnya, sisanya dibantu lewat chat</h2>
-        <p>Harga di bawah berlaku per orang. Semua booking dan pembayaran dikoordinasikan lewat WhatsApp — tidak ada form atau pembayaran di website ini.</p>
+        <h2>Pilih tanggal keberangkatan disini</h2>
+        <p>Harga yang tertera berlaku per orang. Semua pemesanan dan pembayaran dikoordinasikan lewat WhatsApp, tidak ada form atau pembayaran di website ini.</p>
       </div>
 
       <FilterJadwal />
@@ -68,11 +68,11 @@ const rentang =
 
       <div class="dua-kolom mt-l">
         <div class="panel panel--senja">
-          <h3>Alur booking</h3>
+          <h3>Alur pemesanan</h3>
           <ol style="margin:0;padding-left:20px;color:var(--tinta-lembut);font-size:.95rem">
-            <li>Chat WhatsApp, sebutkan nama trip &amp; jumlah orang.</li>
-            <li>Admin cek sisa kuota dan kirim rincian.</li>
-            <li>DP {KEBIJAKAN.dp} untuk mengunci kursi ({KEBIJAKAN.dpTenggat}).</li>
+            <li>Chat WhatsApp, sebutkan nama trip dan jumlah orang.</li>
+            <li>Admin akan cek sisa kuota dan kirim rincian.</li>
+            <li>DP {KEBIJAKAN.dp} untuk mengamankan kursi ({KEBIJAKAN.dpTenggat}).</li>
             <li>Pelunasan {KEBIJAKAN.pelunasan}.</li>
             <li>{KEBIJAKAN.grupWa}</li>
           </ol>
@@ -80,9 +80,9 @@ const rentang =
         <div class="panel">
           <h3>Mau tanggal sendiri?</h3>
           <p style="color:var(--tinta-lembut);font-size:.95rem">
-            Semua rute di atas bisa dijalankan sebagai private trip mulai 6 orang — tanggal, itinerary,
+            Semua rute di atas bisa dijalankan sebagai private trip mulai 6 orang. Tanggal, itinerary,
             dan tipe penginapan menyesuaikan permintaan. Cocok untuk rombongan kantor, keluarga, atau
-            angkatan kuliah.
+            teman.
           </p>
           <a class="btn btn--wa" href={waLink("Halo, saya mau tanya private trip. Rencana ... orang, sekitar tanggal ... , tujuan ...")} target="_blank" rel="noopener">
             <Ikon nama="wa" /> Minta penawaran private trip
@@ -96,8 +96,8 @@ const rentang =
     <div class="wadah">
       <div class="cta">
         <div class="cta__teks">
-          <h2>Kuota berubah tiap hari</h2>
-          <p>Kursi dikunci setelah DP masuk. Kalau tanggalnya sudah pasti, lebih aman konfirmasi dulu lewat chat sebelum atur cuti dan tiket pesawat.</p>
+          <h2>Kuota berubah setiap hari</h2>
+          <p>Kursi kamu sudah aman setelah DP masuk. Kalau tanggalnya sudah pasti, lebih aman konfirmasi dulu lewat chat sebelum atur cuti dan tiket pesawat.</p>
         </div>
         <div class="cta__aksi">
           <a class="btn btn--wa" href={waLink("Halo, saya mau cek trip yang masih tersedia untuk bulan ini.")} target="_blank" rel="noopener">
