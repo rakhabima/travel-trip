@@ -110,8 +110,8 @@ bawa:
   - Sunscreen reef-safe
   - Baju ganti secukupnya
   - Obat pribadi
-  - Powerbank — listrik cottage terbatas jamnya
-  - Uang tunai — nggak ada ATM di Ora
+  - Powerbank, listrik cottage terbatas jamnya
+  - Uang tunai, nggak ada ATM di Ora
 ---
 
 Kamar-kamarnya berdiri di atas air, dan karangnya mulai beberapa meter dari

@@ -88,7 +88,7 @@ export async function jadwalPerPaket(): Promise<Jadwal[]> {
 }
 
 /**
- * Angka sisa kursi tetap disimpan di data — dipakai filter dan dipantau klien —
+ * Angka sisa kursi tetap disimpan di data. Dipakai filter dan dipantau klien,
  * tapi tidak ditampilkan. Yang muncul di layar cuma tersedia atau penuh.
  */
 export function statusBatch(b: Keberangkatan): { kelas: "tersedia" | "penuh"; teks: string } {

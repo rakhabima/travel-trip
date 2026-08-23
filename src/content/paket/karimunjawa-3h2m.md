@@ -94,5 +94,5 @@ bawa:
 ---
 
 Batch Desember sudah penuh. Kalau tetap mau ikut rute ini, chat admin untuk masuk
-waiting list — kursi kadang terbuka lagi kalau ada yang batal, dan batch berikutnya
+waiting list. Kursi kadang terbuka lagi kalau ada yang batal, dan batch berikutnya
 biasanya dibuka sekitar sebulan sebelumnya.

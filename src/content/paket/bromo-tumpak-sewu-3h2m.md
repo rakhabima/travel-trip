@@ -114,5 +114,5 @@ Dua tempat yang sebenarnya berlawanan arah, tapi masih masuk akal digabung dalam
 tiga hari kalau berangkatnya malam. Hari pertama dipakai perjalanan dan istirahat,
 jadi sunrise di hari kedua tidak dijalani dalam kondisi kurang tidur total.
 
-Lautan pasir dan Tumpak Sewu punya medan yang berbeda — satu berdebu, satu licin
+Lautan pasir dan Tumpak Sewu punya medan yang berbeda. Satu berdebu, satu licin
 dan basah. Bawa dua pasang alas kaki kalau bisa.

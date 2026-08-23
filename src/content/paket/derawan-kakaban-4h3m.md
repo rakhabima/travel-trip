@@ -112,7 +112,7 @@ bawa:
   - Baju ganti + sandal
   - Obat pribadi
   - Powerbank
-  - Uang tunai — ATM cuma ada di Berau
+  - Uang tunai, ATM cuma ada di Berau
 ---
 
 Ubur-ubur di Danau Kakaban sudah kehilangan sengatnya karena terkurung ribuan

@@ -92,7 +92,7 @@ bawa:
 ---
 
 Trip paling murah dan paling dekat yang kami jalankan. Berangkat Sabtu pagi dari
-Jakarta, balik Minggu sore — tidak perlu ambil cuti.
+Jakarta, balik Minggu sore, tanpa perlu ambil cuti.
 
 Ini yang paling sering dipilih orang yang belum pernah ikut open trip sama sekali.
 Ombaknya relatif tenang, spot snorkelingnya dangkal, dan selalu ada pendamping di air.

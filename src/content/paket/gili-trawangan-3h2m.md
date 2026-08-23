@@ -111,7 +111,7 @@ bawa:
   - Sunscreen & topi
   - Baju renang
   - Obat pribadi
-  - Uang tunai — nggak semua warung terima kartu
+  - Uang tunai, nggak semua warung terima kartu
 ---
 
 Nggak ada kendaraan bermotor di Gili Trawangan. Ke mana-mana jalan kaki, naik

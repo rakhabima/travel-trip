@@ -119,11 +119,11 @@ bawa:
   - Obat pribadi
   - Powerbank & senter kecil
   - Dry bag
-  - Uang tunai — ATM sangat terbatas
+  - Uang tunai, ATM sangat terbatas
 ---
 
 Trip termahal yang kami jalankan, dan alasannya sederhana: semua logistik di Raja
-Ampat memang mahal. Yang tertulis di atas sudah final — tidak ada biaya tambahan
+Ampat memang mahal. Yang tertulis di atas sudah final. Tidak ada biaya tambahan
 di lokasi selain pengeluaran pribadi.
 
 Homestay di sini bukan hotel. Kamar sederhana, listrik menyala terbatas, air tawar

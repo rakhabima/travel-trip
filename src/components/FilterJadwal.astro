@@ -34,7 +34,7 @@ const bulan = [...new Set(jadwal.map((j) => j.bulan))].sort();
 
 <script>
   // Kartu sudah dirender semua saat build. Skrip ini cuma menyembunyikan
-  // yang tidak cocok, tidak pernah membuat atau menghapus kartu — supaya
+  // yang tidak cocok, tidak pernah membuat atau menghapus kartu, supaya
   // tanpa JS halaman tetap menampilkan seluruh jadwal.
   const form = document.querySelector<HTMLFormElement>("[data-filter]");
   const grid = document.querySelector("[data-grid-jadwal]");

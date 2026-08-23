@@ -95,7 +95,7 @@ bawa:
   - Sunscreen & topi
   - Baju ganti
   - Obat anti mabuk laut
-  - Uang tunai — ATM jauh dari dermaga
+  - Uang tunai, ATM jauh dari dermaga
 ---
 
 Trip paling murah yang kami jalankan, dan yang paling sering dipilih orang yang

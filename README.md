@@ -1,8 +1,8 @@
 # Situs Open Trip Organizer
 
 Situs profil + jadwal untuk open trip organizer. Static site, dibangun dengan
-[Astro](https://astro.build). Tidak ada backend, tidak ada pembayaran — semua
-tombol booking mengarah ke WhatsApp.
+[Astro](https://astro.build). Tidak ada backend, tidak ada pembayaran.
+Semua tombol booking mengarah ke WhatsApp.
 
 Klien demo saat ini: **Ombak Lepas** (fiktif, isinya placeholder).
 
@@ -25,40 +25,70 @@ cache-nya basi. Hentikan server, lalu `rm -rf .astro && npm run dev`.
 ```
 src/
   content/paket/*.md      satu berkas per paket trip
-  content/artikel/*.md    artikel — belum ada isinya
+  content/artikel/*.md    artikel, belum ada isinya
   content.config.ts       skema paket & artikel
   data/konten.ts          brand, destinasi, alasan, FAQ, kebijakan DP
   lib/tanggal.ts          format tanggal Indonesia
   lib/paket.ts            query paket & keberangkatan
   lib/wa.ts               tautan WhatsApp + format rupiah
-  layouts/Dasar.astro     head, meta, nav, footer — dipakai semua halaman
+  layouts/Dasar.astro     head, meta, nav, footer (semua halaman)
   components/             kartu trip, filter, seksi beranda, sprite ikon
-  pages/                  beranda, jadwal, tentang, kontak
+  pages/                  beranda, jadwal, tentang, faq, syarat
   pages/paket/[id].astro  halaman detail tiap paket, dibuat otomatis
   styles/style.css        seluruh CSS, belum dipecah
 public/favicon.svg
 sketsa/                   mockup HTML/CSS/JS awal, disimpan sebagai referensi
 ```
 
-Halaman yang dihasilkan: empat halaman utama plus satu halaman per paket.
+Halaman yang dihasilkan: lima halaman utama plus satu halaman per paket.
+Syarat & Ketentuan sengaja hanya ditautkan dari footer, tidak dari menu.
 
 ## Ganti klien
 
 Dua tempat:
 
-1. `src/data/konten.ts` — nama usaha, nomor WA, Instagram, kota, statistik,
+1. `src/data/konten.ts`: nama usaha, nomor WA, Instagram, kota, statistik,
    destinasi, alasan, FAQ, dan kebijakan DP/pembatalan.
-2. `src/content/paket/*.md` — satu berkas per paket trip.
+2. `src/content/paket/*.md`: satu berkas per paket trip.
 
 Nomor WhatsApp cukup diubah di `BRAND.waNomor` (format `628xxx`, tanpa `+`).
 Semua tombol WA di seluruh situs ikut, lengkap dengan teks chat yang sudah terisi.
 
-Ganti juga `site` di `astro.config.mjs` ke domain klien — dipakai untuk URL
-kanonik dan tautan Open Graph.
+Ganti juga `site` di `astro.config.mjs` ke domain klien. Dipakai untuk
+URL kanonik dan tautan Open Graph.
 
 Kalau menambah destinasi baru, `slug` di `DESTINASI` harus sama persis dengan
 field `destinasi` di berkas paket. Kalau tidak cocok, kartu destinasinya akan
 terus berbunyi "Segera dibuka".
+
+## Legalitas
+
+Blok legalitas di halaman Tentang diisi dari `LEGALITAS` di `src/data/konten.ts`.
+Field yang dikosongkan tampil sebagai slot bertanda "belum diisi". Ini
+disengaja, supaya klien tahu ada yang belum lengkap. Kalau `badanUsaha` kosong, seluruh
+seksinya hilang.
+
+Foto dokumen ditaruh di `public/dokumen/`, lalu path-nya diisi ke field `gambar`:
+
+```ts
+{ nama: "NIB", nomor: "0123456789012", keterangan: "...", gambar: "/dokumen/nib.jpg" }
+```
+
+**Jangan mengarang nomor dokumen.** Nomor NIB, TDUP, atau akta yang bentuknya
+meyakinkan tapi fiktif itu masalah lain sama sekali dari testimoni contoh.
+Biarkan kosong sampai klien mengirim datanya.
+
+### Peringatan sebelum mengunggah foto dokumen
+
+Dokumen resmi memuat data yang ikut tersebar begitu fotonya dipasang di web:
+
+- Akta pendirian: nama lengkap dan alamat rumah pendiri, kadang tanda tangan
+- NPWP: nomor pajak
+- NIB: kadang memuat NIK
+
+Memasang dokumen legalitas itu lazim di pasar ini dan memang menaikkan
+kepercayaan. Tapi sampaikan ke klien apa yang sedang dia terbitkan, dan minta
+dia menyensor bagian yang tidak perlu terlihat sebelum mengirim berkasnya.
 
 ## Model paket
 
@@ -78,7 +108,7 @@ keberangkatan:
 Tanggal tampil (`12 – 15 September 2026`) diturunkan dari `mulai`/`selesai`,
 tidak ditulis manual.
 
-Biaya dipisah tiga: `include`, `exclude`, dan `opsional` — yang terakhir untuk
+Biaya dipisah tiga: `include`, `exclude`, dan `opsional`. Yang terakhir untuk
 tambahan yang dibayar peserta sendiri di lokasi, seperti sewa alat atau asuransi.
 
 `titikKumpul` berupa daftar, dan `tambahan` di tiap titik bisa negatif kalau
@@ -90,7 +120,7 @@ Jebakan YAML yang membuat build gagal, dan pesan errornya tidak menunjuk
 kalimat penyebabnya:
 
 ```yaml
-isi: Keliling darat: Bukit Love dan pantai      # SALAH — build gagal
+isi: Keliling darat: Bukit Love dan pantai      # SALAH, build gagal
 isi: "Keliling darat: Bukit Love dan pantai"    # benar
 ```
 
@@ -100,8 +130,8 @@ Berlaku untuk semua field, bukan cuma `isi`. Kalau ragu, beri tanda kutip.
 ### Jadwal lewat hilang sendiri
 
 Keberangkatan yang tanggalnya sudah lewat disaring **saat build**, bukan saat
-halaman dibuka. Artinya situs harus di-build ulang tiap hari lewat cron —
-kalau tidak, jadwal lama akan tetap tampil sampai ada perubahan berikutnya.
+halaman dibuka. Artinya situs harus di-build ulang tiap hari lewat cron.
+Kalau tidak, jadwal lama akan tetap tampil sampai ada perubahan berikutnya.
 
 Paket yang seluruh keberangkatannya sudah lewat hilang dari daftar, tapi
 halaman detailnya tetap ada dan akan melempar error saat build. Tambah tanggal
@@ -119,7 +149,7 @@ sementara status tersedia/penuh cuma berubah sekali per batch.
 ## Foto
 
 Masih memakai Unsplash lewat hotlink. Ganti dengan dokumentasi trip asli sebelum
-dipakai klien sungguhan — dua tempat: field `foto:` di berkas paket, dan
+dipakai klien sungguhan. Dua tempat: field `foto:` di berkas paket, dan
 `<img src="https://images.unsplash.com/...">` langsung di `src/pages/*.astro`.
 
 ## Yang sengaja tidak ada

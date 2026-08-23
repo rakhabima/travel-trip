@@ -22,12 +22,12 @@ const terdekat = batch[0];
 const termurah = batch.length ? Math.min(...batch.map((b) => b.harga)) : null;
 const bervariasi = new Set(batch.map((b) => b.harga)).size > 1;
 
-// Teks polos untuk tombol salin — dipakai apa adanya di grup WhatsApp.
+// Teks polos untuk tombol salin, dipakai apa adanya di grup WhatsApp.
 const teksJadwal = [
-  `Jadwal ${d.nama} — ${d.durasi}`,
+  `Jadwal ${d.nama} · ${d.durasi}`,
   ...batch.map((b) => {
     const k = b.kuotaSisa > 0 ? "tersedia" : "PENUH";
-    return `• ${rentangTanggal(b.mulai, b.selesai)} — ${rupiah(b.harga)} (${k})`;
+    return `• ${rentangTanggal(b.mulai, b.selesai)} · ${rupiah(b.harga)} (${k})`;
   }),
 ].join("\n");
 
@@ -35,7 +35,7 @@ const teksItinerary = [
   `Itinerary ${d.nama} (${d.durasi})`,
   ...d.itinerary.flatMap((h) => [
     "",
-    `${h.label} — ${h.tema}`,
+    `${h.label} · ${h.tema}`,
     ...h.agenda.map((a) => `${a.jam}  ${a.isi}`),
   ]),
 ].join("\n");

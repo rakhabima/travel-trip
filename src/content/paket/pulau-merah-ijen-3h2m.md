@@ -103,7 +103,7 @@ itinerary:
       - jam: "19.00"
         isi: Sampai Stasiun Malang. Trip selesai.
 bawa:
-  - Jaket tebal — Ijen dingin sekali dini hari
+  - Jaket tebal, Ijen dingin sekali dini hari
   - Sepatu trekking, bukan sandal
   - Masker cadangan
   - Senter kepala kalau punya

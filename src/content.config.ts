@@ -2,7 +2,7 @@ import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 // Satu paket bisa punya banyak tanggal berangkat. Harga dan kuota melekat di
-// tanggalnya, bukan di paketnya — batch high season bisa lebih mahal.
+// tanggalnya, bukan di paketnya, karena batch high season biasanya lebih mahal.
 const keberangkatan = z.object({
   mulai: z.date(),
   selesai: z.date(),
@@ -13,7 +13,7 @@ const keberangkatan = z.object({
   kuotaSisa: z.number(),
 });
 
-// `tambahan` bisa negatif — Muara Angke lebih murah dari Ancol.
+// `tambahan` bisa negatif. Muara Angke lebih murah dari Ancol.
 const titikKumpul = z.object({
   nama: z.string(),
   jam: z.string().optional(),

@@ -95,7 +95,7 @@ itinerary:
         isi: Drop off bandara. Trip selesai.
 bawa:
   - Sunscreen & topi
-  - Sandal yang nggak licin — batunya basah
+  - Sandal yang nggak licin, batunya basah
   - Baju ganti
   - Uang tunai secukupnya
 ---

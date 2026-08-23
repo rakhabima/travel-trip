@@ -87,5 +87,5 @@ Buat yang cutinya mepet atau sudah terlanjur di Bali dan baru kepikiran menyeber
 Berangkat 07.30 dari Sanur, balik sekitar 17.00.
 
 Perlu dicatat: turun ke pantai Kelingking itu tangga curam sekitar 45 menit sekali
-jalan. Tidak wajib — banyak yang cukup menikmati dari viewpoint atas, dan itu
+jalan. Tidak wajib. Banyak yang cukup menikmati dari viewpoint atas, dan itu
 memang spot fotonya.

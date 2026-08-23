@@ -71,7 +71,7 @@ itinerary:
       - jam: "14.00"
         isi: Boarding kapal phinisi, pembagian kabin, safety briefing.
       - jam: "15.30"
-        isi: Sailing ke Pulau Kelor — trekking singkat 20 menit ke puncak.
+        isi: Sailing ke Pulau Kelor, trekking singkat 20 menit ke puncak.
       - jam: "17.30"
         isi: Sunset di Pulau Kalong, menunggu ribuan kelelawar terbang.
       - jam: "19.00"
@@ -103,7 +103,7 @@ itinerary:
       - jam: "08.00"
         isi: Snorkeling bareng pari manta (durasi menyesuaikan arus).
       - jam: "10.30"
-        isi: Singgah di Taka Makassar — gundukan pasir di tengah laut.
+        isi: Singgah di Taka Makassar, gundukan pasir di tengah laut.
       - jam: "12.00"
         isi: Makan siang, lanjut snorkeling di Pulau Kanawa.
       - jam: "15.30"
@@ -121,7 +121,7 @@ itinerary:
       - jam: "10.00"
         isi: Belanja oleh-oleh di kota Labuan Bajo (opsional).
       - jam: "12.00"
-        isi: Drop off Bandara Komodo. Trip selesai — sampai jumpa di trip berikutnya!
+        isi: Drop off Bandara Komodo. Trip selesai. Sampai jumpa di trip berikutnya!
 
 bawa:
   - Sunscreen & topi
@@ -134,7 +134,7 @@ bawa:
 
 Empat hari yang dihabiskan hampir seluruhnya di atas air. Kapal phinisi jadi
 penginapan sekaligus kendaraan, jadi tidak ada acara bongkar-pasang koper tiap
-pagi — bangun, sarapan, dan pulau berikutnya sudah di depan mata.
+pagi. Bangun, sarapan, dan pulau berikutnya sudah di depan mata.
 
 Rute ini cocok untuk yang baru pertama ke Flores. Trekking paling berat cuma
 45 menit di Padar, dan semua sesi snorkeling didampingi. Yang belum bisa
