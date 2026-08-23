@@ -144,7 +144,7 @@ const teksItinerary = [
               <div class="paket__h2-baris">
                 <h2 class="paket__h2">Itinerary</h2>
                 <button class="btn btn--garis btn--kecil salin" type="button" data-salin={teksItinerary}>
-                  <Ikon nama="foto" /> Salin itinerary
+                  <Ikon nama="salin" /> Salin itinerary
                 </button>
               </div>
               <div class="itin">
@@ -232,7 +232,7 @@ const teksItinerary = [
             </ul>
 
             <button class="btn btn--garis btn--blok btn--kecil salin" type="button" data-salin={teksJadwal}>
-              <Ikon nama="kalender" /> Salin jadwal
+              <Ikon nama="salin" /> Salin jadwal
             </button>
 
             <a class="btn btn--wa btn--blok" href={waLink(waPaket(d.nama))} target="_blank" rel="noopener" style="margin-top:10px">
@@ -245,6 +245,16 @@ const teksItinerary = [
       </div>
     </div>
   </section>
+
+  <div class="paket-bar">
+    <div class="paket-bar__harga">
+      <span class="paket-bar__label">{bervariasi ? "Mulai dari" : "Per orang"}</span>
+      <span class="paket-bar__nilai">{termurah !== null ? rupiah(termurah) : "—"}</span>
+    </div>
+    <a class="btn btn--wa" href={waLink(waPaket(d.nama))} target="_blank" rel="noopener">
+      <Ikon nama="wa" /> Tanya trip ini
+    </a>
+  </div>
 
 </Dasar>
 

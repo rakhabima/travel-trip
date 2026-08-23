@@ -700,3 +700,28 @@ main { flex: 1; }
 [hidden] { display: none !important; }
 .kosong__judul { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--tinta); margin: 0 0 6px; }
 .kosong__isi { margin: 0 auto 18px; max-width: 44ch; }
+
+/* ---------- bar aksi di HP ---------- */
+/* Di desktop panel harga sudah menempel mengikuti scroll, jadi bar ini
+   cuma muncul di lebar tempat panel itu jatuh ke bawah halaman. */
+.paket-bar { display: none; }
+
+@media (max-width: 900px) {
+  .paket-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    background: rgba(251,253,254,.97); backdrop-filter: blur(10px);
+    border-top: 1px solid var(--garis);
+    padding: 11px 18px calc(11px + env(safe-area-inset-bottom));
+    box-shadow: 0 -8px 24px -18px rgba(27,43,58,.5);
+  }
+  .paket-bar__harga { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+  .paket-bar__label { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-lembut); }
+  .paket-bar__nilai { font-size: 1.2rem; font-weight: 800; letter-spacing: -.03em; color: var(--gelap-900); font-feature-settings: "tnum" 1; }
+  .paket-bar .btn { flex: none; }
+
+  /* ruang supaya bar tidak menutupi ujung footer, dan tombol WA melayang
+     dimatikan supaya tidak bertumpuk dengan bar */
+  body:has(.paket-bar) { padding-bottom: 76px; }
+  body:has(.paket-bar) .wa-apung { display: none; }
+}
