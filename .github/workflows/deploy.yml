@@ -1,0 +1,42 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+  # Keberangkatan yang sudah lewat disaring saat build, bukan saat halaman dibuka.
+  # Tanpa build harian, tanggal kedaluwarsa tetap nongkrong di situs.
+  schedule:
+    - cron: "0 21 * * *" # 04.00 WIB
+
+  # Untuk deploy manual dari tab Actions tanpa harus push.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Push beruntun tidak perlu antre, yang terbaru saja yang menang.
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # Dikunci supaya build hari ini dan build enam bulan lagi sama hasilnya.
+          wranglerVersion: "4.125.0"
