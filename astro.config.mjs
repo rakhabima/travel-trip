@@ -1,13 +1,14 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 
-// `site` dipakai untuk URL kanonik, sitemap, dan tautan Open Graph (B2, B4, B5).
-// Ganti ke domain klien saat situsnya dipasang.
+// Dipakai untuk URL kanonik dan tautan Open Graph. Harus sama persis dengan
+// alamat situs yang tayang, kalau tidak pratinjau tautan di WhatsApp akan
+// menunjuk domain yang salah. Ganti ke domain klien saat situsnya dipasang.
 export default defineConfig({
-  site: "https://contoh.ombaklepas.id",
+  site: "https://travel-trip.pages.dev",
   output: "static",
   build: {
-    // URL rapi tanpa ".html" — B5
+    // URL rapi tanpa ".html"
     format: "directory",
   },
 });
