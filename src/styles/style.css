@@ -193,7 +193,9 @@ img, svg { max-width: 100%; }
 .hero__grid {
   position: relative; display: grid; grid-template-columns: 1.02fr .98fr;
   gap: clamp(30px, 5vw, 64px); align-items: center;
-  padding: clamp(44px, 5vw, 64px) 0 clamp(48px, 5.5vw, 72px);
+  /* padding-block, bukan shorthand. Elemen ini juga ber-kelas .wadah, dan
+     shorthand akan menimpa padding-inline dari sana jadi nol. */
+  padding-block: clamp(44px, 5vw, 64px) clamp(48px, 5.5vw, 72px);
 }
 /* beri ruang ekstra saat ada form pencarian, supaya tidak tertimpa trust bar */
 .hero__grid:has(.cari) { padding-bottom: clamp(68px, 7vw, 96px); }
@@ -230,7 +232,7 @@ img, svg { max-width: 100%; }
   background: linear-gradient(100deg, rgba(16,28,39,.94) 12%, rgba(16,28,39,.78) 48%, rgba(16,28,39,.42));
 }
 .hero--halaman .hero__isi {
-  padding: clamp(52px, 7vw, 86px) 0 clamp(56px, 7vw, 90px);
+  padding-block: clamp(52px, 7vw, 86px) clamp(56px, 7vw, 90px);
 }
 .hero--halaman .hero__isi > * { max-width: 660px; }
 .hero--halaman h1 { font-size: clamp(1.95rem, 3.9vw, 2.85rem); }
@@ -299,7 +301,9 @@ img, svg { max-width: 100%; }
 .trust__label { font-size: .82rem; color: var(--tinta-lembut); line-height: 1.4; }
 
 /* ---------- kartu trip ---------- */
-.grid-trip { display: grid; grid-template-columns: repeat(auto-fill, minmax(305px, 1fr)); gap: 24px; }
+/* min() supaya kolomnya menyerah saat layar lebih sempit dari 305px. Tanpa itu
+   kartunya memaksa lebar 305px dan halaman jadi bisa digeser ke samping. */
+.grid-trip { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(305px, 100%), 1fr)); gap: 24px; }
 
 .kartu {
   display: flex; flex-direction: column; background: var(--terang-50);
