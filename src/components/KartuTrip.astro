@@ -1,9 +1,10 @@
 ---
 import { FITUR } from "../data/konten";
-import { batchAktif, batchTerdekat, catatanHarga, hargaMulaiDari, hargaBervariasi, masihTersedia, type Paket } from "../lib/paket";
+import { batchAktif, catatanHarga, hargaMulaiDari, hargaBervariasi, masihTersedia, type Paket } from "../lib/paket";
 import { kunciBulan } from "../lib/tanggal";
 import { rupiah } from "../lib/wa";
 import Ikon from "./Ikon.astro";
+import Manifes from "./Manifes.astro";
 
 interface Props {
   paket: Paket;
@@ -12,14 +13,16 @@ interface Props {
 const { paket } = Astro.props;
 const d = paket.data;
 
+// Dua baris cukup untuk kartu. Sisanya dihitung jadi satu keterangan di kaki,
+// supaya tinggi kartu tetap sejajar dalam grid berapa pun jumlah batch-nya.
+const BARIS_KARTU = 2;
+
 const batch = batchAktif(paket);
-const terdekat = batchTerdekat(paket);
-const tanggalLain = Math.max(batch.length - 1, 0);
+const tanggalLain = Math.max(batch.length - BARIS_KARTU, 0);
 const tersedia = masihTersedia(paket);
 
 const harga = hargaMulaiDari(paket);
 const mulaiDari = hargaBervariasi(paket);
-const coret = terdekat?.data.hargaCoret;
 
 // Atribut filter. Tanpa jadwal cuma harga yang dipakai.
 const bulanPaket = [...new Set(batch.map((b) => kunciBulan(b.mulai)))].join(" ");
@@ -39,14 +42,11 @@ const bulanPaket = [...new Set(batch.map((b) => kunciBulan(b.mulai)))].join(" ")
   </div>
 
   <div class="kartu__isi">
-    {FITUR.jadwal && terdekat && (
-      <div class="kartu__chip">
-        <span class="chip chip--tanggal">{terdekat.tanggal}</span>
-        {tanggalLain > 0 && <span class="chip chip--lain">+{tanggalLain} tanggal lagi</span>}
-        <span class={`chip chip--${tersedia ? "tersedia" : "penuh"}`}>
-          {tersedia ? "TERSEDIA" : "KUOTA PENUH"}
-        </span>
-      </div>
+    <h3 class="kartu__judul">{d.nama}</h3>
+    <p class="kartu__ringkas">{d.ringkas}</p>
+
+    {FITUR.jadwal && batch.length > 0 && (
+      <Manifes batch={batch} batas={BARIS_KARTU} />
     )}
 
     {!FITUR.jadwal && (
@@ -56,17 +56,18 @@ const bulanPaket = [...new Set(batch.map((b) => kunciBulan(b.mulai)))].join(" ")
       </div>
     )}
 
-    <h3 class="kartu__judul">{d.nama}</h3>
-    <p class="kartu__ringkas">{d.ringkas}</p>
-
     <div class="kartu__kaki">
-      <div class="kartu__harga">
-        {coret && <s>{rupiah(coret)}</s>}
-        {harga !== null
-          ? <strong>{mulaiDari ? `mulai ${rupiah(harga)}` : rupiah(harga)}</strong>
-          : <strong class="kartu__harga--tanya">Tanya harga</strong>}
-      </div>
-      <span class="kartu__perorang">per orang</span>
+      {FITUR.jadwal ? (
+        tanggalLain > 0 && <span class="kartu__perorang">+{tanggalLain} tanggal lagi</span>
+      ) : (
+        <div class="kartu__harga">
+          {harga !== null
+            ? <strong>{mulaiDari ? `mulai ${rupiah(harga)}` : rupiah(harga)}</strong>
+            : <strong class="kartu__harga--tanya">Tanya harga</strong>}
+          <span class="kartu__perorang">{catatanHarga(paket) || "per orang"}</span>
+        </div>
+      )}
+      <span class="kartu__tautan">Lihat detail <Ikon nama="panah" /></span>
     </div>
   </div>
 </a>

@@ -442,13 +442,10 @@ img, svg { max-width: 100%; }
    jadi ruas-ruas supaya terbaca sebagai kursi, bukan progress bar. */
 .gauge {
   display: inline-block; vertical-align: -1px;
-  width: 74px; height: 9px; border: 1px solid var(--tinta);
+  width: 68px; height: 10px; border: 1px solid var(--tinta);
   background: var(--kertas); margin-right: 8px;
 }
-.gauge__isi {
-  height: 100%; background: var(--tersedia);
-  background-image: repeating-linear-gradient(90deg, transparent 0 3px, var(--kertas-putih) 3px 4px);
-}
+.gauge__isi { display: block; height: 100%; background: var(--tersedia); }
 .gauge--kritis .gauge__isi { background-color: var(--sinyal); }
 .gauge--penuh .gauge__isi { background-color: var(--penuh); }
 
