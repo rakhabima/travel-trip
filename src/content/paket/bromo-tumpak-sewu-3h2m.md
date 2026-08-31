@@ -5,7 +5,7 @@ destinasi: bromo
 durasi: 3 hari 2 malam
 level: Sedang
 foto: https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Sunrise Penanjakan, lautan pasir, lanjut air terjun Tumpak Sewu dan Goa Tetes.
+ringkas: Sunrise dari Penanjakan, lautan pasir Bromo, dilanjutkan air terjun Tumpak Sewu dan Goa Tetes.
 highlight:
   - Sunrise Penanjakan
   - Jeep lautan pasir

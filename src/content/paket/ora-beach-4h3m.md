@@ -5,7 +5,7 @@ destinasi: ora
 durasi: 4 hari 3 malam
 level: Sedang
 foto: https://images.unsplash.com/photo-1590523278191-995cbcda646b?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Penginapan di atas air menghadap tebing karst, dengan terumbu karang yang mulai tepat di bawah lantai kamar.
+ringkas: Menginap di cottage terapung yang menghadap tebing karst, dengan terumbu karang yang dimulai tepat di bawah lantai kamar.
 highlight:
   - Cottage di atas air
   - Terumbu karang tepat di bawah kamar

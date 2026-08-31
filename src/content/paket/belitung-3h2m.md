@@ -5,7 +5,7 @@ destinasi: belitung
 durasi: 3 hari 2 malam
 level: Santai
 foto: https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Batu granit raksasa di Pulau Lengkuas, mercusuar Belanda, dan pantai-pantai yang airnya bening sampai dasar.
+ringkas: Batu granit raksasa di Pulau Lengkuas, mercusuar peninggalan Belanda, dan laut yang jernih hingga terlihat dasarnya.
 highlight:
   - Mercusuar Pulau Lengkuas
   - Batu granit Tanjung Tinggi

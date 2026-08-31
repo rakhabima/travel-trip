@@ -89,17 +89,17 @@ export const DESTINASI = [
 // Tiap poin sengaja memuat bagian yang merugikan kami sendiri, karena itu yang
 // membedakan janji dari klaim kosong.
 export const ALASAN = [
-  { ikon: "orang", judul: "Maksimal 16 orang", isi: "Kuotanya nggak akan ditambah, walaupun ada yang mau bayar lebih." },
-  { ikon: "dompet", judul: "Harga yang tertulis adalah harga akhir", isi: "Biaya di luar tanggungan kami tertulis di halaman paketnya, bukan disebut waktu kamu sudah berangkat." },
-  { ikon: "perisai", judul: "Uang kamu tidak hangus", isi: "Kalau nggak memungkinkan untuk berangkat, rutenya diubah atau tripnya ditunda. Uang kamu aman." },
-  { ikon: "chat", judul: "Yang balas chat orangnya", isi: "Pesan kamu langsung masuk ke kami, bukan bot, bukan CS." },
-  { ikon: "foto", judul: "Dokumentasi nggak nambah biaya", isi: "Foto dibagikan maksimal 7 hari setelah trip. Kalau lewat, tagih saja." },
-  { ikon: "kompas", judul: "Kru dan guide warga lokal", isi: "Kapal, jeep, dan homestay dari partner yang sudah lama kami pakai, bukan hanya cari yang paling murah." },
+  { ikon: "orang", judul: "Maksimal 16 orang", isi: "Semua perjalanan maksimal 16 orang, kecuali ada perjalanan privat dengan kami." },
+  { ikon: "dompet", judul: "Harga yang tertulis adalah harga akhir", isi: "Semua biaya sudah tercantum jelas di setiap halaman paket liburan." },
+  { ikon: "perisai", judul: "Uang kamu tidak hangus", isi: "Uang tetap aman jika ada kondisi yang mengganggu keberangkatan, baik rute maupun jadwal perjalanan." },
+  { ikon: "chat", judul: "Yang balas chat orangnya", isi: "Setiap chat masuk langsung dibalas oleh kami." },
+  { ikon: "foto", judul: "Dokumentasi nggak nambah biaya", isi: "Seluruh dokumentasi kami bagikan paling lambat 7 hari setelah trip selesai." },
+  { ikon: "kompas", judul: "Kru dan guide warga lokal", isi: "Kapal, jeep, dan homestay dari partner lokal yang sudah lama bekerja sama dengan kami, bukan sekadar pilihan termurah yang kami temukan di lapangan." },
 ];
 
 export const LANGKAH = [
-  { no: "01", judul: "Pilih tripnya", isi: "Buka halaman Paket Trip, lihat rincian dan rundown hariannya, lalu pilih yang paling pas." },
-  { no: "02", judul: "Chat dan amankan kursi", isi: `Admin cek kuota dan kirim rincian. DP ${KEBIJAKAN.dp} untuk mengunci kursi.` },
+  { no: "01", judul: "Pilih tripnya", isi: "Buka halaman Paket Trip, cek rincian harga dan rundown hariannya, lalu pilih yang paling sesuai." },
+  { no: "02", judul: "Chat dan amankan kursi", isi: `Admin memeriksa ketersediaan kursi dan mengirimkan rincian lengkap. DP ${KEBIJAKAN.dp} mengunci kursimu.` },
   { no: "03", judul: "Berangkat", isi: `Pelunasan ${KEBIJAKAN.pelunasan}. ${KEBIJAKAN.grupWa}` },
 ];
 

@@ -5,7 +5,7 @@ destinasi: raja-ampat
 durasi: 5 hari 4 malam
 level: Sedang
 foto: https://images.unsplash.com/photo-1570789210967-2cac24afeb00?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Piaynemo, Telaga Bintang, Arborek, dan spot snorkeling terbaik di Waigeo bagian selatan.
+ringkas: Piaynemo, Telaga Bintang, Kampung Arborek, dan spot-spot snorkeling terbaik di Waigeo bagian selatan.
 highlight:
   - Puncak Piaynemo
   - Homestay tepi laut

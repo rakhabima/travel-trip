@@ -5,7 +5,7 @@ destinasi: banyuwangi
 durasi: 3 hari 2 malam
 level: Menantang
 foto: https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Api biru Kawah Ijen dini hari, lalu turun ke Pulau Merah buat sunset dan ombak pelan.
+ringkas: Menyaksikan api biru Kawah Ijen dini hari, dilanjutkan sunset dan ombak tenang di Pulau Merah.
 highlight:
   - Api biru Kawah Ijen
   - Sunset Pulau Merah

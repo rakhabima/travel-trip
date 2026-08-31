@@ -5,7 +5,7 @@ destinasi: karimunjawa
 durasi: 3 hari 2 malam
 level: Santai
 foto: https://images.unsplash.com/photo-1619017107453-3d950380f0a9?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Snorkeling Menjangan Kecil, penangkaran hiu, sunset Bukit Love. Batch ini sudah penuh.
+ringkas: Snorkeling di Menjangan Kecil, mengunjungi penangkaran hiu, dan sunset dari Bukit Love.
 highlight:
   - Penangkaran hiu
   - Sunset Bukit Love

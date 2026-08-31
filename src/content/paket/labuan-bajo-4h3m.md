@@ -7,7 +7,7 @@ level: Santai
 tipe: Open Trip
 unggulan: true
 foto: https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Sailing 3 hari 2 malam ke Padar, Pink Beach, Manta Point, plus Komodo. Kapal phinisi sharing cabin.
+ringkas: Sailing tiga hari dua malam menyusuri Padar, Pink Beach, dan Manta Point, ditutup dengan pencarian komodo di habitat aslinya. Kabin sharing di atas kapal phinisi.
 highlight:
   - Sunrise Pulau Padar
   - Snorkeling Manta Point

@@ -5,7 +5,7 @@ destinasi: gili
 durasi: 3 hari 2 malam
 level: Santai
 foto: https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Tiga gili dalam sekali jalan, snorkeling bareng penyu, dan sunset dari sisi barat Trawangan.
+ringkas: Menjelajahi tiga gili dalam satu perjalanan, snorkeling ditemani penyu, dan sunset dari sisi barat Trawangan.
 highlight:
   - Snorkeling bareng penyu
   - Hopping Trawangan, Meno, Air
