@@ -703,7 +703,7 @@ img, svg { max-width: 100%; }
 .jemput li:last-child { border-bottom: 1px solid var(--garis); }
 .jemput__nama { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
 .jemput__jam { font-family: var(--font-data); font-size: .82rem; color: var(--tinta-600); }
-.jemput__biaya { font-family: var(--font-data); font-size: .84rem; color: var(--sinyal); white-space: nowrap; }
+.jemput__biaya { font-family: var(--font-data); font-size: .84rem; color: var(--tinta-600); white-space: nowrap; }
 
 .fasilitas { display: grid; grid-template-columns: repeat(auto-fit, minmax(228px, 1fr)); gap: 18px; }
 

@@ -7,7 +7,7 @@ import Langkah from "../components/Langkah.astro";
 import Testimoni from "../components/Testimoni.astro";
 import FormCari from "../components/FormCari.astro";
 import Ikon from "../components/Ikon.astro";
-import { BRAND, FITUR } from "../data/konten";
+import { BRAND, DESTINASI, FITUR, LANGKAH, TESTIMONI } from "../data/konten";
 import { jumlahKeberangkatan, semuaPaket } from "../lib/paket";
 import { batchTerdekat } from "../lib/paket";
 import { waLink } from "../lib/wa";
@@ -92,6 +92,7 @@ const jumlahBatch = await jumlahKeberangkatan();
   <section class="seksi">
     <div class="wadah">
       <div class="seksi-kepala">
+        <span class="eyebrow">Jadwal <b>{FITUR.jadwal ? `${jumlahBatch} keberangkatan` : `${paket.length} trip`}</b></span>
         <h2>{FITUR.jadwal ? "Berangkat dalam waktu dekat" : "Trip yang kami jalankan"}</h2>
       </div>
 
@@ -110,6 +111,7 @@ const jumlahBatch = await jumlahKeberangkatan();
   <section class="seksi seksi--rapat">
     <div class="wadah">
       <div class="seksi-kepala">
+        <span class="eyebrow">Destinasi <b>{DESTINASI.length} wilayah</b></span>
         <h2>Mau jalan ke mana?</h2>
       </div>
       <Destinasi />
@@ -128,6 +130,7 @@ const jumlahBatch = await jumlahKeberangkatan();
   <section class="seksi seksi--rapat">
     <div class="wadah">
       <div class="seksi-kepala">
+        <span class="eyebrow">Alur <b>{LANGKAH.length} langkah</b></span>
         <h2>Cara booking</h2>
       </div>
       <Langkah />
@@ -138,6 +141,7 @@ const jumlahBatch = await jumlahKeberangkatan();
   <section class="seksi seksi--rapat">
     <div class="wadah">
       <div class="seksi-kepala">
+        <span class="eyebrow">Ulasan <b>{TESTIMONI.length} peserta</b></span>
         <h2>Kata mereka yang sudah ikut</h2>
       </div>
       <Testimoni batas={3} />
