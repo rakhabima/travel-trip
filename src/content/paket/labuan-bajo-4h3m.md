@@ -7,7 +7,7 @@ level: Santai
 tipe: Open Trip
 unggulan: true
 foto: https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Sailing tiga hari dua malam menyusuri Padar, Pink Beach, dan Manta Point, ditutup dengan pencarian komodo di habitat aslinya. Kabin sharing di atas kapal phinisi.
+ringkas: "Berlayar empat hari, trekking Pulau Padar, dan lompat dari dek di Pink Beach."
 highlight:
   - Sunrise Pulau Padar
   - Snorkeling Manta Point
@@ -135,10 +135,4 @@ bawa:
   - Uang tunai secukupnya
 ---
 
-Empat hari yang dihabiskan hampir seluruhnya di atas air. Kapal phinisi jadi
-penginapan sekaligus kendaraan, jadi tidak ada acara bongkar-pasang koper tiap
-pagi. Bangun, sarapan, dan pulau berikutnya sudah di depan mata.
-
-Rute ini cocok untuk yang baru pertama ke Flores. Trekking paling berat cuma
-45 menit di Padar, dan semua sesi snorkeling didampingi. Yang belum bisa
-berenang tetap bisa ikut semua spot dengan pelampung.
+Ini adalah perjalanan mengarungi lautan purba tempat kadal raksasa terakhir di bumi tinggal. Berlayar selama empat hari dengan kapal, lo akan dibangunkan oleh matahari terbit langsung dari balik kabin. Trekking singkat ke puncak Pulau Padar akan membayar semua rasa lelah dengan pemandangan tiga teluk ikonik yang megah. Dan saat kapal bersandar di Manta Point atau Pink Beach, lo tinggal lompat dari dek dan langsung menyatu dengan birunya laut Flores.

@@ -5,7 +5,7 @@ destinasi: raja-ampat
 durasi: 5 hari 4 malam
 level: Sedang
 foto: https://images.unsplash.com/photo-1570789210967-2cac24afeb00?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Piaynemo, Telaga Bintang, Kampung Arborek, dan spot-spot snorkeling terbaik di Waigeo bagian selatan.
+ringkas: "Lima hari menyusuri tebing karang Wayag dan Piaynemo, menyelam di laut terkaya di bumi."
 highlight:
   - Puncak Piaynemo
   - Homestay tepi laut
@@ -125,9 +125,4 @@ bawa:
   - Uang tunai, ATM sangat terbatas
 ---
 
-Trip termahal yang kami jalankan, dan alasannya sederhana: semua logistik di Raja
-Ampat memang mahal. Yang tertulis di atas sudah final. Tidak ada biaya tambahan
-di lokasi selain pengeluaran pribadi.
-
-Homestay di sini bukan hotel. Kamar sederhana, listrik menyala terbatas, air tawar
-seadanya. Itu bagian dari pengalamannya, tapi lebih baik tahu sebelum berangkat.
+Ini adalah puncak dari segala petualangan laut, destinasi impian yang akhirnya ada di depan mata lo. Lima hari menyusuri kepulauan magis di Papua Barat Daya, menembus labirin tebing karang Wayag dan Piaynemo yang menjulang gagah seolah menjaga lautan. Di bawah lautnya, lo akan menyelam dalam salah satu ekosistem paling kaya di planet ini. Setiap sudutnya terasa belum tersentuh. Ini bukan sekadar trip liburan, ini perjalanan yang mengubah cara lo melihat keajaiban alam Indonesia.

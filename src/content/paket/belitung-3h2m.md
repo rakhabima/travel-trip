@@ -5,7 +5,7 @@ destinasi: belitung
 durasi: 3 hari 2 malam
 level: Santai
 foto: https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Batu granit raksasa di Pulau Lengkuas, mercusuar peninggalan Belanda, dan laut yang jernih hingga terlihat dasarnya.
+ringkas: "Island hopping santai di antara batu granit raksasa dan perairan toska."
 highlight:
   - Mercusuar Pulau Lengkuas
   - Batu granit Tanjung Tinggi
@@ -103,8 +103,4 @@ bawa:
   - Uang tunai secukupnya
 ---
 
-Batu granitnya yang bikin Belitung beda. Bongkahan sebesar rumah, menumpuk di
-garis pantai, dan airnya bening sampai kelihatan dasarnya.
-
-Sebagian spot mengharuskan memanjat batu yang licin kena air laut. Nggak sulit,
-tapi pakai alas kaki yang benar. Sandal jepit sering jadi penyebab jatuh di sini.
+Melangkah turun dari pesawat, lo akan langsung disambut oleh angin laut dan hamparan pasir putih yang teksturnya selembut bedak. Tiga hari di Belitung adalah tentang bersantai di antara batu-batu granit raksasa berumur ratusan tahun yang mengapung di perairan toska. Kita bakal island hopping santai, mampir ke pulau pasir yang cuma muncul saat air surut, dan snorkeling ditemani ikan-ikan kecil. Jangan lupa tutup hari dengan secangkir kopi khas Manggar yang hangat. Nggak perlu buru-buru, di sini waktu berjalan lebih pelan.

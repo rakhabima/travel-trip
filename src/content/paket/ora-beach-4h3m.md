@@ -5,7 +5,7 @@ destinasi: ora
 durasi: 4 hari 3 malam
 level: Sedang
 foto: https://images.unsplash.com/photo-1590523278191-995cbcda646b?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Menginap di cottage terapung yang menghadap tebing karst, dengan terumbu karang yang dimulai tepat di bawah lantai kamar.
+ringkas: "Resort di atas air sebening kaca, dikelilingi tebing karst Teluk Saleman."
 highlight:
   - Cottage di atas air
   - Terumbu karang tepat di bawah kamar
@@ -117,13 +117,4 @@ bawa:
   - Uang tunai, nggak ada ATM di Ora
 ---
 
-Kamar-kamarnya berdiri di atas air, dan karangnya mulai beberapa meter dari
-tangga kamar. Bangun tidur, turun, langsung snorkeling. Nggak perlu naik kapal
-ke mana-mana dulu.
-
-Perjalanan ke sananya panjang: dari Ambon menyeberang ke Pulau Seram, lalu darat
-beberapa jam, lalu naik kapal kecil. Total bisa tujuh jam. Itu sebabnya tripnya
-empat hari, bukan tiga.
-
-Listrik di cottage menyala pada jam tertentu saja, dan sinyal ponsel hampir nggak
-ada. Buat sebagian orang itu justru alasan datang ke sini.
+Selamat datang di potongan surga yang tersembunyi di Maluku Tengah. Begitu lo membuka pintu kamar resort yang mengapung di atas air laut, lo bisa langsung melihat ikan berenang menembus air sebening kaca. Empat hari di Pantai Ora adalah tentang mengisolasi diri di antara tebing karst yang menjulang hijau dan ketenangan perairan Teluk Saleman. Jauh dari keramaian, ini adalah tempat terbaik buat lo yang benar-benar ingin disconnect dari hiruk-pikuk kota.

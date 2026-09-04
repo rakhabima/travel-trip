@@ -5,7 +5,7 @@ destinasi: karimunjawa
 durasi: 3 hari 2 malam
 level: Santai
 foto: https://images.unsplash.com/photo-1619017107453-3d950380f0a9?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Snorkeling di Menjangan Kecil, mengunjungi penangkaran hiu, dan sunset dari Bukit Love.
+ringkas: "Gradasi air laut, main bareng hiu karang jinak, dan ikan bakar di pulau pasir putih."
 highlight:
   - Penangkaran hiu
   - Sunset Bukit Love
@@ -96,6 +96,4 @@ bawa:
   - Uang tunai secukupnya
 ---
 
-Batch Desember sudah penuh. Kalau tetap mau ikut rute ini, chat admin untuk masuk
-waiting list. Kursi kadang terbuka lagi kalau ada yang batal, dan batch berikutnya
-biasanya dibuka sekitar sebulan sebelumnya.
+Setelah melintasi Laut Jawa, lo akan tiba di gugusan pulau karang dengan gradasi air laut yang bikin mata nggak mau kedip. Tiga hari di Karimunjawa rasanya kayak punya kolam renang pribadi seluas samudra. Lo bakal lompat dari kapal kayu ke perairan yang tenang, bermain bersama hiu karang yang jinak, dan membakar ikan segar di atas pulau berpasir putih. Kalau lo butuh pelarian yang jauh dari notifikasi chat kantor, ini jawabannya.

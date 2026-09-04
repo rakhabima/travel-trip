@@ -5,7 +5,7 @@ destinasi: banyuwangi
 durasi: 3 hari 2 malam
 level: Menantang
 foto: https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Menyaksikan api biru Kawah Ijen dini hari, dilanjutkan sunset dan ombak tenang di Pulau Merah.
+ringkas: "Blue Fire Kawah Ijen di malam dingin, lalu ombak dan senja di Pulau Merah."
 highlight:
   - Api biru Kawah Ijen
   - Sunset Pulau Merah
@@ -113,13 +113,4 @@ bawa:
   - Obat pribadi
 ---
 
-Ini trip paling berat yang kami jalankan. Pendakian Ijen dimulai sekitar jam satu
-dini hari, jalannya menanjak terus sekitar dua jam, dan udaranya dingin bercampur
-bau belerang. Api birunya cuma kelihatan sebelum matahari terbit, jadi nggak ada
-opsi berangkat lebih siang.
-
-Kalau kamu punya masalah pernapasan, kabari kami sebelum daftar. Bukan untuk
-menolak, tapi supaya trip leader bisa mengatur posisi dan kecepatan rombongan.
-
-Hari kedua sengaja dibuat santai. Pulau Merah ombaknya pelan, cocok buat kaki
-yang baru dipakai naik gunung semalam sebelumnya.
+Perpaduan kontras antara api dan air dalam satu perjalanan di ujung timur Pulau Jawa. Lo bakal memulai petualangan menembus malam yang dingin demi menyaksikan fenomena magis Blue Fire di Kawah Ijen. Setelah kaki pegal mendaki, esoknya lo akan disambut oleh ombak bergulung dan hamparan pasir luas di Pulau Merah yang berubah warna perlahan saat senja datang. Trip ini khusus buat lo yang suka menguji fisik sekaligus dimanjakan oleh keindahan alam raya.
