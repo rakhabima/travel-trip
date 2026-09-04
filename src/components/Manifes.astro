@@ -1,0 +1,56 @@
+---
+import type { Keberangkatan } from "../lib/paket";
+import { rentangPendek } from "../lib/tanggal";
+import { rupiah } from "../lib/wa";
+
+interface Props {
+  batch: Keberangkatan[];
+  /** Potong daftar setelah sekian baris. Sisanya dihitung di pemanggil. */
+  batas?: number;
+  /** Judul kecil di atas tabel. Kosong berarti tanpa judul. */
+  judul?: string;
+}
+
+const { batch, batas, judul } = Astro.props;
+const baris = batas ? batch.slice(0, batas) : batch;
+
+// Kursi terisi, bukan sisa. Bilahnya memenuh saat trip makin penuh, jadi
+// arah geraknya sama dengan arah tekanan yang dirasakan pembaca.
+const terisi = (b: Keberangkatan) =>
+  b.kuotaTotal > 0 ? Math.round(((b.kuotaTotal - b.kuotaSisa) / b.kuotaTotal) * 100) : 100;
+
+// Ambang "tinggal sedikit". Di bawah ini bilahnya berubah jadi warna sinyal.
+const KRITIS = 3;
+---
+<table class="manifes">
+  {judul && <caption>{judul}</caption>}
+  <thead>
+    <tr>
+      <th scope="col">Berangkat</th>
+      <th scope="col">Harga</th>
+      <th scope="col" class="kolom-opsional">Kursi</th>
+    </tr>
+  </thead>
+  <tbody>
+    {baris.map((b) => {
+      const penuh = b.kuotaSisa <= 0;
+      const kritis = !penuh && b.kuotaSisa <= KRITIS;
+      return (
+        <tr data-penuh={penuh ? "" : undefined}>
+          <td class="manifes__tanggal">{rentangPendek(b.mulai, b.selesai)}</td>
+          <td class="manifes__harga">{rupiah(b.harga)}</td>
+          <td class="manifes__sisa kolom-opsional">
+            <span
+              class:list={["gauge", penuh && "gauge--penuh", kritis && "gauge--kritis"]}
+              role="img"
+              aria-label={penuh ? "Kuota penuh" : `${b.kuotaSisa} dari ${b.kuotaTotal} kursi tersisa`}
+            >
+              <span class="gauge__isi" style={`width:${terisi(b)}%`}></span>
+            </span>
+            <span aria-hidden="true">{penuh ? "Penuh" : `${b.kuotaSisa} kursi`}</span>
+          </td>
+        </tr>
+      );
+    })}
+  </tbody>
+</table>

@@ -5,7 +5,7 @@ destinasi: gili
 durasi: 3 hari 2 malam
 level: Santai
 foto: https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Tiga gili dalam sekali jalan, snorkeling bareng penyu, dan sunset dari sisi barat Trawangan.
+ringkas: "Snorkeling bareng penyu liar, keliling pulau naik sepeda, tutup hari dengan sunset."
 highlight:
   - Snorkeling bareng penyu
   - Hopping Trawangan, Meno, Air
@@ -117,10 +117,4 @@ bawa:
   - Uang tunai, nggak semua warung terima kartu
 ---
 
-Nggak ada kendaraan bermotor di Gili Trawangan. Ke mana-mana jalan kaki, naik
-sepeda, atau cidomo. Itu yang bikin pulaunya terasa beda dari tempat lain di
-Lombok.
-
-Sisi timur ramai kafe dan penginapan, sisi barat sepi dan itu tempat sunset-nya.
-Kami menginap di sisi yang lebih tenang, jadi siap-siap gowes sedikit kalau mau
-cari makan malam yang rame.
+Ucapkan selamat tinggal pada suara bising knalpot kendaraan, karena di sini cuma ada sepeda, delman, dan desir ombak. Gili Trawangan nawarin keseimbangan sempurna: pagi lo bisa snorkeling bareng penyu liar di perairan yang sejernih kristal, siang bersepeda mengelilingi pulau dengan angin sepoi-sepoi, dan sore menikmati sunset syahdu sebelum pulau perlahan berubah jadi pusat hiburan yang hidup. Tiga hari buat lo yang mau ngerasain energi meriah sekaligus ketenangan laut dalam satu waktu.

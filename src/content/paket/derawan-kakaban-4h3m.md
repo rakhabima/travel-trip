@@ -5,7 +5,7 @@ destinasi: derawan
 durasi: 4 hari 3 malam
 level: Sedang
 foto: https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Danau ubur-ubur tanpa sengat di Kakaban, penyu di Derawan, dan pasir putih Maratua.
+ringkas: "Berenang bareng pari manta dan mengapung di antara ubur-ubur tanpa sengat Danau Kakaban."
 highlight:
   - Danau ubur-ubur Kakaban
   - Penyu di depan penginapan
@@ -118,10 +118,4 @@ bawa:
   - Uang tunai, ATM cuma ada di Berau
 ---
 
-Ubur-ubur di Danau Kakaban sudah kehilangan sengatnya karena terkurung ribuan
-tahun di danau air payau. Berenang di antara mereka itu pengalaman yang susah
-dicari di tempat lain.
-
-Perlu dicatat: perjalanan dari Berau ke Derawan sekitar dua jam naik speedboat,
-dan bisa terasa berat kalau kamu gampang mabuk laut. Bawa obatnya, diminum
-sebelum naik, bukan setelah mual.
+Siapkan diri lo buat berenang di laut lepas yang sesungguhnya. Selama empat hari, kita akan menyeberang ke perairan Kalimantan Timur untuk berenang berdampingan dengan pari manta raksasa yang menari anggun di bawah lo. Nggak cuma itu, lo bakal mengapung santai di Danau Kakaban, dikelilingi ribuan ubur-ubur tanpa sengat yang kenyal saat disentuh. Ini bukan sekadar liburan pantai biasa, ini pengalaman liar yang bikin lo sadar betapa ajaibnya bawah laut Indonesia.

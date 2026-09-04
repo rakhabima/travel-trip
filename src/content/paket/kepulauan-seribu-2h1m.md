@@ -5,7 +5,7 @@ destinasi: kep-seribu
 durasi: 2 hari 1 malam
 level: Santai
 foto: https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: "Trip santai buat pemula: Pulau Harapan, hopping 4 pulau, sunset di Pulau Bulat."
+ringkas: "Pelarian akhir pekan dari Jakarta: snorkeling di perairan tenang, pulang Minggu sore."
 highlight:
   - Hopping 4 pulau
   - Cocok untuk pemula
@@ -94,8 +94,4 @@ bawa:
   - Uang tunai secukupnya
 ---
 
-Trip paling murah dan paling dekat yang kami jalankan. Berangkat Sabtu pagi dari
-Jakarta, balik Minggu sore, tanpa perlu ambil cuti.
-
-Ini yang paling sering dipilih orang yang belum pernah ikut open trip sama sekali.
-Ombaknya relatif tenang, spot snorkelingnya dangkal, dan selalu ada pendamping di air.
+Lompat dari penatnya Jakarta di Sabtu pagi, dan biarkan perahu membawa lo ke jernihnya perairan Kepulauan Seribu dalam hitungan jam. Ini pelarian akhir pekan paling praktis buat refreshing total tanpa harus motong jatah cuti. Kita bakal nyebur di spot snorkeling dangkal dengan ombak laut yang tenang banget, ditemani guide yang selalu siap sedia di air. Minggu sore, lo udah sampai lagi di pelabuhan ibu kota dengan pikiran yang jauh lebih fresh.

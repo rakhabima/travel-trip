@@ -11,7 +11,6 @@ const daftar = batas ? TESTIMONI.slice(0, batas) : TESTIMONI;
 <div class="grid-testi">
   {daftar.map((t) => (
     <figure class="testi">
-      <span class="testi__kutip">&ldquo;</span>
       <blockquote class="testi__isi">{t.isi}</blockquote>
       <figcaption class="testi__orang">
         <span class="testi__avatar">{t.nama.trim().charAt(0)}</span>

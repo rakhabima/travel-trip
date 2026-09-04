@@ -5,7 +5,7 @@ destinasi: bromo
 durasi: 3 hari 2 malam
 level: Sedang
 foto: https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Sunrise Penanjakan, lautan pasir, lanjut air terjun Tumpak Sewu dan Goa Tetes.
+ringkas: "Kejar sunrise di lautan pasir Bromo, lalu turun ke gemuruh air terjun Tumpak Sewu."
 highlight:
   - Sunrise Penanjakan
   - Jeep lautan pasir
@@ -113,9 +113,4 @@ bawa:
   - Uang tunai secukupnya
 ---
 
-Dua tempat yang sebenarnya berlawanan arah, tapi masih masuk akal digabung dalam
-tiga hari kalau berangkatnya malam. Hari pertama dipakai perjalanan dan istirahat,
-jadi sunrise di hari kedua tidak dijalani dalam kondisi kurang tidur total.
-
-Lautan pasir dan Tumpak Sewu punya medan yang berbeda. Satu berdebu, satu licin
-dan basah. Bawa dua pasang alas kaki kalau bisa.
+Tinggalkan sejenak rutinitas datar lo dan bersiaplah untuk lanskap epik Jawa Timur. Kita mulai dari mengejar matahari terbit dengan latar Gunung Bromo yang megah, diselimuti kabut pagi dan hamparan lautan pasir. Setelah adrenalin terpompa di atas Jeep, perjalanan berlanjut menembus rimbunnya hutan menuju air terjun Tumpak Sewu. Sensasi menuruni tebing dengan suara gemuruh air yang jatuh dari segala arah bakal bikin lo lupa sama penatnya meja kerja. Tiga hari yang padat, visual yang nggak masuk akal, dan memori yang bertahan selamanya.

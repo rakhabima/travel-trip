@@ -16,3 +16,8 @@ dist/
 # editor
 .vscode/
 .idea/
+
+# npm cache lokal
+.npm-cache/
+
+NASKAH*

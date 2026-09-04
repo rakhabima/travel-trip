@@ -11,7 +11,7 @@
 // jadwal: true   Paket premium. Tanggal keberangkatan, status tersedia/penuh,
 //                dan filter bulan aktif. Perlu build ulang harian lewat cron.
 export const FITUR = {
-  jadwal: true,
+  jadwal: false,
 };
 
 // h ikut dikirim supaya Unsplash yang memotong. Kalau cuma w, foto potret tetap
@@ -89,18 +89,17 @@ export const DESTINASI = [
 // Tiap poin sengaja memuat bagian yang merugikan kami sendiri, karena itu yang
 // membedakan janji dari klaim kosong.
 export const ALASAN = [
-  { ikon: "orang", judul: "Maksimal 16 orang", isi: "Kuotanya nggak akan ditambah, walaupun ada yang mau bayar lebih." },
-  { ikon: "dompet", judul: "Harga yang tertulis adalah harga akhir", isi: "Biaya di luar tanggungan kami tertulis di halaman paketnya, bukan disebut waktu kamu sudah berangkat." },
-  { ikon: "perisai", judul: "Uang kamu tidak hangus", isi: "Kalau nggak memungkinkan untuk berangkat, rutenya diubah atau tripnya ditunda. Uang kamu aman." },
-  { ikon: "chat", judul: "Yang balas chat orangnya", isi: "Pesan kamu langsung masuk ke kami, bukan bot, bukan CS." },
-  { ikon: "foto", judul: "Dokumentasi nggak nambah biaya", isi: "Foto dibagikan maksimal 7 hari setelah trip. Kalau lewat, tagih saja." },
-  { ikon: "kompas", judul: "Kru dan guide warga lokal", isi: "Kapal, jeep, dan homestay dari partner yang sudah lama kami pakai, bukan hanya cari yang paling murah." },
+  { ikon: "orang", judul: "Satu trip maksimal 16 orang", isi: "Opentrip maks 16 orang sekali jalan, bisa lebih untuk trip private." },
+  { ikon: "dompet", judul: "Harga paket sudah final", isi: "Yang tertulis di situ yang dibayar. Nggak ada biaya nyusul." },
+  { ikon: "perisai", judul: "Uang gak akan hangus", isi: "Kalau rute atau jadwal berubah karena cuaca atau hal lain, uang dijamin aman." },
+  { ikon: "foto", judul: "Dokumentasi tanpa biaya tambahan", isi: "Foto dan video trip kami kirim maksimal 7 hari setelah trip selesai." },
+  { ikon: "kompas", judul: "Kru dan guide warga lokal", isi: "Kapal, jeep, dan homestay dari partner lokal yang sudah lama jadi partner kami." },
 ];
 
 export const LANGKAH = [
-  { no: "01", judul: "Pilih tripnya", isi: "Buka halaman Paket Trip, lihat rincian dan rundown hariannya, lalu pilih yang paling pas." },
-  { no: "02", judul: "Chat dan amankan kursi", isi: `Admin cek kuota dan kirim rincian. DP ${KEBIJAKAN.dp} untuk mengunci kursi.` },
-  { no: "03", judul: "Berangkat", isi: `Pelunasan ${KEBIJAKAN.pelunasan}. ${KEBIJAKAN.grupWa}` },
+  { no: "01", judul: "Pilih tripnya", isi: "Buka halaman Paket Trip, cek rincian harga dan rundown hariannya, lalu pilih yang paling sesuai." },
+  { no: "02", judul: "Chat dan booking paket liburan", isi: "Admin memeriksa ketersediaan kursi dan mengirimkan rincian lengkap." },
+  { no: "03", judul: "Berangkat", isi: `Pelunasan ${KEBIJAKAN.pelunasan}. Grup WhatsApp trip dibuka H-7.` },
 ];
 
 export const TESTIMONI = [

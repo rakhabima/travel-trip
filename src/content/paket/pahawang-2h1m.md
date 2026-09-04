@@ -5,7 +5,7 @@ destinasi: pahawang
 durasi: 2 hari 1 malam
 level: Santai
 foto: https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Snorkeling di taman nemo, main ke Pulau Kelagian, nginap di homestay warga. Trip termurah yang kami jalankan.
+ringkas: "Nyeberang dari Merak buat cari Nemo di terumbu karang dangkal Pahawang."
 highlight:
   - Taman nemo Pahawang Kecil
   - Pasir timbul Kelagian
@@ -101,10 +101,4 @@ bawa:
   - Uang tunai, ATM jauh dari dermaga
 ---
 
-Trip paling murah yang kami jalankan, dan yang paling sering dipilih orang yang
-belum pernah ikut open trip sama sekali. Airnya dangkal, ombaknya biasanya tenang,
-dan spot snorkelingnya nggak jauh dari pantai.
-
-Nginapnya di rumah warga, bukan hotel. Kamarnya sederhana dan kamar mandinya
-mungkin dipakai bergantian. Buat sebagian orang itu bagian serunya, tapi lebih
-baik tahu dulu daripada kaget di lokasi.
+Cuma nyeberang sebentar dari Pelabuhan Merak, lo udah bisa nyebur ke surga kecil di pesisir pesawaran Lampung. Dua hari satu malam di Pahawang adalah rute pelarian akhir pekan yang sempurna buat warga Sumatera atau Jakarta. Airnya dangkal, terumbu karangnya subur, dan lo bisa nemuin ikan badut (Nemo) yang sembunyi di antara anemon tepat di bawah kaki lo. Bersantai di hamparan pasir Pulau Kelagian Lunik akan menutup weekend lo dengan senyum lebar.

@@ -5,7 +5,7 @@ destinasi: nusa-penida
 durasi: 1 hari
 level: Santai
 foto: https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&h=675&q=60
-ringkas: Berangkat pagi balik sore. Kelingking, Broken Beach, Angel Billabong, dan Crystal Bay dalam satu hari.
+ringkas: "One day trip dari Sanur ke Kelingking Beach dan Broken Beach yang ikonik."
 highlight:
   - Kelingking Beach
   - Broken Beach & Angel Billabong
@@ -85,9 +85,4 @@ bawa:
   - Uang tunai secukupnya
 ---
 
-Buat yang cutinya mepet atau sudah terlanjur di Bali dan baru kepikiran menyeberang.
-Berangkat 07.30 dari Sanur, balik sekitar 17.00.
-
-Perlu dicatat: turun ke pantai Kelingking itu tangga curam sekitar 45 menit sekali
-jalan. Tidak wajib. Banyak yang cukup menikmati dari viewpoint atas, dan itu
-memang spot fotonya.
+Buat lo yang waktunya sempit saat di Bali tapi butuh pemandangan spektakuler, trip satu hari ini solusinya. Menyeberang dengan fast boat dari Sanur, lo akan langsung dibawa menyusuri jalanan menuju Kelingking Beach yang ikonik dan Broken Beach yang memukau. Suara ombak yang menghantam tebing karang raksasa bakal jadi soundtrack perjalanan lo. Pergi pagi, pulang sore, tapi stok foto yang lo dapat cukup buat di-post berminggu-minggu.

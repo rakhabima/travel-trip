@@ -7,7 +7,7 @@ import Langkah from "../components/Langkah.astro";
 import Testimoni from "../components/Testimoni.astro";
 import FormCari from "../components/FormCari.astro";
 import Ikon from "../components/Ikon.astro";
-import { BRAND, FITUR } from "../data/konten";
+import { ALASAN, BRAND, DESTINASI, FITUR, LANGKAH, TESTIMONI } from "../data/konten";
 import { jumlahKeberangkatan, semuaPaket } from "../lib/paket";
 import { batchTerdekat } from "../lib/paket";
 import { waLink } from "../lib/wa";
@@ -29,10 +29,10 @@ const jumlahBatch = await jumlahKeberangkatan();
   <section class="hero hero--utama">
     <div class="wadah hero__grid">
       <div class="hero__isi">
-        <h1>Nggak suka rame?<br />Ikut kita, yuk.</h1>
+        <h1>Liburan asik tanpa ribet,<br />tinggal berangkat.</h1>
         <p class="hero__lead">
-          Jelajahi pantai dan pulau di Indonesia bersama kami, maksimal 16 orang per keberangkatan.
-          Datang sendiri bukan masalah, dijamin semua bakal saling kenal.
+          Udah capek kerja, masa mau capek lagi ngurusin rencana liburan? Waktunya lo
+          stop mikirin itinerary dan biar kami yang urus mastiin liburan lo sempurna.
         </p>
         <div class="hero__aksi">
           <a class="btn btn--wa" href={waLink("Halo, saya lihat website-nya. Saya mau tanya jadwal open trip terdekat.")} target="_blank" rel="noopener">
@@ -92,6 +92,7 @@ const jumlahBatch = await jumlahKeberangkatan();
   <section class="seksi">
     <div class="wadah">
       <div class="seksi-kepala">
+        <span class="eyebrow">Jadwal <b>{FITUR.jadwal ? `${jumlahBatch} keberangkatan` : `${paket.length} trip`}</b></span>
         <h2>{FITUR.jadwal ? "Berangkat dalam waktu dekat" : "Trip yang kami jalankan"}</h2>
       </div>
 
@@ -110,7 +111,8 @@ const jumlahBatch = await jumlahKeberangkatan();
   <section class="seksi seksi--rapat">
     <div class="wadah">
       <div class="seksi-kepala">
-        <h2>Mau jalan ke mana?</h2>
+        <span class="eyebrow">Destinasi <b>{DESTINASI.length} wilayah</b></span>
+        <h2>Pilih destinasi liburan lo</h2>
       </div>
       <Destinasi />
     </div>
@@ -119,7 +121,8 @@ const jumlahBatch = await jumlahKeberangkatan();
   <section class="seksi laut laut--pola terang">
     <div class="wadah">
       <div class="seksi-kepala">
-        <h2>Komitmen kami</h2>
+        <span class="eyebrow">Komitmen <b>{ALASAN.length} aturan</b></span>
+        <h2>Prinsip trip kami</h2>
       </div>
       <Alasan />
     </div>
@@ -128,22 +131,24 @@ const jumlahBatch = await jumlahKeberangkatan();
   <section class="seksi seksi--rapat">
     <div class="wadah">
       <div class="seksi-kepala">
+        <span class="eyebrow">Alur <b>{LANGKAH.length} langkah</b></span>
         <h2>Cara booking</h2>
       </div>
       <Langkah />
-      <p class="seksi-kaki">Tidak ada form pendaftaran di website ini. Semuanya melalui chat.</p>
+      <p class="seksi-kaki">Semua proses booking dilakukan melalui WhatsApp langsung dengan admin kami.</p>
     </div>
   </section>
 
   <section class="seksi seksi--rapat">
     <div class="wadah">
       <div class="seksi-kepala">
+        <span class="eyebrow">Ulasan <b>{TESTIMONI.length} peserta</b></span>
         <h2>Kata mereka yang sudah ikut</h2>
       </div>
       <Testimoni batas={3} />
       <div class="mt-l">
         <a class="btn btn--garis" href="/tentang/">
-          Kenalan dulu sama kami <Ikon nama="panah" />
+          Anggota Tim <Ikon nama="panah" />
         </a>
       </div>
     </div>
@@ -165,14 +170,14 @@ const jumlahBatch = await jumlahKeberangkatan();
     <div class="wadah">
       <div class="cta">
         <div class="cta__teks">
-          <h2>Belum tahu mau ke mana?</h2>
-          <p>Sebutkan tanggal kosong dan budget kamu. Kami bisa carikan perjalanan terbaik untukmu.</p>
+          <h2>Masih bingung mau liburan kemana?</h2>
+          <p>Tulis aja kapan kamu mau jalan-jalan dan berapa budgetnya, nanti kita bantu cari trip yang pas.</p>
         </div>
         <div class="cta__aksi">
           <a class="btn btn--wa" href={waLink("Halo, saya belum tahu mau ke mana. Tanggal kosong saya sekitar ... dan budget sekitar ... Bisa dibantu?")} target="_blank" rel="noopener">
             <Ikon nama="wa" /> Minta rekomendasi
           </a>
-          <a class="btn btn--garis-terang" href="/faq/">Baca FAQ dulu</a>
+          <a class="btn btn--garis-terang" href="/faq/">Baca FAQ</a>
         </div>
       </div>
     </div>
