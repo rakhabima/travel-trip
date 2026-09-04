@@ -16,7 +16,7 @@ import { waLink } from "../lib/wa";
       <h1>Yang paling sering ditanya</h1>
       <p class="hero__lead">
         Kalau masih ada yang mengganjal setelah membaca ini, langsung hubungi kami
-        lewat chat, tidak perlu mengisi formulir apa pun.
+        lewat chat.
       </p>
     </div>
   </section>
@@ -27,10 +27,42 @@ import { waLink } from "../lib/wa";
         {FAQ.map((f, i) => (
           <details open={i === 0}>
             <summary>{f.t}</summary>
-            <p>{f.j}</p>
+            <div class="faq__isi"><p>{f.j}</p></div>
           </details>
         ))}
       </div>
+
+      <script>
+        // Pakai Web Animations API, bukan transisi CSS: stylesheet punya reset
+        // `* { transition: none !important }` untuk reduce-motion, dan animasi FAQ
+        // ini diminta tetap jalan. WAAPI nggak kena reset itu.
+        const DUR = 280;
+        document.querySelectorAll<HTMLDetailsElement>(".faq details").forEach((d) => {
+          const sum = d.querySelector("summary")!;
+          const body = d.querySelector<HTMLElement>(".faq__isi")!;
+          let anim: Animation | null = null;
+
+          sum.addEventListener("click", (e) => {
+            e.preventDefault();
+            anim?.cancel();
+            const buka = !d.open;
+            if (buka) d.open = true;
+
+            const h = body.scrollHeight;
+            anim = body.animate(
+              {
+                height: buka ? ["0px", h + "px"] : [h + "px", "0px"],
+                opacity: buka ? [0, 1] : [1, 0],
+              },
+              { duration: DUR, easing: "ease" },
+            );
+            anim.onfinish = () => {
+              anim = null;
+              if (!buka) d.open = false;
+            };
+          });
+        });
+      </script>
 
       <p class="faq__kaki">
         Pertanyaan yang khusus satu trip seperti titik jemput, apa yang termasuk, barang
@@ -46,7 +78,6 @@ import { waLink } from "../lib/wa";
           <h2>Masih ada yang mau ditanya?</h2>
           <p>
             Chat masuk ke WhatsApp {BRAND.adminNama} langsung. Setiap hari {BRAND.jamOperasional}.
-            Di luar jam itu tetap masuk, dibalas paginya.
           </p>
         </div>
         <div class="cta__aksi">

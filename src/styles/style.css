@@ -583,8 +583,10 @@ img, svg { max-width: 100%; }
 }
 
 /* ---------- FAQ ---------- */
-.faq { display: grid; gap: 0; border-top: 1px solid var(--tinta); }
-.faq details { border-bottom: 1px solid var(--garis); padding: 0; }
+.faq { display: grid; gap: 0; border-top: 1px solid var(--tinta); margin: 0 -18px; padding: 0 18px; }
+/* Teksnya tetap sejajar grid halaman; blok latar saat terbuka yang dilebarkan
+   keluar lewat margin negatif, jadi teks nggak nempel di tepi. */
+.faq details { border-bottom: 1px solid var(--garis); padding: 0 18px; margin: 0 -18px; }
 .faq details[open] { background: var(--kertas-terang); }
 .faq summary {
   cursor: pointer; list-style: none; padding: 16px 40px 16px 0; position: relative;
@@ -593,11 +595,15 @@ img, svg { max-width: 100%; }
 }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after {
-  content: "+"; position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
-  font-family: var(--font-data); font-size: 1.25rem; font-weight: 400; color: var(--sinyal); line-height: 1;
+  content: "+"; position: absolute; right: 14px; top: 50%;
+  font-family: var(--font-data); font-size: 1.5rem; font-weight: 400; color: var(--sinyal); line-height: 1;
+  transform: translateY(-50%) rotate(0deg); transition: transform .25s ease;
 }
-.faq details[open] summary::after { content: "\2013"; }
+.faq details[open] summary::after { transform: translateY(-50%) rotate(135deg); }
 .faq p { font-size: .94rem; color: var(--tinta-600); padding: 0 40px 16px 0; margin: 0; max-width: 72ch; }
+
+/* Tinggi & opacity-nya dianimasikan lewat Web Animations API di faq.astro. */
+.faq__isi { overflow: hidden; }
 .faq__kaki { margin: 22px 0 0; font-size: .92rem; color: var(--tinta-600); }
 
 /* ---------- kontak ---------- */
@@ -808,6 +814,7 @@ img, svg { max-width: 100%; }
 /* ---------- responsif ---------- */
 @media (max-width: 980px) {
   .sisi-kiri-lebar, .profil, .dua-kolom { grid-template-columns: 1fr; gap: 26px; }
+  .profil__foto { position: static; aspect-ratio: 4/3; max-width: 420px; }
   .hero__grid { grid-template-columns: 1fr; gap: 36px; }
   .hero__foto { aspect-ratio: 16 / 10; }
   .hero__foto--kecil { left: auto; right: 16px; bottom: -24px; width: 36%; }
@@ -888,4 +895,7 @@ img, svg { max-width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  /* Rotasi ikon FAQ dikecualikan atas permintaan eksplisit. Panelnya sendiri
+     dianimasikan via WAAPI di faq.astro, jadi nggak kena reset ini. */
+  .faq summary::after { transition: transform .25s ease !important; }
 }
