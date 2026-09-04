@@ -29,11 +29,10 @@ const jumlahBatch = await jumlahKeberangkatan();
   <section class="hero hero--utama">
     <div class="wadah hero__grid">
       <div class="hero__isi">
-        <h1>Liburan gak pake ribet.<br />Maksimal 16 orang setiap keberangkatan.</h1>
+        <h1>Liburan asik tanpa ribet,<br />tinggal berangkat.</h1>
         <p class="hero__lead">
-          Setiap keberangkatan kami batasi maksimal 16 orang. Gak usah takut dateng sendiri,
-          grup WhatsApp trip dibuka tujuh hari sebelum keberangkatan, anggota trip bisa
-          saling kenal sebelum bertemu di titik kumpul.
+          Udah capek kerja, masa mau capek lagi ngurusin rencana liburan? Waktunya lo
+          stop mikirin itinerary dan biar kami yang urus mastiin liburan lo sempurna.
         </p>
         <div class="hero__aksi">
           <a class="btn btn--wa" href={waLink("Halo, saya lihat website-nya. Saya mau tanya jadwal open trip terdekat.")} target="_blank" rel="noopener">
@@ -113,7 +112,7 @@ const jumlahBatch = await jumlahKeberangkatan();
     <div class="wadah">
       <div class="seksi-kepala">
         <span class="eyebrow">Destinasi <b>{DESTINASI.length} wilayah</b></span>
-        <h2>Pilih destinasimu</h2>
+        <h2>Pilih destinasi liburan lo</h2>
       </div>
       <Destinasi />
     </div>
@@ -123,7 +122,7 @@ const jumlahBatch = await jumlahKeberangkatan();
     <div class="wadah">
       <div class="seksi-kepala">
         <span class="eyebrow">Komitmen <b>{ALASAN.length} aturan</b></span>
-        <h2>Yang kami kunci</h2>
+        <h2>Prinsip trip kami</h2>
       </div>
       <Alasan />
     </div>
@@ -136,7 +135,7 @@ const jumlahBatch = await jumlahKeberangkatan();
         <h2>Cara booking</h2>
       </div>
       <Langkah />
-      <p class="seksi-kaki">Semua proses booking dilakukan melalui WhatsApp langsung dengan kami.</p>
+      <p class="seksi-kaki">Semua proses booking dilakukan melalui WhatsApp langsung dengan admin kami.</p>
     </div>
   </section>
 
@@ -178,7 +177,7 @@ const jumlahBatch = await jumlahKeberangkatan();
           <a class="btn btn--wa" href={waLink("Halo, saya belum tahu mau ke mana. Tanggal kosong saya sekitar ... dan budget sekitar ... Bisa dibantu?")} target="_blank" rel="noopener">
             <Ikon nama="wa" /> Minta rekomendasi
           </a>
-          <a class="btn btn--garis-terang" href="/faq/">Baca FAQ dulu</a>
+          <a class="btn btn--garis-terang" href="/faq/">Baca FAQ</a>
         </div>
       </div>
     </div>
